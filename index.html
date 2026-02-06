@@ -2,10 +2,10 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Portfolio Yannis ALBERT– Système Numérique</title>
+  <title>Portfolio – Yannis Albert</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ✅ Google Font CORRECT -->
+  <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
 
   <style>
@@ -36,6 +36,7 @@
       top:0;
       background:rgba(0,0,0,.9);
       border-bottom:1px solid var(--line);
+      z-index:10;
     }
     nav .inner{
       max-width:1100px;
@@ -43,12 +44,14 @@
       padding:14px 20px;
       display:flex;
       justify-content:space-between;
+      align-items:center;
     }
     nav a{
       margin-left:18px;
       color:var(--muted);
       font-weight:600;
     }
+    nav a:hover{color:var(--fg)}
 
     /* LAYOUT */
     .container{
@@ -58,11 +61,39 @@
     }
     section{margin-bottom:72px}
 
-    h1{font-size:48px;margin:0}
-    h2{color:var(--brand)}
+    h1,h2,h3,h4{margin-top:0}
     h3{font-size:26px}
     p{color:var(--muted);max-width:900px}
 
+    /* HERO PROFILE */
+    .profile{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      margin-bottom:28px;
+    }
+    .profile img{
+      width:150px;
+      height:150px;
+      object-fit:cover;
+      border-radius:50%;
+      border:3px solid var(--brand);
+      margin-bottom:16px;
+    }
+    .profile .name{
+      font-size:30px;
+      font-weight:800;
+      margin:0;
+    }
+    .profile .title{
+      font-size:16px;
+      font-weight:600;
+      color:var(--brand);
+      margin-top:6px;
+    }
+
+    /* CARDS */
     .card{
       background:var(--card);
       border:1px solid var(--line);
@@ -78,6 +109,7 @@
       justify-content:space-between;
       font-size:14px;
       color:var(--muted);
+      margin-bottom:6px;
     }
     .bar{
       height:10px;
@@ -98,6 +130,7 @@
       padding:40px;
       text-align:center;
       color:var(--muted);
+      font-size:14px;
     }
   </style>
 </head>
@@ -118,62 +151,98 @@
 
 <main class="container">
 
-<section>
-  <h1>Ingénieur système numérique</h1>
-  <h2>Piltoage · Data · IA · Industrie</h2>
-  <p>
-    Ingénieur issu d’une licence de Physique à dominante
-    <strong>Mécanique, Signaux et Données</strong>,
-    orienté vers l’exploitation des données pour créer
-    de la valeur métier et soutenir la prise de décision.
-  </p>
-</section>
-
-<section id="about">
-  <h3>À propos de moi ?</h3>
-  <p>
-  Actuellement en dernière année d’école d’ingénieur en Systèmes Numériques pour l’Industrie, je réalise mon parcours en alternance dans l’industrie automobile, au sein de projets à forts enjeux industriels et digitaux.
-J’interviens comme pilote de projet sur une initiative de transformation numérique, dont la première phase a consisté à concevoir et déployer une application Power Apps dédiée à la collecte de données, ainsi qu’à accompagner et former les utilisateurs. Cette étape m’a permis de travailler au plus près des besoins métiers et de prendre conscience de l’importance de la qualité, de la fiabilité et de l’usage de la donnée.
-Le projet a ensuite évolué vers une approche plus data‑driven, dans laquelle je suis aujourd’hui pleinement impliqué : nettoyage, structuration, analyse et visualisation des données, avec l’objectif de produire des indicateurs clairs, pertinents et exploitables, au service de la prise de décision. C’est dans cette dimension analytique que je m’épanouis particulièrement et que je souhaite poursuivre mon évolution.
-Issu d’une formation en Physique à dominante Mécanique, Signaux et Données, j’ai développé un fort intérêt pour la compréhension des systèmes complexes et pour l’exploitation intelligente de la donnée. Mon objectif est d’agir comme un facilitateur dans la création de valeur à partir des données, en faisant le lien entre données brutes, compréhension métier et outils numériques. Dans cette optique, je souhaite approfondir mes compétences dans les domaines de la data, de l’intelligence artificielle et de l’innovation.
-  </p>
-</section>
-
-<section id="skills">
-  <h3>Compétences</h3>
-
-  <div class="card">
-    <h4>Data & IA</h4>
-    <div class="skill">
-      <div class="skill-label"><span>Python</span><span>80%</span></div>
-      <div class="bar"><span style="width:70%"></span></div>
+  <!-- HERO -->
+  <section>
+    <div class="profile">
+      <img src="assets/photo.jpg" alt="Photo de Yannis Albert">
+      <h1 class="name">Yannis Albert</h1>
+      <div class="title">Ingénieur Systèmes Numériques pour l’Industrie</div>
     </div>
-    <div class="skill">
-      <div class="skill-label"><span>SQL</span><span>75%</span></div>
-      <div class="bar"><span style="width:50%"></span></div>
-    </div>
-  </div>
 
-  <div class="card">
-    <h4>💻 Développement</h4>
-    <div class="skill">
-      <div class="skill-label"><span>HTML / CSS</span><span>85%</span></div>
-      <div class="bar"><span style="width:85%"></span></div>
-    </div>
-    <div class="skill">
-      <div class="skill-label"><span>JavaScript</span><span>65%</span></div>
-      <div class="bar"><span style="width:50%"></span></div>
-    </div>
-  </div>
-</section>
+    <h2 style="text-align:center;color:var(--brand)">
+      Pilotage · Data · IA · Industrie
+    </h2>
 
-<section id="projects">
-  <h3>Projets</h3>
-  <div class="card">
-    <h4>PariData</h4>
-    <p>Projet Smart City mêlant open data, analyse et dashboard.</p>
-  </div>
-</section>
+    <p style="margin:auto;text-align:center">
+      Ingénieur issu d’une licence de Physique à dominante
+      <strong>Mécanique, Signaux et Données</strong>, orienté vers
+      l’exploitation des données pour créer de la valeur métier
+      et soutenir la prise de décision.
+    </p>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h3>À propos de moi</h3>
+    <p>
+      Actuellement en dernière année d’école d’ingénieur en Systèmes Numériques
+      pour l’Industrie, je réalise mon parcours en alternance dans l’industrie
+      automobile, au sein de projets à forts enjeux industriels et digitaux.
+    </p>
+    <p>
+      J’interviens comme pilote de projet sur une initiative de transformation
+      numérique, dont la première phase a consisté à concevoir et déployer une
+      application Power Apps dédiée à la collecte de données, ainsi qu’à accompagner
+      et former les utilisateurs.
+    </p>
+    <p>
+      Le projet a ensuite évolué vers une approche data‑driven, dans laquelle je suis
+      aujourd’hui pleinement impliqué : nettoyage, structuration, analyse et
+      visualisation des données afin de produire des indicateurs clairs,
+      pertinents et exploitables.
+    </p>
+    <p>
+      Issu d’une formation en Physique (Mécanique, Signaux et Données), mon objectif
+      est d’agir comme un facilitateur dans la création de valeur à partir des données,
+      en faisant le lien entre données brutes, compréhension métier et outils numériques.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h3>Compétences</h3>
+
+    <div class="card">
+      <h4>📊 Data & IA</h4>
+      <div class="skill">
+        <div class="skill-label"><span>Python</span><span>80%</span></div>
+        <div class="bar"><span style="width:80%"></span></div>
+      </div>
+      <div class="skill">
+        <div class="skill-label"><span>SQL</span><span>75%</span></div>
+        <div class="bar"><span style="width:75%"></span></div>
+      </div>
+      <div class="skill">
+        <div class="skill-label"><span>Power BI / Data Viz</span><span>85%</span></div>
+        <div class="bar"><span style="width:85%"></span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4>💻 Développement</h4>
+      <div class="skill">
+        <div class="skill-label"><span>HTML / CSS</span><span>85%</span></div>
+        <div class="bar"><span style="width:85%"></span></div>
+      </div>
+      <div class="skill">
+        <div class="skill-label"><span>JavaScript</span><span>65%</span></div>
+        <div class="bar"><span style="width:65%"></span></div>
+      </div>
+      <div class="skill">
+        <div class="skill-label"><span>Node.js</span><span>60%</span></div>
+        <div class="bar"><span style="width:60%"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h3>Projets</h3>
+    <div class="card">
+      <h4>PariData</h4>
+      <p>Projet Smart City mêlant open data, analyse et visualisation via dashboard.</p>
+    </div>
+  </section>
 
 </main>
 
@@ -183,4 +252,3 @@ Issu d’une formation en Physique à dominante Mécanique, Signaux et Données,
 
 </body>
 </html>
-
