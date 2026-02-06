@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <title>Yannis Albert – Ingénieur Data & IA</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio de Yannis Albert – Ingénieur systèmes numériques, projets Data, IA appliquée et transformation digitale." />
+  <meta name="description" content="Portfolio de Yannis Albert – Ingénieur systèmes numériques, Data & IA appliquées." />
 
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
+  https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap
 
   <style>
     :root{
@@ -21,6 +21,7 @@
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
+
     body{
       margin:0;
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
@@ -41,6 +42,7 @@
       backdrop-filter: blur(6px);
       border-bottom:1px solid var(--line);
     }
+
     nav .inner{
       max-width:1100px;
       margin:auto;
@@ -49,8 +51,15 @@
       justify-content:space-between;
       align-items:center;
     }
+
     nav strong{font-weight:800}
-    nav a{margin-left:18px; color:var(--muted); font-weight:600}
+
+    nav a{
+      margin-left:18px;
+      color:var(--muted);
+      font-weight:600;
+    }
+
     nav a:hover{color:var(--fg)}
 
     /* LAYOUT */
@@ -64,203 +73,26 @@
 
     /* HERO */
     .hero{
-      min-height:80vh;
+      min-height:70vh;
       display:flex;
       flex-direction:column;
       justify-content:center;
-      max-width:800px;
+      max-width:900px;
     }
+
     .hero h1{
       font-size:clamp(36px,5vw,56px);
       margin:0 0 12px;
       font-weight:800;
       letter-spacing:-.02em;
     }
+
     .hero h2{
-      margin:0 0 18px;
+      margin:0;
       font-weight:600;
       color:var(--brand);
-    }
-    .hero p{
-      font-size:18px;
-      color:var(--muted);
-    }
-    .buttons{
-      margin-top:28px;
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .btn{
-      padding:12px 18px;
-      border-radius:12px;
-      background:linear-gradient(135deg,var(--brand),#7aa8ff);
-      color:#000;
-      font-weight:700;
-    }
-    .btn.secondary{
-      background:transparent;
-      color:var(--brand);
-      border:1px solid var(--brand);
     }
 
     /* SECTIONS */
     h3{
       font-size:28px;
-      margin-bottom:16px;
-    }
-
-    .grid{
-      display:grid;
-      gap:20px;
-    }
-    .grid-2{grid-template-columns:repeat(2,1fr)}
-    .grid-3{grid-template-columns:repeat(3,1fr)}
-    @media (max-width:900px){
-      .grid-2,.grid-3{grid-template-columns:1fr}
-    }
-
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:22px;
-      transition:transform .2s ease, border .2s ease;
-    }
-    .card:hover{
-      transform:translateY(-4px);
-      border-color:var(--brand);
-    }
-
-    .card h4{margin-top:0}
-    .card p{color:var(--muted); font-size:14px}
-
-    .tag{
-      display:inline-block;
-      font-size:12px;
-      padding:4px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      color:var(--muted);
-      margin-right:6px;
-      margin-top:8px;
-    }
-
-    footer{
-      border-top:1px solid var(--line);
-      padding:40px 20px;
-      text-align:center;
-      color:var(--muted);
-      font-size:14px;
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- NAV -->
-  <nav>
-    <div class="inner">
-      <strong>Yannis Albert</strong>
-      <div>
-        <a href="#about">À propos</a>
-        <a href="#projects">Projets</a>
-        <a href="parisdata.html">ParisData</a>
-        <a href="assets/cv-yannis-albert.pdf">CV</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <div class="container hero">
-    <h1>Yannis Albert</h1>
-    <h2>Ingénieur systèmes numériques – Data & IA appliquées</h2>
-    <p>
-      Je conçois des projets data‑driven orientés <b>aide à la décision</b>,
-      simulation et transformation digitale, à l’interface entre métiers,
-      systèmes d’information et technologies numériques.
-    </p>
-
-    <div class="buttons">
-      <a class="btn" href="#projects">Voir les projets</a>
-      <a class="btn secondary" href="parisdata.html">Projet ParisData</a>
-    </div>
-  </div>
-
-  <!-- ABOUT -->
-  <section id="about" class="container">
-    <h3>À propos</h3>
-    <p>
-      Ingénieur spécialisé en systèmes numériques, j’ai acquis une expérience
-      en pilotage de projets data‑driven et de transformation digitale au sein
-      d’environnements industriels complexes.  
-      Mon approche est orientée <b>usage, décision et impact métier</b>.
-    </p>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="container">
-    <h3>Projets</h3>
-
-    <div class="grid grid-3">
-
-      <!-- PARISDATA -->
-      <div class="card">
-        <h4>ParisData – Mobilité & trafic urbain</h4>
-        <p>
-          Dashboard Power BI simulant la fermeture du périphérique parisien.
-          Scénarios paramétrables, cartes avant/après et analyse décisionnelle
-          en contexte Smart City.
-        </p>
-        <div>
-          <span class="tag">Power BI</span>
-          <span class="tag">Data Visualisation</span>
-          <span class="tag">Smart City</span>
-          <span class="tag">Simulation</span>
-        </div>
-        <p style="margin-top:14px;">
-          <a href="parisdata.html">→ Voir le projet</a>
-        </p>
-      </div>
-
-      <!-- AUTH -->
-      <div class="card">
-        <h4>Authentification comportementale (IoT & IA)</h4>
-        <p>
-          Projet de recherche appliquée combinant capteurs IoT, données
-          comportementales et intelligence artificielle pour la sécurité.
-        </p>
-        <div>
-          <span class="tag">IoT</span>
-          <span class="tag">IA</span>
-          <span class="tag">Sécurité</span>
-        </div>
-      </div>
-
-      <!-- INDUSTRY -->
-      <div class="card">
-        <h4>Projets Data industriels</h4>
-        <p>
-          Pilotage de projets data‑driven : gouvernance, KPIs,
-          dashboards décisionnels et transformation digitale en milieu industriel.
-        </p>
-        <div>
-          <span class="tag">Data</span>
-          <span class="tag">Industrie</span>
-          <span class="tag">Transformation</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    © 2026 – Yannis Albert ·
-    <a href="mailto:yannis.albert78@gmail.com">yannis.albert78@gmail.com</a> ·
-    <a href="https://github.com/yannis-cloud">GitHub</a> ·
-    <a href="https://www.linkedin.com">LinkedIn</a>
-  </footer>
-
-</body>
-</html>
