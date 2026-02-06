@@ -5,12 +5,11 @@
   <title>Portfolio – Data & Ingénierie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- ✅ Google Font CORRECT -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
 
   <style>
     :root{
-      --bg:#000;
       --fg:#eaeaea;
       --muted:#a8b3c2;
       --brand:#3b82f6;
@@ -20,11 +19,9 @@
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-
     body{
       margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      font-family:Inter,system-ui,Arial,sans-serif;
       background:radial-gradient(1400px 700px at 50% -10%, #0b1220 0%, #000 60%);
       color:var(--fg);
       line-height:1.6;
@@ -37,7 +34,6 @@
     nav{
       position:sticky;
       top:0;
-      z-index:10;
       background:rgba(0,0,0,.9);
       border-bottom:1px solid var(--line);
     }
@@ -47,18 +43,12 @@
       padding:14px 20px;
       display:flex;
       justify-content:space-between;
-      align-items:center;
-    }
-    nav strong{
-      font-size:18px;
-      letter-spacing:.5px;
     }
     nav a{
-      margin-left:20px;
+      margin-left:18px;
       color:var(--muted);
       font-weight:600;
     }
-    nav a:hover{color:var(--fg)}
 
     /* LAYOUT */
     .container{
@@ -68,52 +58,17 @@
     }
     section{margin-bottom:72px}
 
-    /* HERO */
-    .hero h1{
-      font-size:clamp(36px,5vw,54px);
-      margin:0;
-      font-weight:800;
-    }
-    .hero h2{
-      margin:12px 0 18px;
-      font-size:18px;
-      color:var(--brand);
-      font-weight:600;
-    }
-
-    /* TITLES */
-    h3{font-size:26px;margin-bottom:16px}
-    h4{margin-bottom:14px}
+    h1{font-size:48px;margin:0}
+    h2{color:var(--brand)}
+    h3{font-size:26px}
     p{color:var(--muted);max-width:900px}
 
-    /* SEPARATOR */
-    .sep{
-      height:2px;
-      border:0;
-      margin:40px 0 48px;
-      background:linear-gradient(90deg,var(--brand),var(--brand2),var(--brand));
-      border-radius:2px;
-    }
-
-    /* CARDS */
     .card{
       background:var(--card);
       border:1px solid var(--line);
-      border-radius:18px;
-      padding:26px;
-      margin-bottom:26px;
-    }
-
-    /* GRID */
-    .grid{
-      display:grid;
-      gap:22px;
-    }
-    .grid-3{
-      grid-template-columns:repeat(3,1fr);
-    }
-    @media(max-width:900px){
-      .grid-3{grid-template-columns:1fr}
+      border-radius:16px;
+      padding:24px;
+      margin-bottom:24px;
     }
 
     /* SKILLS */
@@ -123,7 +78,6 @@
       justify-content:space-between;
       font-size:14px;
       color:var(--muted);
-      margin-bottom:6px;
     }
     .bar{
       height:10px;
@@ -135,29 +89,15 @@
     .bar span{
       display:block;
       height:100%;
-      width:0;
       border-radius:999px;
       background:linear-gradient(90deg,var(--brand),var(--brand2));
-      transition:width 1.2s ease;
-    }
-
-    /* ANIMATION */
-    .reveal{
-      opacity:0;
-      transform:translateY(30px);
-    }
-    .reveal.visible{
-      opacity:1;
-      transform:none;
-      transition:opacity .8s ease, transform .8s ease;
     }
 
     footer{
       border-top:1px solid var(--line);
-      padding:48px 20px;
+      padding:40px;
       text-align:center;
       color:var(--muted);
-      font-size:14px;
     }
   </style>
 </head>
@@ -178,158 +118,67 @@
 
 <main class="container">
 
-  <!-- HERO -->
-  <section class="hero reveal">
-    <h1>Ingénierie, Données & Systèmes</h1>
-    <h2>Physique · Data · Industrie</h2>
-    <p>
-      Issu d’une licence de Physique à dominante
-      <strong>Mécanique, Signaux et Données</strong>, je m’intéresse aux
-      systèmes complexes et à l’exploitation des données pour générer
-      de la valeur métier et soutenir la prise de décision.
-    </p>
-  </section>
+<section>
+  <h1>Ingénierie, Données & Systèmes</h1>
+  <h2>Physique · Data · Industrie</h2>
+  <p>
+    Ingénieur issu d’une licence de Physique à dominante
+    <strong>Mécanique, Signaux et Données</strong>,
+    orienté vers l’exploitation des données pour créer
+    de la valeur métier et soutenir la prise de décision.
+  </p>
+</section>
 
-  <hr class="sep">
+<section id="about">
+  <h3>À propos</h3>
+  <p>
+    Ma formation m’a permis de comprendre les systèmes complexes
+    et d’évoluer ensuite en bureau d’études et en environnement industriel.
+    Aujourd’hui, je souhaite placer la donnée au cœur des décisions.
+  </p>
+</section>
 
-  <!-- ABOUT -->
-  <section id="about" class="reveal">
-    <h3>À propos</h3>
-    <p>
-      Ma formation en Physique m’a permis de développer une solide compréhension
-      des phénomènes complexes, de leur modélisation et de l’analyse des données associées.
-    </p>
-    <p>
-      Après une expérience en bureau d’études et en environnement industriel
-      (conception, CAO, méthodes), j’ai progressivement orienté mon parcours
-      vers la data afin d’exploiter les données comme levier de performance
-      et de transformation digitale.
-    </p>
-    <p>
-      Aujourd’hui, je souhaite travailler sur des projets mêlant
-      données, systèmes industriels et outils numériques, avec une approche
-      pragmatique et orientée impact.
-    </p>
-  </section>
+<section id="skills">
+  <h3>Compétences</h3>
 
-  <!-- SKILLS -->
-  <section id="skills" class="reveal">
-    <h3>Compétences</h3>
-
-    <div class="card">
-      <h4>📊 Data & IA</h4>
-
-      <div class="skill">
-        <div class="skill-label"><span>Python</span><span>80%</span></div>
-        <div class="bar"><span data-level="80%"></span></div>
-      </div>
-
-      <div class="skill">
-        <div class="skill-label"><span>SQL</span><span>75%</span></div>
-        <div class="bar"><span data-level="75%"></span></div>
-      </div>
-
-      <div class="skill">
-        <div class="skill-label"><span>Machine Learning</span><span>70%</span></div>
-        <div class="bar"><span data-level="70%"></span></div>
-      </div>
-
-      <div class="skill">
-        <div class="skill-label"><span>Power BI / Data Visualisation</span><span>85%</span></div>
-        <div class="bar"><span data-level="85%"></span></div>
-      </div>
+  <div class="card">
+    <h4>📊 Data & IA</h4>
+    <div class="skill">
+      <div class="skill-label"><span>Python</span><span>80%</span></div>
+      <div class="bar"><span style="width:80%"></span></div>
     </div>
-
-    <div class="card">
-      <h4>🏭 Ingénierie & Bureau d’Études</h4>
-
-      <div class="skill">
-        <div class="skill-label"><span>Conception CAO</span><span>80%</span></div>
-        <div class="bar"><span data-level="80%"></span></div>
-      </div>
-
-      <div class="skill">
-        <div class="skill-label"><span>Systèmes complexes</span><span>75%</span></div>
-        <div class="bar"><span data-level="75%"></span></div>
-      </div>
-
-      <div class="skill">
-        <div class="skill-label"><span>Industrie & Méthodes</span><span>70%</span></div>
-        <div class="bar"><span data-level="70%"></span></div>
-      </div>
+    <div class="skill">
+      <div class="skill-label"><span>SQL</span><span>75%</span></div>
+      <div class="bar"><span style="width:75%"></span></div>
     </div>
+  </div>
 
-    <div class="card">
-      <h4>💻 Développement</h4>
-
-      <div class="skill">
-        <div class="skill-label"><span>HTML / CSS</span><span>85%</span></div>
-        <div class="bar"><span data-level="85%"></span></div>
-      </div>
-
-      <div class="skill">
-        <div class="skill-label"><span>JavaScript</span><span>65%</span></div>
-        <div class="bar"><span data-level="65%"></span></div>
-      </div>
-
-      <div class="skill">
-        <div class="skill-label"><span>Node.js</span><span>60%</span></div>
-        <div class="bar"><span data-level="60%"></span></div>
-      </div>
+  <div class="card">
+    <h4>💻 Développement</h4>
+    <div class="skill">
+      <div class="skill-label"><span>HTML / CSS</span><span>85%</span></div>
+      <div class="bar"><span style="width:85%"></span></div>
     </div>
-
-    <div class="card">
-      <h4>🧰 Outils & Environnement</h4>
-
-      <div class="skill">
-        <div class="skill-label"><span>Excel avancé</span><span>90%</span></div>
-        <div class="bar"><span data-level="90%"></span></div>
-      </div>
-
-      <div class="skill">
-        <div class="skill-label"><span>Suite Microsoft</span><span>85%</span></div>
-        <div class="bar"><span data-level="85%"></span></div>
-      </div>
+    <div class="skill">
+      <div class="skill-label"><span>JavaScript</span><span>65%</span></div>
+      <div class="bar"><span style="width:65%"></span></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="reveal">
-    <h3>Projets</h3>
-
-    <div class="grid grid-3">
-      <div class="card">
-        <h4>PariData</h4>
-        <p>Projet Smart City mêlant open data, analyse prédictive et dashboard décisionnel.</p>
-      </div>
-
-      <div class="card">
-        <h4>Authentification comportementale</h4>
-        <p>Projet IoT & IA basé sur l’analyse de signaux et capteurs embarqués.</p>
-      </div>
-    </div>
-  </section>
+<section id="projects">
+  <h3>Projets</h3>
+  <div class="card">
+    <h4>PariData</h4>
+    <p>Projet Smart City mêlant open data, analyse et dashboard.</p>
+  </div>
+</section>
 
 </main>
 
 <footer>
   © 2026 – Portfolio · Yannis Albert
 </footer>
-
-<script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-        entry.target.querySelectorAll('.bar span').forEach(bar => {
-          bar.style.width = bar.dataset.level;
-        });
-      }
-    });
-  }, { threshold: 0.2 });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
 
 </body>
 </html>
