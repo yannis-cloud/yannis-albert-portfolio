@@ -136,3 +136,10 @@ footer a {
   color:var(--brand);
   margin-top:6px;
 }
+
+.card:hover{
+  border-color:var(--brand);
+  transform:translateY(-4px);
+  transition:.2s ease;
+}
+
