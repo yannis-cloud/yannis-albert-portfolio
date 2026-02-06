@@ -1,80 +1,115 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Yannis Albert – Portfolio Data & IA</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio de Yannis Albert – Ingénieur systèmes numériques, projets Data, IA appliquée et transformation digitale." />
+  <meta charset="UTF-8">
+  <title>Yannis Albert – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
 
   <style>
-    :root{
-      --bg:#0a0a0a;
-      --fg:#eaeaea;
-      --muted:#a8b3c2;
-      --brand:#4b8cff;
-      --brand2:#7aa8ff;
-      --card:#111418;
-      --line:#1b2230;
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: #0a0a0a;
+      color: #eaeaea;
     }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      background:radial-gradient(1600px 800px at 50% -10%, #111 0%, #000 60%);
-      color:var(--fg);
-      line-height:1.6;
+    a {
+      color: #4b8cff;
+      text-decoration: none;
     }
 
-    a{color:var(--brand); text-decoration:none}
-    a:hover{text-decoration:underline}
-
-    .container{
-      max-width:1100px;
-      margin:auto;
-      padding:32px 20px 80px;
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 40px;
+      border-bottom: 1px solid #222;
     }
 
-    /* NAV */
-    nav{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:48px;
+    nav a {
+      margin-left: 20px;
+      font-weight: 600;
     }
 
-    nav .logo{
-      font-weight:800;
-      font-size:18px;
-      letter-spacing:-.02em;
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 20px;
     }
 
-    nav ul{
-      list-style:none;
-      display:flex;
-      gap:20px;
-      padding:0;
-      margin:0;
+    h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
     }
 
-    nav li a{
-      color:var(--muted);
-      font-weight:600;
+    p {
+      color: #aaa;
+      font-size: 18px;
+      max-width: 700px;
     }
 
-    nav li a:hover{
-      color:var(--fg);
+    .card {
+      margin-top: 40px;
+      padding: 24px;
+      border: 1px solid #222;
+      border-radius: 14px;
+      background: #111;
     }
 
-    /* HERO */
-    .hero{
-      max-width:820px;
-      margin-bottom:64px;
+    .tags span {
+      display: inline-block;
+      margin-right: 8px;
+      margin-top: 10px;
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 999px;
+      border: 1px solid #333;
+      color: #aaa;
     }
+  </style>
+</head>
 
-    .hero h1{
+<body>
+
+  <nav>
+    <strong>Yannis Albert</strong>
+    <div>
+      <a href="index.html">Accueil</a>
+      <a href="parisdata.html">ParisData</a>
+      <a href="assets/cv-yannis-albert.pdf">CV</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Ingénieur Data & IA appliquées</h1>
+    <p>
+      Ingénieur systèmes numériques spécialisé en data analytics,
+      visualisation décisionnelle et simulation de scénarios
+      pour l’aide à la décision.
+    </p>
+
+    <div class="card">
+      <h2>📊 ParisData – Mobilité & trafic urbain</h2>
+      <p>
+        Dashboard Power BI simulant la fermeture du périphérique parisien :
+        scénarios dynamiques, cartes avant/après, analyse spatiale et
+        composition du trafic.
+      </p>
+
+      <div class="tags">
+        <span>Power BI</span>
+        <span>Data Visualisation</span>
+        <span>Smart City</span>
+        <span>Simulation</span>
+      </div>
+
+      <p style="margin-top:16px;">
+        <a href="parisdata.html">→ Voir le projet ParisData</a>
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
