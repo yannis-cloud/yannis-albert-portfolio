@@ -5,7 +5,7 @@
   <title>Yannis Albert – Ingénieur Data & IA</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ✅ Google Font CORRECT -->
+  <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
 
   <style>
@@ -62,7 +62,7 @@
       margin:auto;
       padding:56px 20px;
     }
-    section{margin-bottom:56px}
+    section{margin-bottom:64px}
 
     /* HERO */
     .hero h1{
@@ -73,22 +73,6 @@
     .hero h2{
       margin:10px 0 16px;
       font-size:18px;
-      color:var(--brand);
-      font-weight:600;
-    }
-    .contacts{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      font-size:14px;
-      color:var(--muted);
-    }
-    .contacts a{color:var(--muted)}
-    .contacts a:hover{color:var(--fg)}
-    .cv-btn{
-      padding:6px 14px;
-      border-radius:999px;
-      border:1px solid var(--brand);
       color:var(--brand);
       font-weight:600;
     }
@@ -118,7 +102,6 @@
       padding:22px;
     }
 
-    /* TAGS */
     .tag{
       display:inline-block;
       font-size:12px;
@@ -130,12 +113,8 @@
       margin-top:8px;
     }
 
-    /* ✅ ANIMATION SAFE */
+    /* ANIMATION */
     .reveal{
-      opacity:1;                 /* visible par défaut */
-      transform:none;
-    }
-    .reveal.animate{
       opacity:0;
       transform:translateY(24px);
     }
@@ -163,3 +142,81 @@
     <div>
       <a href="#about">À propos</a>
       <a href="#skills">Compétences</a>
+      <a href="#projects">Projets</a>
+      <a href="https://github.com/yannis-cloud" target="_blank">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+  <!-- HERO -->
+  <section class="hero reveal visible">
+    <h1>Ingénieur Data & IA</h1>
+    <h2>Projets data-driven · Industrie · IA appliquée</h2>
+    <p>
+      Ingénieur spécialisé en systèmes numériques, data et IA appliquée à l’industrie.
+      Expérience grands groupes & projets concrets orientés décision.
+    </p>
+  </section>
+
+  <hr class="sep">
+
+  <!-- ABOUT -->
+  <section id="about" class="reveal">
+    <h3>À propos</h3>
+    <p>
+      Je travaille à l’interface entre métiers, données et systèmes d’information.
+      Mon objectif : concevoir des solutions data robustes, utiles et industrialisables.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="reveal">
+    <h3>Compétences</h3>
+    <div class="card">
+      <span class="tag">Python</span>
+      <span class="tag">SQL</span>
+      <span class="tag">Power BI</span>
+      <span class="tag">Machine Learning</span>
+      <span class="tag">Data Analytics</span>
+      <span class="tag">IoT</span>
+      <span class="tag">HTML / CSS</span>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="reveal">
+    <h3>Projets</h3>
+    <div class="grid grid-3">
+      <div class="card">
+        <h4>PariData</h4>
+        <p>Projet Smart City & Open Data avec modèle prédictif et dashboard.</p>
+        <span class="tag">Python</span>
+        <span class="tag">ML</span>
+      </div>
+
+      <div class="card">
+        <h4>Authentification comportementale</h4>
+        <p>Projet IoT & IA basé sur capteurs embarqués.</p>
+        <span class="tag">IoT</span>
+        <span class="tag">IA</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 – Yannis Albert
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  reveals.forEach(el => {
+    setTimeout(() => el.classList.add('visible'), 100);
+  });
+</script>
+
+</body>
+</html>
