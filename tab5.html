@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projet – Authentification comportementale (IA & IoT, M5Stack Tab5)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+        content="Étude IA & IoT : authentification comportementale sur M5Stack Tab5. Acquisition de signaux capteurs, pré-traitement, features, modèle et inférence embarquée." />
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" />
+
+  <!-- Styles principaux (réutilise ton thème) -->
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Ajustements légers spécifiques à la page projet */
+    .hero-project h1{
+      font-size:clamp(28px,4.8vw,42px);
+      margin:0 0 8px;
+      font-weight:800;
+      letter-spacing:-.02em;
+    }
+    .hero-project p{
+      margin:0;
+      color:var(--muted);
+      max-width:860px;
+    }
+    .section-title{
+      font-size:26px;
+      margin-bottom:12px;
+    }
+    .kpi{
+      display:grid;
+      gap:14px;
+      grid-template-columns:repeat(3, minmax(160px, 1fr));
+    }
+    .kpi .card{
+      text-align:center;
+      padding:18px;
+    }
+    .badge{
+      display:inline-block;
+      font-size:12px;
+      padding:4px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.12);
+      color:var(--muted);
+      margin-right:8px;
+    }
+    .code-inline{
+      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Courier New", monospace;
+      font-size: .95em;
+      background: rgba(255,255,255,0.04);
+      border:1px solid var(--line);
+      padding:2px 6px;
+      border-radius:6px;
+      color:var(--fg);
+    }
+    /* Image/diagrammes optionnels (si tu ajoutes des visuels) */
+    .illustration{
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:#0b0f15;
+      display:block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="inner">
+      <strong>Yannis Albert</strong>
+      <div>
+        <a href="index.html">Accueil</a>
+        <a href="index.html#projects">Projets</a>
+        <a href="https://github.com/yannis-cloud" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="container hero-project">
+    <h1>Authentification comportementale – IA & IoT (M5Stack Tab5)</h1>
+    <p>
+      Projet de **modélisation comportementale** sur tablette <b>M5Stack Tab5</b> :
+      acquisition de signaux capteurs, pré‑traitement et extraction de caractéristiques
+      pour entraîner un modèle d’authentification basé sur les **patterns d’usage**. 
+      Objectif : **reconnaître l’utilisateur** à partir de sa dynamique d’interaction (Edge AI).
+    </p>
+
+    <div class="tags" style="margin-top:16px">
+      <span class="tag">IoT</span>
+      <span class="tag">IA</span>
+      <span class="tag">Edge AI</span>
+      <span class="tag">Signal Processing</span>
+      <span class="tag">Embedded</span>
+      <span class="tag">M5Stack Tab5</span>
+      <span class="tag">Python</span>
+    </div>
+  </section>
+
+  <!-- CONTEXTE -->
+  <section class="container">
+    <h2 class="section-title">Contexte & objectif</h2>
+    <div class="card glass">
+      <p>
+        L’authentification continue par le comportement permet de renforcer la sécurité
+        **sans friction** pour l’utilisateur. À partir de signaux IoT (accéléromètre, gyroscope,
+        tactile, éventuellement microphone/luminosité selon la plateforme), on cherche à
+        **caractériser une signature d’usage** propre à un individu, puis à **détecter un écart**
+        lorsqu’un autre utilisateur prend l’appareil.
+      </p>
+      <p>
+        Ce projet met l’accent sur la **chaîne de valeur data** : <b>collecte → nettoyage → features → modèle → inférence</b>.
+        Il vise une mise en œuvre **embarquée** (Edge AI) pour des scénarios industriels et
+        applicatifs où la **latence** et la **confidentialité** sont clés.
+      </p>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section class="container">
+    <h2 class="section-title">Architecture technique</h2>
+    <div class="card glass">
+      <ul>
+        <li><b>Matériel :</b> tablette <b>M5Stack Tab5</b> (capteurs IMU, tactile…)</li>
+        <li><b>Acquisition :</b> buffer de fenêtres temporelles (ex. <span class="code-inline">2–5 s</span>)</li>
+        <li><b>Pré‑traitement :</b> filtrage, normalisation, alignement temporel</li>
+        <li><b>Features :</b> statistiques glissantes, énergie fréquentielle, dérivées</li>
+        <li><b>Modèles :</b> baselines classiques (ex. RandomForest/SVM) et variantes légères NN</li>
+        <li><b>Déploiement :</b> inférence locale (Edge), export on‑device ou passerelle</li>
+      </ul>
+      <div class="badges">
+        <span class="badge">Fenêtrage</span>
+        <span class="badge">Dérive capteurs</span>
+        <span class="badge">Validation croisée</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONNÉES & CAPTEURS -->
+  <section class="container">
+    <h2 class="section-title">Données & capteurs</h2>
+    <div class="card glass">
+      <p>
+        Les **séries temporelles** issues des capteurs sont échantillonnées et
+        regroupées en fenêtres. Chaque fenêtre est annotée par l’utilisateur actif.
+        On dérive ensuite des **caractéristiques robustes** : moyennes, variances,
+        kurtosis/skewness, spectre (FFT), énergie par bande, corrélations inter‑axes, etc.
+      </p>
+      <p>
+        Un soin particulier est apporté à la **qualité** : suppression d’artefacts,
+        **synchronisation horloge**, gestion des valeurs manquantes et **normalisation par capteur**.
+      </p>
+    </div>
+  </section>
+
+  <!-- MÉTHODOLOGIE ML -->
+  <section class="container">
+    <h2 class="section-title">Méthodologie IA / ML</h2>
+    <div class="card glass">
+      <ol>
+        <li><b>Split des sessions</b> : train/validation/test par **utilisateurs** (éviter la fuite d’info).</li>
+        <li><b>Baselines</b> : <span class="code-inline">RandomForest</span>, <span class="code-inline">SVM</span>, <span class="code-inline">LogReg</span> sur features tabulaires.</li>
+        <li><b>Modèle compact</b> : petit réseau 1D/GRU pour capturer la **dynamique**.</li>
+        <li><b>Seuil & drift</b> : calibration du seuil de décision + suivi de **dérive**.</li>
+        <li><b>Edge</b> : quantification légère et export du modèle pour inférence locale.</li>
+      </ol>
+      <p style="margin-top:6px">
+        <i>Indicateurs :</i> exactitude globale, AUC, EER (equal error rate), temps d’inférence,
+        empreinte mémoire.
+      </p>
+    </div>
+  </section>
+
+  <!-- RÉSULTATS (placeholder) -->
+  <section class="container">
+    <h2 class="section-title">Résultats (exemple de lecture)</h2>
+    <div class="card glass">
+      <p>
+        La performance dépend de la **qualité des sessions** (variété des gestes/prises en main)
+        et de la **fenêtre d’analyse**. À titre illustratif : de bonnes séparations apparaissent
+        sur des fenêtres de <span class="code-inline">3–4 s</span> avec un jeu de features mixtes
+        (statistiques + fréquentiel). Les erreurs proviennent souvent de périodes statiques
+        (peu d’information) ou d’usages très atypiques.
+      </p>
+    </div>
+  </section>
+
+  <!-- LIMITES -->
+  <section class="container">
+    <h2 class="section-title">Limites & bonnes pratiques</h2>
+    <div class="card glass">
+      <ul>
+        <li><b>Variabilité intra‑utilisateur</b> (postures, vitesse, contexte) à couvrir à l’acquisition.</li>
+        <li><b>Drift capteurs</b> : recalibrer périodiquement/compensations logicielles.</li>
+        <li><b>Éthique & vie privée</b> : stocker localement, pseudonymiser si export.</li>
+        <li><b>Énergie</b> : privilégier des **modèles compacts** et lotir les inférences.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- RESSOURCES -->
+  <section class="container">
+    <h2 class="section-title">Ressources</h2>
+    <div class="card glass">
+      <p>
+        <a href="https://github.com/yannis-cloud/BehavioralAuthentication-on-M5Stack-Tab5" target="_blank" rel="noopener">
+          🔗 Dépôt GitHub : BehavioralAuthentication-on-M5Stack-Tab5
+        </a>
+        <br />
+        <a href="index.html">← Retour au portfolio</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>Yannis Albert</strong> – Ingénieur systèmes numériques – Data & IA appliquées
+  </footer>
+
+</body>
+</html>
