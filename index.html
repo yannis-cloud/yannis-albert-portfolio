@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Yannis Albert – Ingénieur Data & IA</title>
+  <title>Portfolio – Data & Ingénierie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Google Font -->
@@ -27,7 +27,7 @@
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       background:radial-gradient(1400px 700px at 50% -10%, #0b1220 0%, #000 60%);
       color:var(--fg);
-      line-height:1.55;
+      line-height:1.6;
     }
 
     a{color:var(--brand); text-decoration:none}
@@ -49,6 +49,10 @@
       justify-content:space-between;
       align-items:center;
     }
+    nav strong{
+      font-size:18px;
+      letter-spacing:.5px;
+    }
     nav a{
       margin-left:18px;
       color:var(--muted);
@@ -60,63 +64,95 @@
     .container{
       max-width:1100px;
       margin:auto;
-      padding:56px 20px;
+      padding:64px 20px;
     }
-    section{margin-bottom:64px}
+    section{margin-bottom:72px}
 
     /* HERO */
     .hero h1{
-      font-size:clamp(34px,5vw,52px);
+      font-size:clamp(36px,5vw,54px);
       margin:0;
       font-weight:800;
     }
     .hero h2{
-      margin:10px 0 16px;
+      margin:12px 0 18px;
       font-size:18px;
       color:var(--brand);
       font-weight:600;
     }
+    .hero p{
+      max-width:850px;
+      font-size:16px;
+    }
 
     /* TITLES */
-    h3{font-size:24px;margin-bottom:12px}
-    p{color:var(--muted);max-width:900px}
+    h3{font-size:26px;margin-bottom:16px}
+    h4{margin:0 0 12px}
+    p{color:var(--muted)}
 
     /* SEPARATOR */
     .sep{
       height:2px;
       border:0;
-      margin:32px 0 40px;
+      margin:40px 0 48px;
       background:linear-gradient(90deg,var(--brand),var(--brand2),var(--brand));
       border-radius:2px;
     }
 
-    /* GRID / CARDS */
-    .grid{display:grid;gap:20px}
-    .grid-3{grid-template-columns:repeat(3,1fr)}
-    @media(max-width:900px){.grid-3{grid-template-columns:1fr}}
-
+    /* CARDS */
     .card{
       background:var(--card);
       border:1px solid var(--line);
-      border-radius:16px;
-      padding:22px;
+      border-radius:18px;
+      padding:24px;
+      margin-bottom:24px;
     }
 
-    .tag{
-      display:inline-block;
-      font-size:12px;
-      padding:4px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
+    /* GRID */
+    .grid{
+      display:grid;
+      gap:20px;
+    }
+    .grid-3{
+      grid-template-columns:repeat(3,1fr);
+    }
+    @media(max-width:900px){
+      .grid-3{grid-template-columns:1fr}
+    }
+
+    /* SKILLS */
+    .skill-group{margin-bottom:8px}
+
+    .skill{
+      margin:12px 0;
+    }
+    .skill-label{
+      display:flex;
+      justify-content:space-between;
+      font-size:14px;
       color:var(--muted);
-      margin-right:6px;
-      margin-top:8px;
+      margin-bottom:6px;
+    }
+    .bar{
+      height:10px;
+      background:#0f172a;
+      border-radius:999px;
+      overflow:hidden;
+      border:1px solid var(--line);
+    }
+    .bar span{
+      display:block;
+      height:100%;
+      width:0;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--brand),var(--brand2));
+      transition:width 1.2s ease;
     }
 
     /* ANIMATION */
     .reveal{
       opacity:0;
-      transform:translateY(24px);
+      transform:translateY(28px);
     }
     .reveal.visible{
       opacity:1;
@@ -126,7 +162,7 @@
 
     footer{
       border-top:1px solid var(--line);
-      padding:40px 20px;
+      padding:48px 20px;
       text-align:center;
       color:var(--muted);
       font-size:14px;
@@ -138,7 +174,7 @@
 
 <nav>
   <div class="inner">
-    <strong>Yannis Albert</strong>
+    <strong>Portfolio</strong>
     <div>
       <a href="#about">À propos</a>
       <a href="#skills">Compétences</a>
@@ -151,72 +187,9 @@
 <main class="container">
 
   <!-- HERO -->
-  <section class="hero reveal visible">
-    <h1>Ingénieur Data & IA</h1>
-    <h2>Projets data-driven · Industrie · IA appliquée</h2>
+  <section class="hero reveal">
+    <h1>Ingénierie, Données & Systèmes</h1>
+    <h2>Data · Industrie · IA appliquée</h2>
     <p>
-      Ingénieur spécialisé en systèmes numériques, data et IA appliquée à l’industrie.
-      Expérience grands groupes & projets concrets orientés décision.
-    </p>
-  </section>
-
-  <hr class="sep">
-
-  <!-- ABOUT -->
-  <section id="about" class="reveal">
-    <h3>À propos</h3>
-    <p>
-      Je travaille à l’interface entre métiers, données et systèmes d’information.
-      Mon objectif : concevoir des solutions data robustes, utiles et industrialisables.
-    </p>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" class="reveal">
-    <h3>Compétences</h3>
-    <div class="card">
-      <span class="tag">Python</span>
-      <span class="tag">SQL</span>
-      <span class="tag">Power BI</span>
-      <span class="tag">Machine Learning</span>
-      <span class="tag">Data Analytics</span>
-      <span class="tag">IoT</span>
-      <span class="tag">HTML / CSS</span>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="reveal">
-    <h3>Projets</h3>
-    <div class="grid grid-3">
-      <div class="card">
-        <h4>PariData</h4>
-        <p>Projet Smart City & Open Data avec modèle prédictif et dashboard.</p>
-        <span class="tag">Python</span>
-        <span class="tag">ML</span>
-      </div>
-
-      <div class="card">
-        <h4>Authentification comportementale</h4>
-        <p>Projet IoT & IA basé sur capteurs embarqués.</p>
-        <span class="tag">IoT</span>
-        <span class="tag">IA</span>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  © 2026 – Yannis Albert
-</footer>
-
-<script>
-  const reveals = document.querySelectorAll('.reveal');
-  reveals.forEach(el => {
-    setTimeout(() => el.classList.add('visible'), 100);
-  });
-</script>
-
-</body>
-</html>
+      Ingénieur issu d’une licence de Physique à dominante
+      <strong>Mécanique, Signaux et Données</strong>, avec une compréhension
