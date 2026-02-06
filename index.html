@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Yannis Albert – Ingénieur Data & IA</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio de Yannis Albert – Ingénieur systèmes numériques, pilotage de projets Data & IA, Product Owner Data." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font -->
+  <!-- ✅ Google Font CORRECT -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
 
   <style>
@@ -39,8 +38,7 @@
       position:sticky;
       top:0;
       z-index:10;
-      background:rgba(0,0,0,.85);
-      backdrop-filter: blur(6px);
+      background:rgba(0,0,0,.9);
       border-bottom:1px solid var(--line);
     }
     nav .inner{
@@ -51,7 +49,6 @@
       justify-content:space-between;
       align-items:center;
     }
-    nav strong{font-weight:800}
     nav a{
       margin-left:18px;
       color:var(--muted);
@@ -65,7 +62,6 @@
       margin:auto;
       padding:56px 20px;
     }
-
     section{margin-bottom:56px}
 
     /* HERO */
@@ -73,7 +69,6 @@
       font-size:clamp(34px,5vw,52px);
       margin:0;
       font-weight:800;
-      letter-spacing:-.02em;
     }
     .hero h2{
       margin:10px 0 16px;
@@ -99,23 +94,20 @@
     }
 
     /* TITLES */
-    h3{
-      font-size:24px;
-      margin-bottom:12px;
-    }
-    p{color:var(--muted); max-width:900px}
+    h3{font-size:24px;margin-bottom:12px}
+    p{color:var(--muted);max-width:900px}
 
     /* SEPARATOR */
     .sep{
       height:2px;
       border:0;
       margin:32px 0 40px;
-      background:linear-gradient(90deg, var(--brand), var(--brand2), var(--brand));
+      background:linear-gradient(90deg,var(--brand),var(--brand2),var(--brand));
       border-radius:2px;
     }
 
-    /* CARDS & GRID */
-    .grid{display:grid; gap:20px}
+    /* GRID / CARDS */
+    .grid{display:grid;gap:20px}
     .grid-3{grid-template-columns:repeat(3,1fr)}
     @media(max-width:900px){.grid-3{grid-template-columns:1fr}}
 
@@ -124,44 +116,6 @@
       border:1px solid var(--line);
       border-radius:16px;
       padding:22px;
-    }
-
-    /* SKILLS */
-    .skills-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
-    }
-    @media(max-width:900px){.skills-grid{grid-template-columns:1fr}}
-
-    .skill{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin:10px 0;
-      font-size:14px;
-    }
-    .skill span{min-width:210px}
-
-    .bar{
-      --val:75%;
-      position:relative;
-      flex:1;
-      height:10px;
-      background:#0d1320;
-      border:1px solid var(--line);
-      border-radius:999px;
-      overflow:hidden;
-    }
-    .bar::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      width:var(--val);
-      background:linear-gradient(90deg,var(--brand),var(--brand2));
-      box-shadow:0 0 12px rgba(59,130,246,.35) inset;
-      border-radius:999px;
-      transition:width .9s ease;
     }
 
     /* TAGS */
@@ -176,24 +130,27 @@
       margin-top:8px;
     }
 
-    /* FOOTER */
+    /* ✅ ANIMATION SAFE */
+    .reveal{
+      opacity:1;                 /* visible par défaut */
+      transform:none;
+    }
+    .reveal.animate{
+      opacity:0;
+      transform:translateY(24px);
+    }
+    .reveal.visible{
+      opacity:1;
+      transform:none;
+      transition:opacity .8s ease, transform .8s ease;
+    }
+
     footer{
       border-top:1px solid var(--line);
       padding:40px 20px;
       text-align:center;
       color:var(--muted);
       font-size:14px;
-    }
-
-    /* ANIMATIONS */
-    .reveal{
-      opacity:0;
-      transform:translateY(30px);
-      transition:opacity .8s ease, transform .8s ease;
-    }
-    .reveal.visible{
-      opacity:1;
-      transform:none;
     }
   </style>
 </head>
@@ -206,96 +163,3 @@
     <div>
       <a href="#about">À propos</a>
       <a href="#skills">Compétences</a>
-      <a href="#projects">Projets</a>
-      <a href="parisdata.html">ParisData</a>
-      <a href="assets/cv-yannis-albert.pdf">CV</a>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="container hero reveal">
-  <h1>Yannis Albert</h1>
-  <h2>Ingénieur systèmes numériques – Product Owner Data & IA appliquées</h2>
-  <div class="contacts">
-    <span>📞 06 67 10 71 17</span>
-    <span>✉️ <a href="mailto:yannis.albert78@gmail.com">yannis.albert78@gmail.com</a></span>
-    <span>🔗 <a href="https://www.linkedin.com" target="_blank">LinkedIn</a></span>
-    <a class="cv-btn" href="assets/cv-yannis-albert.pdf">Télécharger le CV</a>
-  </div>
-</section>
-
-<hr class="sep">
-
-<!-- ABOUT -->
-<section id="about" class="container reveal">
-  <h3>À propos de moi</h3>
-  <p>
-    Ingénieur spécialisé en systèmes numériques, j’interviens chez <b>Renault Group</b>
-    en tant que <b>pilote de projets data avec un rôle de Product Owner</b>.
-    Je conduis des projets à <b>forte valeur ajoutée métier</b>, de la définition
-    des besoins utilisateurs à la mise en production de solutions décisionnelles.
-  </p>
-  <p>
-    Mon rôle couvre la <b>priorisation du backlog</b>, la coordination des équipes
-    <b>métiers / IT / data</b>, la <b>conception d’interfaces UX/UI</b> orientées adoption,
-    ainsi que la mise en place de <b>standards data et KPIs</b>.
-    L’objectif : produire des outils réellement utilisés pour le pilotage opérationnel.
-  </p>
-</section>
-
-<hr class="sep">
-
-<!-- SKILLS -->
-<section id="skills" class="container reveal">
-  <h3>Compétences</h3>
-
-  <div class="skills-grid">
-    <div class="card">
-      <h4>Transversales</h4>
-      <div class="skill"><span>Pilotage de projet / PO Data</span><div class="bar" style="--val:90%"></div></div>
-      <div class="skill"><span>Gouvernance des données</span><div class="bar" style="--val:85%"></div></div>
-      <div class="skill"><span>Interface métiers / IT</span><div class="bar" style="--val:85%"></div></div>
-      <div class="skill"><span>Amélioration continue (ISO 9001)</span><div class="bar" style="--val:75%"></div></div>
-    </div>
-
-    <div class="card">
-      <h4>Développement & Data</h4>
-      <div class="skill"><span>Power BI / Data viz</span><div class="bar" style="--val:90%"></div></div>
-      <div class="skill"><span>DAX</span><div class="bar" style="--val:85%"></div></div>
-      <div class="skill"><span>SQL</span><div class="bar" style="--val:75%"></div></div>
-      <div class="skill"><span>Python (Pandas / ML)</span><div class="bar" style="--val:70%"></div></div>
-    </div>
-
-    <div class="card">
-      <h4>Outils & SI</h4>
-      <div class="skill"><span>MS Project</span><div class="bar" style="--val:75%"></div></div>
-      <div class="skill"><span>Git</span><div class="bar" style="--val:70%"></div></div>
-      <div class="skill"><span>IoT / Systèmes embarqués</span><div class="bar" style="--val:65%"></div></div>
-      <div class="skill"><span>Open Data & SI industriels</span><div class="bar" style="--val:75%"></div></div>
-    </div>
-  </div>
-</section>
-
-<hr class="sep">
-
-<!-- PROJECTS -->
-<section id="projects" class="container reveal">
-  <h3>Projets</h3>
-
-  <div class="grid grid-3">
-    <div class="card">
-      <h4>ParisData – Mobilité & trafic urbain</h4>
-      <p>
-        Dashboard Power BI simulant la fermeture du périphérique parisien,
-        avec scénarios paramétrables et analyse décisionnelle Smart City.
-      </p>
-      <span class="tag">Power BI</span>
-      <span class="tag">Product Owner Data</span>
-      <span class="tag">Simulation</span>
-      <p style="margin-top:10px;">
-        <a href="parisdata.html">→ Voir le projet</a>
-      </p>
-    </div>
-
-    <div class="card">
