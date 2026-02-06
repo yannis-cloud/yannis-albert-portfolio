@@ -96,3 +96,157 @@
     /* SECTIONS */
     h3{
       font-size:28px;
+      margin-bottom:16px;
+    }
+
+    p{color:var(--muted)}
+
+    .grid{
+      display:grid;
+      gap:20px;
+    }
+
+    .grid-3{
+      grid-template-columns:repeat(3,1fr);
+    }
+
+    @media (max-width:900px){
+      .grid-3{grid-template-columns:1fr}
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:22px;
+      transition:transform .2s ease, border .2s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+      border-color:var(--brand);
+    }
+
+    .card h4{margin-top:0}
+    .card p{font-size:14px}
+
+    .tag{
+      display:inline-block;
+      font-size:12px;
+      padding:4px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      color:var(--muted);
+      margin-right:6px;
+      margin-top:8px;
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:40px 20px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="inner">
+      <strong>Yannis Albert</strong>
+      <div>
+        #aboutÀ propos</a>
+        #projectsProjets</a>
+        parisdata.htmlParisData</a>
+        assets/cv-yannis-albert.pdfCV</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="container hero">
+    <h1>Yannis Albert</h1>
+    <h2>Ingénieur systèmes numériques – Data & IA appliquées</h2>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" class="container">
+    <h3>À propos de moi</h3>
+    <p>
+      Ingénieur spécialisé en systèmes numériques, avec une expérience en pilotage
+      de projets data‑driven et de transformation digitale en environnement industriel.
+      J’évolue à l’interface entre métiers, systèmes d’information et outils data,
+      avec une approche orientée <b>aide à la décision</b> et impact opérationnel.
+    </p>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="container">
+    <h3>Projets</h3>
+
+    <div class="grid grid-3">
+
+      <!-- PARISDATA -->
+      <div class="card">
+        <h4>ParisData – Mobilité & trafic urbain</h4>
+        <p>
+          Dashboard Power BI simulant la fermeture du périphérique parisien.
+          Scénarios paramétrables, cartes avant/après et analyse décisionnelle
+          en contexte Smart City.
+        </p>
+        <div>
+          <span class="tag">Power BI</span>
+          <span class="tag">Data Visualisation</span>
+          <span class="tag">Smart City</span>
+          <span class="tag">Simulation</span>
+        </div>
+        <p style="margin-top:14px;">
+          parisdata.html→ Voir le projet</a>
+        </p>
+      </div>
+
+      <!-- AUTH -->
+      <div class="card">
+        <h4>Authentification comportementale (IoT & IA)</h4>
+        <p>
+          Projet de recherche appliquée combinant capteurs IoT, données comportementales
+          et intelligence artificielle pour des cas d’usage sécurité.
+        </p>
+        <div>
+          <span class="tag">IoT</span>
+          <span class="tag">IA</span>
+          <span class="tag">Sécurité</span>
+        </div>
+      </div>
+
+      <!-- INDUSTRY -->
+      <div class="card">
+        <h4>Projets Data industriels</h4>
+        <p>
+          Pilotage de projets data‑driven : gouvernance des données,
+          KPIs, dashboards décisionnels et transformation digitale
+          en milieu industriel.
+        </p>
+        <div>
+          <span class="tag">Data</span>
+          <span class="tag">Industrie</span>
+          <span class="tag">Transformation</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 – Yannis Albert ·
+    mailto:yannis.albert78@gmail.comyannis.albert78@gmail.com</a> ·
+    https://github.com/yannis-cloudGitHub</a> ·
+    https://www.linkedin.comLinkedIn</a>
+  </footer>
+
+</body>
+</html>
