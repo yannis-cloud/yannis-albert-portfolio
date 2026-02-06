@@ -2,96 +2,79 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>Yannis Albert – Data & IA</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <title>Yannis Albert – Portfolio Data & IA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio de Yannis Albert – Ingénieur systèmes numériques, projets Data, IA appliquée et transformation digitale." />
+
+  <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-</head>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-<body>
+  <style>
+    :root{
+      --bg:#0a0a0a;
+      --fg:#eaeaea;
+      --muted:#a8b3c2;
+      --brand:#4b8cff;
+      --brand2:#7aa8ff;
+      --card:#111418;
+      --line:#1b2230;
+    }
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Yannis Albert</h1>
-    <h2>Ingénieur systèmes numériques<br>Data & IA appliqués</h2>
-    <p>
-      Je conçois et pilote des projets data‑driven et d’intelligence artificielle
-      à l’interface entre métiers, systèmes d’information et technologies numériques.
-    </p>
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:radial-gradient(1600px 800px at 50% -10%, #111 0%, #000 60%);
+      color:var(--fg);
+      line-height:1.6;
+    }
 
-    <div class="buttons">
-      <a href="https://github.com/yannis-cloud" target="_blank">GitHub</a>
-      <a href="CV_Yannis_Albert.pdf" target="_blank" class="outline">CV</a>
-    </div>
-  </section>
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
 
-  <!-- À PROPOS -->
-  <section>
-    <h3>À propos</h3>
-    <p>
-      Ingénieur spécialisé en systèmes numériques, j’ai acquis une expérience en pilotage
-      de projets data‑driven et de transformation digitale au sein de grands groupes industriels.
-      Je m’intéresse particulièrement à la gouvernance des données, l’architecture SI
-      et l’IA appliquée à la prise de décision.
-    </p>
-  </section>
+    .container{
+      max-width:1100px;
+      margin:auto;
+      padding:32px 20px 80px;
+    }
 
-  <!-- PROJETS -->
-  <section>
-    <h3>Projets clés</h3>
+    /* NAV */
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:48px;
+    }
 
-    <div class="card">
-      <h4>🔐 Authentification comportementale (IoT & IA)</h4>
-      <p>
-        Système d’authentification basé sur l’analyse de données comportementales
-        issues de capteurs embarqués (M5Stack).
-      </p>
-      <a href="https://github.com/yannis-cloud/Behavioral-Authentication-on-M5Stack-Tab5" target="_blank">
-        Voir le projet →
-      </a>
-    </div>
+    nav .logo{
+      font-weight:800;
+      font-size:18px;
+      letter-spacing:-.02em;
+    }
 
-    <div class="card">
-      <h4>🏙️ PariData – Smart City & Open Data</h4>
-      <p>
-        Exploitation de données open source pour la prise de décision
-        en contexte Smart City / Industrie 4.0.
-      </p>
-    </div>
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:20px;
+      padding:0;
+      margin:0;
+    }
 
-    <div class="card">
-      <h4>🏭 Projets Data – Renault Group</h4>
-      <p>
-        Dashboards décisionnels, gouvernance des données,
-        standards KPIs et identification de cas d’usage IA.
-      </p>
-    </div>
-  </section>
+    nav li a{
+      color:var(--muted);
+      font-weight:600;
+    }
 
-  <!-- COMPÉTENCES -->
-  <section>
-    <h3>Compétences</h3>
+    nav li a:hover{
+      color:var(--fg);
+    }
 
-    <ul class="skills">
-      <li>Python · SQL · Pandas · Scikit‑Learn</li>
-      <li>Power BI · Data Visualisation</li>
-      <li>IoT · Systèmes embarqués</li>
-      <li>Gouvernance des données · Architecture SI</li>
-      <li>Pilotage de projets data</li>
-    </ul>
-  </section>
+    /* HERO */
+    .hero{
+      max-width:820px;
+      margin-bottom:64px;
+    }
 
-  <!-- FOOTER -->
-  <footer>
-    <p>
-      Contact :
-      <a href="mailto:yannis.albert78@gmail.com">yannis.albert78@gmail.com</a>
-      ·
-      <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-    </p>
-  </footer>
-
-</body>
-</html>
+    .hero h1{
