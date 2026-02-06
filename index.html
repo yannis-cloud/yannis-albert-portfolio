@@ -1,283 +1,158 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Portfolio – Yannis Albert</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" />
 
-  <style>
-    :root{
-      --fg:#eaeaea;
-      --muted:#a8b3c2;
-      --brand:#3b82f6;
-      --brand2:#60a5fa;
-      --card:#111418;
-      --line:#1b2230;
-    }
-
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,Arial,sans-serif;
-      background:radial-gradient(1400px 700px at 50% -10%, #0b1220 0%, #000 60%);
-      color:var(--fg);
-      line-height:1.6;
-    }
-
-    a{color:var(--brand);text-decoration:none}
-    a:hover{text-decoration:underline}
-
-    /* NAV */
-    nav{
-      position:sticky;
-      top:0;
-      background:rgba(0,0,0,.9);
-      border-bottom:1px solid var(--line);
-      z-index:10;
-    }
-    nav .inner{
-      max-width:1100px;
-      margin:auto;
-      padding:14px 20px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-    nav a{
-      margin-left:18px;
-      color:var(--muted);
-      font-weight:600;
-    }
-    nav a:hover{color:var(--fg)}
-
-    /* LAYOUT */
-    .container{
-      max-width:1100px;
-      margin:auto;
-      padding:64px 20px;
-    }
-    section{margin-bottom:72px}
-
-    h1,h2,h3,h4{margin-top:0}
-    h3{font-size:26px}
-    p{color:var(--muted);max-width:900px}
-
-    /* HERO PROFILE */
-    .profile{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      text-align:center;
-      margin-bottom:28px;
-    }
-    .profile img{
-      width:150px;
-      height:150px;
-      object-fit:cover;
-      border-radius:50%;
-      border:3px solid var(--brand);
-      margin-bottom:16px;
-    }
-    .profile .name{
-      font-size:30px;
-      font-weight:800;
-      margin:0;
-    }
-    .profile .title{
-      font-size:16px;
-      font-weight:600;
-      color:var(--brand);
-      margin-top:6px;
-    }
-
-    /* CARDS */
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:24px;
-      margin-bottom:24px;
-    }
-
-    /* SKILLS */
-    .skill{margin-bottom:14px}
-    .skill-label{
-      display:flex;
-      justify-content:space-between;
-      font-size:14px;
-      color:var(--muted);
-      margin-bottom:6px;
-    }
-    .bar{
-      height:10px;
-      background:#0f172a;
-      border-radius:999px;
-      overflow:hidden;
-      border:1px solid var(--line);
-    }
-    .bar span{
-      display:block;
-      height:100%;
-      border-radius:999px;
-      background:linear-gradient(90deg,var(--brand),var(--brand2));
-    }
-
-    footer{
-      border-top:1px solid var(--line);
-      padding:40px;
-      text-align:center;
-      color:var(--muted);
-      font-size:14px;
-    }
-  </style>
+  <!-- Feuille de style principale -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-<nav>
-  <div class="inner">
-    <strong>Portfolio</strong>
-    <div>
-      <a href="#about">À propos</a>
-      <a href="#skills">Compétences</a>
-      <a href="#projects">Projets</a>
-      <a href="https://github.com/yannis-cloud" target="_blank">GitHub</a>
-    </div>
-  </div>
-</nav>
-
-<main class="container">
-
-  <!-- HERO -->
-  <section>
-   <div class="profile">
-  <img src="assets/photo.jpg" alt="Photo de Yannis Albert">
-  <h1 class="name">Yannis Albert</h1>
-  <div class="title">Ingénieur Systèmes Numériques pour l’Industrie</div>
-</div>
-
-    <h2 style="text-align:center;color:var(--brand)">
-      Pilotage · Data · IA · Industrie
-    </h2>
-
-    <p style="margin:auto;text-align:center">
-      Ingénieur issu d’une licence de Physique à dominante
-      <strong>Mécanique, Signaux et Données</strong>, orienté vers
-      l’exploitation des données pour créer de la valeur métier
-      et soutenir la prise de décision.
-    </p>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <h3>À propos de moi</h3>
-    <p>
-      Actuellement en dernière année d’école d’ingénieur en Systèmes Numériques
-      pour l’Industrie, je réalise mon parcours en alternance dans l’industrie
-      automobile, au sein de projets à forts enjeux industriels et digitaux.
-    </p>
-    <p>
-      J’interviens comme pilote de projet sur une initiative de transformation
-      numérique, dont la première phase a consisté à concevoir et déployer une
-      application Power Apps dédiée à la collecte de données, ainsi qu’à accompagner
-      et former les utilisateurs.
-    </p>
-    <p>
-      Le projet a ensuite évolué vers une approche data‑driven, dans laquelle je suis
-      aujourd’hui pleinement impliqué : nettoyage, structuration, analyse et
-      visualisation des données afin de produire des indicateurs clairs,
-      pertinents et exploitables.
-    </p>
-    <p>
-      Issu d’une formation en Physique (Mécanique, Signaux et Données), mon objectif
-      est d’agir comme un facilitateur dans la création de valeur à partir des données,
-      en faisant le lien entre données brutes, compréhension métier et outils numériques.
-    </p>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <h3>Compétences</h3>
-
-    <div class="card">
-      <h4>📊 Data & IA</h4>
-      <div class="skill">
-        <div class="skill-label"><span>Python</span><span>80%</span></div>
-        <div class="bar"><span style="width:80%"></span></div>
-      </div>
-      <div class="skill">
-        <div class="skill-label"><span>SQL</span><span>75%</span></div>
-        <div class="bar"><span style="width:75%"></span></div>
-      </div>
-      <div class="skill">
-        <div class="skill-label"><span>Power BI / Data Viz</span><span>85%</span></div>
-        <div class="bar"><span style="width:85%"></span></div>
+  <!-- NAV -->
+  <nav>
+    <div class="inner">
+      <strong>Portfolio</strong>
+      <div>
+        <a href="#about">À propos</a>
+        <a href="#skills">Compétences</a>
+        <a href="#projects">Projets</a>
+        <a href="https://github.com/yannis-cloud" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
+  </nav>
 
-    <div class="card">
-      <h4>💻 Développement</h4>
-      <div class="skill">
-        <div class="skill-label"><span>HTML / CSS</span><span>85%</span></div>
-        <div class="bar"><span style="width:85%"></span></div>
+  <main class="container">
+
+    <!-- HERO -->
+    <section>
+      <div class="profile">
+        <img src="assets/photo.jpg" alt="Photo de Yannis Albert" />
+        <h1 class="name">Yannis Albert</h1>
+        <div class="title">Ingénieur Systèmes Numériques pour l’Industrie</div>
       </div>
-      <div class="skill">
-        <div class="skill-label"><span>JavaScript</span><span>65%</span></div>
-        <div class="bar"><span style="width:65%"></span></div>
+
+      <h2 class="subtitle">Pilotage · Data · IA · Industrie</h2>
+
+      <p class="intro">
+        Ingénieur issu d’une licence de Physique à dominante
+        <strong>Mécanique, Signaux et Données</strong>, orienté vers
+        l’exploitation des données pour créer de la valeur métier
+        et soutenir la prise de décision.
+      </p>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h3>À propos de moi</h3>
+      <p>
+        Actuellement en dernière année d’école d’ingénieur en Systèmes Numériques
+        pour l’Industrie, je réalise mon parcours en alternance dans l’industrie
+        automobile, au sein de projets à forts enjeux industriels et digitaux.
+      </p>
+      <p>
+        J’interviens comme pilote de projet sur une initiative de transformation
+        numérique, dont la première phase a consisté à concevoir et déployer une
+        application Power Apps dédiée à la collecte de données, ainsi qu’à accompagner
+        et former les utilisateurs.
+      </p>
+      <p>
+        Le projet a ensuite évolué vers une approche data‑driven, dans laquelle je suis
+        aujourd’hui pleinement impliqué : nettoyage, structuration, analyse et
+        visualisation des données afin de produire des indicateurs clairs,
+        pertinents et exploitables.
+      </p>
+      <p>
+        Issu d’une formation en Physique (Mécanique, Signaux et Données), mon objectif
+        est d’agir comme un facilitateur dans la création de valeur à partir des données,
+        en faisant le lien entre données brutes, compréhension métier et outils numériques.
+      </p>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h3>Compétences</h3>
+
+      <div class="card">
+        <h4>📊 Data & IA</h4>
+
+        <div class="skill">
+          <div class="skill-label"><span>Python</span><span>80%</span></div>
+          <div class="bar"><span style="width:80%"></span></div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-label"><span>SQL</span><span>75%</span></div>
+          <div class="bar"><span style="width:75%"></span></div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-label"><span>Power BI / Data Viz</span><span>85%</span></div>
+          <div class="bar"><span style="width:85%"></span></div>
+        </div>
       </div>
-      <div class="skill">
-        <div class="skill-label"><span>Node.js</span><span>60%</span></div>
-        <div class="bar"><span style="width:60%"></span></div>
+
+      <div class="card">
+        <h4>💻 Développement</h4>
+
+        <div class="skill">
+          <div class="skill-label"><span>HTML / CSS</span><span>85%</span></div>
+          <div class="bar"><span style="width:85%"></span></div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-label"><span>JavaScript</span><span>65%</span></div>
+          <div class="bar"><span style="width:65%"></span></div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-label"><span>Node.js</span><span>60%</span></div>
+          <div class="bar"><span style="width:60%"></span></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PROJECTS -->
-<section id="projects">
-  <h3>Projets</h3>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h3>Projets</h3>
 
-  <div class="card">
-    <h4>ParisData</h4>
-    <p>
-      Projet Smart City mêlant open data, analyse et visualisation décisionnelle via dashboard Power BI.
-    </p>
+      <!-- Carte projet : ParisData -->
+      <a class="card-link" href="parisdata.html">
+        <div class="card">
+          <!-- (Optionnel) Miniature projet
+          <img class="thumb" src="assets/parisdata-dashboard.png" alt="Aperçu du dashboard Power BI ParisData">
+          -->
+          <h4>ParisData</h4>
+          <p>
+            Projet de data visualisation décisionnelle simulant l’impact
+            de scénarios de mobilité urbaine à l’aide d’un dashboard Power BI.
+          </p>
 
-    <!-- Tags -->
-    <div class="tags">
-      <span class="tag">Power BI</span>
-      <span class="tag">Data Visualisation</span>
-      <span class="tag">Smart City</span>
-      <span class="tag">Simulation</span>
-    </div>
+          <!-- Tags / chips -->
+          <div class="tags">
+            <span class="tag">Power BI</span>
+            <span class="tag">Data Visualisation</span>
+            <span class="tag">Smart City</span>
+            <span class="tag">Simulation</span>
+          </div>
 
-    <!-- Lien vers la page projet -->
-    <p style="margin-top:14px">
-      <a href="parisdata.html">→ Voir le projet</a>
-    </p>
-  </div>
-</section>
-``
+          <!-- CTA -->
+          <div class="card-cta">→ Voir le projet</div>
+        </div>
+      </a>
 
-    <!-- (optionnel) lien vers la page projet -->
-    <p style="margin-top:14px">
-      parisdata.html→ Voir le projet</a>
-    </p>
-  </div>
-</section>
+    </section>
 
-</main>
+  </main>
 
-<footer>
-  © 2026 – Portfolio · Yannis Albert
-</footer>
+  <footer>
+    © 2026 – Portfolio · Yannis Albert
+  </footer>
 
 </body>
 </html>
-
-
-
-
-
