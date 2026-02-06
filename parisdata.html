@@ -1,122 +1,252 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8">
   <title>ParisData – Simulation de la fermeture du périphérique</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Dashboard Power BI : simulation de la fermeture du périphérique parisien, exploration des impacts sur les flux de mobilité (Smart City, data visualization, prise de décision)." />
-  <meta property="og:title" content="ParisData – Simulation de la fermeture du périphérique" />
-  <meta property="og:description" content="Dashboard Power BI interactif (observé/simulé), scénarios, coefficients What‑if et cartes avant/après." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/parisdata-cover.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ParisData – Dashboard Power BI simulant la fermeture du périphérique parisien et l’impact sur les flux de mobilité." />
+
+  <!-- Google Font (correct) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
+
   <style>
     :root{
-      --bg:#0a0a0a; --fg:#eaeaea; --muted:#a8b3c2; --brand:#4b8cff; --brand2:#7aa8ff;
-      --card:#111418; --line:#1b2230; --ok:#23c55e; --ko:#ef4444;
+      --bg:#000;
+      --fg:#eaeaea;
+      --muted:#a8b3c2;
+      --brand:#4b8cff;
+      --card:#111418;
+      --line:#1b2230;
     }
-    /* page shell */
-    html,body{margin:0; padding:0; background:radial-gradient(1600px 800px at 50% -10%, #111 0%, #000 60%); color:var(--fg); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; line-height:1.5}
-    .wrap{max-width:1100px; margin:auto; padding:32px 20px 80px}
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--fg);
+      line-height:1.6;
+    }
+
     a{color:var(--brand); text-decoration:none}
     a:hover{text-decoration:underline}
-    /* hero */
-    .hero{padding:24px 0 8px}
-    .hero h1{margin:0 0 6px; font-size:clamp(28px,4vw,46px); font-weight:800; letter-spacing:-.02em}
-    .hero p{margin:6px 0 16px; color:var(--muted); max-width:820px}
-    .btns{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
-    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; background:linear-gradient(135deg,var(--brand),var(--brand2)); color:#000; font-weight:700}
-    .btn.ghost{background:transparent; color:var(--brand); border:1px solid var(--brand); font-weight:600}
-    /* sections */
-    h2{margin:28px 0 10px; font-size:clamp(22px,2.8vw,28px)}
-    .grid{display:grid; gap:16px}
-    .g-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .g-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    @media (max-width:900px){.g-2,.g-3{grid-template-columns:1fr}}
-    .card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px}
-    .muted{color:var(--muted)}
-    .kpis{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px}
-    @media (max-width:780px){.kpis{grid-template-columns:1fr}}
-    .kpi{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px 16px}
-    .kpi b{display:block; font-size:14px; color:var(--muted); margin-bottom:6px}
-    .kpi .v{font-size:28px; font-weight:800}
-    .kpi .v.ok{color:var(--ok)} .kpi .v.ko{color:var(--ko)}
-    .pill{display:inline-block; padding:2px 8px; border:1px solid var(--line); border-radius:999px; font-size:12px; color:var(--muted)}
-    .gallery{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px}
-    @media (max-width:900px){.gallery{grid-template-columns:1fr}}
-    .gallery img{width:100%; border-radius:12px; border:1px solid var(--line)}
-    .small{font-size:13px}
-    .foot{margin-top:28px; display:flex; gap:10px; flex-wrap:wrap}
-    .alert{background:rgba(255,255,255,.04); border:1px dashed var(--line); padding:12px 14px; border-radius:12px}
-    .tag{display:inline-block; background:#162132; color:#9bb7ff; padding:4px 10px; border-radius:10px; font-size:12px; border:1px solid #1f2a40}
-    .stack{display:flex; gap:8px; flex-wrap:wrap}
-    /* code block small */
-    pre{background:#0e1218; border:1px solid var(--line); padding:12px; border-radius:10px; overflow:auto}
-    code{font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; font-size:12px}
+
+    /* NAV */
+    nav{
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:rgba(0,0,0,.9);
+      border-bottom:1px solid var(--line);
+    }
+    nav .inner{
+      max-width:1100px;
+      margin:auto;
+      padding:12px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    nav strong{font-weight:800}
+    nav a{
+      margin-left:18px;
+      color:var(--muted);
+      font-weight:600;
+    }
+    nav a:hover{color:var(--fg)}
+
+    /* LAYOUT */
+    .container{
+      max-width:1100px;
+      margin:auto;
+      padding:48px 20px;
+    }
+    section{margin-bottom:56px}
+
+    /* HERO */
+    .hero h1{
+      font-size:clamp(32px,5vw,46px);
+      margin:0 0 8px;
+      font-weight:800;
+      letter-spacing:-.02em;
+    }
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      max-width:820px;
+    }
+
+    /* CONTENT */
+    h2{
+      font-size:26px;
+      margin-bottom:12px;
+    }
+    h3{
+      font-size:20px;
+      margin-bottom:8px;
+    }
+    p{color:var(--muted)}
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:20px;
+    }
+
+    .tags{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+    .tag{
+      font-size:12px;
+      padding:4px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      color:var(--muted);
+    }
+
+    /* IMAGE */
+    .dashboard{
+      margin-top:16px;
+      background:#0b0f15;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+    }
+    .dashboard img{
+      width:100%;
+      height:auto;
+      border-radius:10px;
+      display:block;
+    }
+    .caption{
+      font-size:13px;
+      color:var(--muted);
+      margin-top:8px;
+    }
+
+    /* FOOTER */
+    footer{
+      border-top:1px solid var(--line);
+      padding:32px 20px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
   </style>
 </head>
+
 <body>
-  <main class="wrap">
 
-    <!-- HERO -->
-    <header class="hero">
-      <h1>ParisData – Simulation de la fermeture du périphérique parisien</h1>
-      <p class="muted">
-        Dashboard <b>Power BI</b> pour explorer les impacts potentiels d’une fermeture d’axes (périphérique, Maréchaux, sites) :
-        comparaison <i>observé vs simulé</i>, cartes avant/après, variation par zone et composition du trafic.
-      </p>
-      <div class="btns">
-        <!-- Remplace par ton lien "Publish to web" si tu publies le rapport -->
-        <a class="btn" href="#" target="_blank" rel="noopener">Voir le dashboard en grand</a>
-        <!-- Lien vers le dépôt / dossier projet s'il existe -->
-        <a class="btn ghost" href="#" target="_blank" rel="noopener">Code & ressources</a>
-      </div>
-    </header>
+<!-- NAV -->
+<nav>
+  <div class="inner">
+    <strong>Yannis Albert</strong>
+    <div>
+      <a href="index.html">Accueil</a>
+      <a href="index.html#projects">Projets</a>
+      <a href="assets/cv-yannis-albert.pdf">CV</a>
+    </div>
+  </div>
+</nav>
 
-    <!-- CONTEXTE -->
-    <section class="grid g-2">
-      <div class="card">
-        <h2>Contexte & objectif</h2>
-        <p>
-          Comment évoluent les flux si un axe majeur est fermé ? Ce projet propose une
-          <b>simulation paramétrable</b> pour explorer la redistribution du trafic et la dépression globale des déplacements,
-          à partir de données open data (Ville de Paris).
-        </p>
-        <div class="stack" style="margin-top:8px">
-          <span class="tag">Smart City</span><span class="tag">Data viz</span><span class="tag">What‑if</span><span class="tag">Aide à la décision</span>
-        </div>
-      </div>
-      <div class="card">
-        <h2>Données & outils</h2>
-        <ul class="small">
-          <li><b>Source</b> : Open Data – Ville de Paris (compositions du trafic : points de comptage, catégories de véhicules, lat/long)</li>
-          <li><b>Stack</b> : Power BI, Power Query (nettoyage/typage), <abbr title="Data Analysis Expressions">DAX</abbr> (mesures dynamiques, scénarios), paramètres <i>What‑if</i></li>
-          <li><b>Positionnement</b> : outil exploratoire <i>(simulation)</i> – pas un modèle prédictif</li>
-        </ul>
-      </div>
-    </section>
+<!-- HERO -->
+<section class="container hero">
+  <h1>ParisData – Simulation de la fermeture du périphérique parisien</h1>
+  <p>
+    Projet de data visualisation décisionnelle basé sur un <b>dashboard Power BI</b>,
+    visant à explorer l’impact potentiel de la fermeture d’axes routiers
+    sur les flux de mobilité à Paris.
+  </p>
+</section>
 
-    <!-- KPI SNAPSHOT (valeurs statiques = à mettre à jour manuellement au moment de l’export) -->
-    <section style="margin-top:8px">
-      <div class="kpis">
-        <div class="kpi"><b>Trafic total observé</b><div class="v">3,00&nbsp;M véhicules</div></div>
-        <div class="kpi"><b>Trafic total simulé</b><div class="v">1,43&nbsp;M véhicules</div></div>
-        <div class="kpi"><b>Variation globale</b><div class="v ko">‑54,78&nbsp;%</div></div>
-      </div>
-      <p class="muted small" style="margin-top:6px">
-        * Valeurs illustratives issues du scénario actif au moment de l’export (mettre à jour si besoin).
-      </p>
-    </section>
+<!-- CONTEXTE -->
+<section class="container">
+  <h2>Contexte & objectif</h2>
+  <p>
+    Les politiques de mobilité urbaine soulèvent des questions complexes :
+    que se passe‑t‑il si un axe structurant est fermé ?
+    <br><br>
+    ParisData propose un outil d’<b>aide à la décision</b> permettant de simuler
+    différents scénarios (fermeture du périphérique, des Maréchaux ou de sites précis)
+    et d’observer leurs impacts sur le trafic global, la redistribution spatiale
+    et la composition des flux.
+  </p>
 
-    <!-- SCREENS (AVANT / APRÈS + BAR CHART + STACKED BAR) -->
-    <section>
-      <h2>Résultats visuels</h2>
-      <div class="gallery" style="margin-top:8px">
-        <!-- Met tes images exportées depuis Power BI dans /assets et remplace les chemins -->
-        <a href="assets/parisdata-before.png" target="_blank" rel="noopener">
-          <img src="assets/parisdata-before.png" alt="Avant fermeture du périphérique – carte d’intensité" />
-        </a>
-        <a href="assets/parisdata-after.png" target="_blank" rel="noopener">
-          <img src="assets/parisdata-after.png" alt="Après fermeture – carte d’intensité (simulation)" />
+  <div class="tags">
+    <span class="tag">Power BI</span>
+    <span class="tag">Data Visualisation</span>
+    <span class="tag">Smart City</span>
+    <span class="tag">Simulation</span>
+  </div>
+</section>
+
+<!-- METHODO -->
+<section class="container">
+  <h2>Méthodologie</h2>
+  <div class="card">
+    <h3>Approche de simulation</h3>
+    <p>
+      Le dashboard repose sur des données open data de la Ville de Paris issues
+      de sites de comptage du trafic. La fermeture d’axes est simulée en mettant
+      les flux concernés à zéro, puis en redistribuant le trafic restant à l’aide
+      de coefficients paramétrables.
+    </p>
+    <p>
+      L’utilisateur peut :
+      <br>• basculer entre <b>trafic observé</b> et <b>trafic simulé</b>
+      <br>• sélectionner les axes ou sites fermés
+      <br>• ajuster les coefficients de report et la dépression globale
+    </p>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section class="container">
+  <h2>Aperçu du dashboard Power BI</h2>
+
+  <div class="dashboard">
+    <img src="assets/parisdata-dashboard.png" alt="Aperçu du dashboard Power BI ParisData">
+  </div>
+
+  <p class="caption">
+    Aperçu du dashboard Power BI interactif. Les paramètres (axes fermés,
+    coefficients de report, scénario observé/simulé) sont pilotables
+    dans l’outil d’origine.
+  </p>
+</section>
+
+<!-- LIMITES -->
+<section class="container">
+  <h2>Limites & interprétation</h2>
+  <p>
+    Cette analyse repose sur des hypothèses simplifiées et des points de comptage fixes.
+    Elle ne constitue pas une prédiction du trafic réel, mais un outil exploratoire
+    visant à comparer des ordres de grandeur et à éclairer la prise de décision
+    en contexte Smart City.
+  </p>
+</section>
+
+<!-- RESSOURCES -->
+<section class="container">
+  <h2>Ressources</h2>
+  <p>
+    <a href="assets/ParisData_dashboard.pbix">⬇ Télécharger le dashboard Power BI (.pbix)</a>
+    <br>
+    <a href="index.html">← Retour au portfolio</a>
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Yannis Albert</strong> – Ingénieur systèmes numériques – Data & IA appliquées<br>
+  📞 06 67 10 71 17 · ✉️ yannis.albert78@gmail.com · 🔗 LinkedIn
+</footer>
+
+</body>
+</html>
