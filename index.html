@@ -5,11 +5,187 @@
   <title>Portfolio – Yannis Albert</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" />
+  <!-- Google Font (correct) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
 
-  <!-- Feuille de style principale -->
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root{
+      --bg:#000;
+      --fg:#eaeaea;
+      --muted:#a8b3c2;
+      --brand:#3b82f6;
+      --brand2:#60a5fa;
+      --card:#111418;
+      --line:#1b2230;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:radial-gradient(1400px 700px at 50% -10%, #0b1220 0%, #000 60%);
+      color:var(--fg);
+      line-height:1.6;
+    }
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* NAV */
+    nav{
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:rgba(0,0,0,.9);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:saturate(120%) blur(6px);
+    }
+    nav .inner{
+      max-width:1100px;
+      margin:auto;
+      padding:12px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    nav strong{font-weight:800}
+    nav a{
+      margin-left:18px;
+      color:var(--muted);
+      font-weight:600;
+    }
+    nav a:hover{color:var(--fg)}
+
+    /* LAYOUT */
+    .container{
+      max-width:1100px;
+      margin:auto;
+      padding:64px 20px;
+    }
+    section{margin-bottom:72px}
+    h1,h2,h3,h4{margin-top:0}
+    h3{font-size:26px}
+    p{color:var(--muted);max-width:900px}
+
+    /* HERO PROFILE */
+    .profile{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      margin-bottom:28px;
+    }
+    .profile img{
+      width:150px;
+      height:150px;
+      object-fit:cover;
+      border-radius:50%;
+      border:3px solid var(--brand);
+      margin-bottom:16px;
+      box-shadow:0 6px 24px rgba(0,0,0,.35);
+    }
+    .profile .name{
+      font-size:30px;
+      font-weight:800;
+      margin:0;
+    }
+    .profile .title{
+      font-size:16px;
+      font-weight:600;
+      color:var(--brand);
+      margin-top:6px;
+    }
+    .subtitle{
+      text-align:center;
+      color:var(--fg);
+      opacity:.9;
+      font-weight:700;
+      margin:6px 0 18px;
+    }
+    .intro{
+      margin:auto;
+      text-align:center;
+    }
+
+    /* CARDS */
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:24px;
+      margin-bottom:24px;
+      transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .card:hover{
+      transform:translateY(-3px);
+      border-color:var(--brand);
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+
+    /* Liens enveloppant une carte (carte cliquable) */
+    .card-link{
+      display:block;
+      text-decoration:none;
+      color:inherit;
+    }
+
+    /* SKILLS */
+    .skill{margin-bottom:14px}
+    .skill-label{
+      display:flex;
+      justify-content:space-between;
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+    .bar{
+      height:10px;
+      background:#0f172a;
+      border-radius:999px;
+      overflow:hidden;
+      border:1px solid var(--line);
+    }
+    .bar span{
+      display:block;
+      height:100%;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--brand),var(--brand2));
+    }
+
+    /* TAGS / CHIPS */
+    .tags{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+    .tag{
+      display:inline-block;
+      font-size:13px;
+      line-height:1;
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      color:var(--fg);
+      background:rgba(255,255,255,0.02);
+      box-shadow:0 0 0 1px rgba(255,255,255,0.04) inset;
+      transition:transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .tag:hover{
+      border-color:var(--brand);
+      background:rgba(59,130,246,0.08);
+      transform:translateY(-1px);
+    }
+
+    /* FOOTER */
+    footer{
+      border-top:1px solid var(--line);
+      padding:40px 20px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+  </style>
 </head>
 
 <body>
@@ -32,7 +208,7 @@
     <!-- HERO -->
     <section>
       <div class="profile">
-        <img src="assets/photo.jpg" alt="Photo de Yannis Albert" />
+        <img src="assets/photo.jpg" alt="Photo de profil de Yannis Albert">
         <h1 class="name">Yannis Albert</h1>
         <div class="title">Ingénieur Systèmes Numériques pour l’Industrie</div>
       </div>
@@ -80,17 +256,14 @@
 
       <div class="card">
         <h4>📊 Data & IA</h4>
-
         <div class="skill">
           <div class="skill-label"><span>Python</span><span>80%</span></div>
           <div class="bar"><span style="width:80%"></span></div>
         </div>
-
         <div class="skill">
           <div class="skill-label"><span>SQL</span><span>75%</span></div>
           <div class="bar"><span style="width:75%"></span></div>
         </div>
-
         <div class="skill">
           <div class="skill-label"><span>Power BI / Data Viz</span><span>85%</span></div>
           <div class="bar"><span style="width:85%"></span></div>
@@ -99,17 +272,14 @@
 
       <div class="card">
         <h4>💻 Développement</h4>
-
         <div class="skill">
           <div class="skill-label"><span>HTML / CSS</span><span>85%</span></div>
           <div class="bar"><span style="width:85%"></span></div>
         </div>
-
         <div class="skill">
           <div class="skill-label"><span>JavaScript</span><span>65%</span></div>
           <div class="bar"><span style="width:65%"></span></div>
         </div>
-
         <div class="skill">
           <div class="skill-label"><span>Node.js</span><span>60%</span></div>
           <div class="bar"><span style="width:60%"></span></div>
@@ -121,19 +291,16 @@
     <section id="projects">
       <h3>Projets</h3>
 
-      <!-- Carte projet : ParisData -->
+      <!-- Carte projet ParisData (entièrement cliquable) -->
       <a class="card-link" href="parisdata.html">
         <div class="card">
-          <!-- (Optionnel) Miniature projet
-          <img class="thumb" src="assets/parisdata-dashboard.png" alt="Aperçu du dashboard Power BI ParisData">
-          -->
           <h4>ParisData</h4>
           <p>
             Projet de data visualisation décisionnelle simulant l’impact
             de scénarios de mobilité urbaine à l’aide d’un dashboard Power BI.
           </p>
 
-          <!-- Tags / chips -->
+          <!-- Tags -->
           <div class="tags">
             <span class="tag">Power BI</span>
             <span class="tag">Data Visualisation</span>
@@ -141,8 +308,8 @@
             <span class="tag">Simulation</span>
           </div>
 
-          <!-- CTA -->
-          <div class="card-cta">→ Voir le projet</div>
+          <!-- Petit rappel (facultatif) -->
+          <div class="card-cta" aria-hidden="true">→ Voir le projet</div>
         </div>
       </a>
 
