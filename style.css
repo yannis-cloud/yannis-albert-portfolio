@@ -166,7 +166,7 @@ footer a {
 
 .tag:hover{
   border-color:var(--brand);
-  background:rgba(59,130,246,0.08); /* léger survol bleu */
+  background:rgba(59,130,246,0.08);
   transform:translateY(-1px);
 }
 
