@@ -143,3 +143,31 @@ footer a {
   transition:.2s ease;
 }
 
+/* ===== TAGS / CHIPS ===== */
+.tags{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+
+.tag{
+  display:inline-block;
+  font-size:13px;
+  line-height:1;
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  color:var(--fg);
+  background:rgba(255,255,255,0.02);
+  box-shadow:0 0 0 1px rgba(255,255,255,0.04) inset;
+  transition:transform .15s ease, border-color .15s ease, background .15s ease;
+}
+
+.tag:hover{
+  border-color:var(--brand);
+  background:rgba(59,130,246,0.08); /* léger survol bleu */
+  transform:translateY(-1px);
+}
+
+
