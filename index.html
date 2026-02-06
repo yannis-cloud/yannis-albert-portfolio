@@ -5,12 +5,13 @@
   <title>Yannis Albert – Ingénieur Data & IA</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font (CORRECT) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
+  <!-- Google Font (CORRECTEMENT CHARGÉE) -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
 
   <style>
     :root{
-      --bg:#000;
+      --bg:#000000;
       --fg:#eaeaea;
       --muted:#a8b3c2;
       --brand:#4b8cff;
@@ -23,21 +24,22 @@
 
     body{
       margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background:var(--bg);
       color:var(--fg);
-      line-height:1.55;
+      line-height:1.6;
     }
 
     a{color:var(--brand); text-decoration:none}
     a:hover{text-decoration:underline}
 
+    /* NAV */
     nav{
       position:sticky;
       top:0;
-      z-index:10;
-      background:rgba(0,0,0,.9);
+      background:#000;
       border-bottom:1px solid var(--line);
+      z-index:10;
     }
 
     nav .inner{
@@ -57,45 +59,64 @@
 
     nav a:hover{color:var(--fg)}
 
+    /* LAYOUT */
     .container{
       max-width:1100px;
       margin:auto;
       padding:48px 20px;
     }
 
-    section{margin-bottom:64px}
+    section{margin-bottom:56px}
 
+    /* HERO */
     .hero h1{
-      font-size:clamp(34px,5vw,52px);
+      font-size:48px;
       margin:0;
       font-weight:800;
     }
 
     .hero h2{
-      margin:8px 0 16px;
+      margin:10px 0 16px;
       font-size:18px;
+      font-weight:600;
       color:var(--brand);
     }
 
     .contacts{
       display:flex;
       flex-wrap:wrap;
-      gap:14px;
+      gap:16px;
       font-size:14px;
       color:var(--muted);
     }
 
-    h3{font-size:24px;margin-bottom:12px}
+    /* TITRES */
+    h3{
+      font-size:24px;
+      margin-bottom:12px;
+    }
+
     p{color:var(--muted)}
 
-    .grid{display:grid;gap:20px}
-    .grid-3{grid-template-columns:repeat(3,1fr)}
-    @media(max-width:900px){.grid-3{grid-template-columns:1fr}}
+    /* GRID */
+    .grid{
+      display:grid;
+      gap:20px;
+    }
 
+    .grid-3{
+      grid-template-columns:repeat(3,1fr);
+    }
+
+    @media(max-width:900px){
+      .grid-3{grid-template-columns:1fr}
+    }
+
+    /* CARDS */
     .card{
       background:var(--card);
       border:1px solid var(--line);
-      border-radius:16px;
+      border-radius:14px;
       padding:20px;
     }
 
@@ -110,8 +131,106 @@
       margin-top:8px;
     }
 
+    /* FOOTER */
     footer{
       border-top:1px solid var(--line);
       padding:32px 20px;
       text-align:center;
       color:var(--muted);
+      font-size:14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="inner">
+    <strong>Yannis Albert</strong>
+    <div>
+      <a href="#about">À propos</a>
+      <a href="#skills">Compétences</a>
+      <a href="#projects">Projets</a>
+      <a href="parisdata.html">ParisData</a>
+      <a href="assets/cv-yannis-albert.pdf">CV</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="container hero">
+  <h1>Yannis Albert</h1>
+  <h2>Ingénieur systèmes numériques – Data & IA appliquées</h2>
+
+  <div class="contacts">
+    <span>📞 06 67 10 71 17</span>
+    <span>✉️ <a href="mailto:yannis.albert78@gmail.com">yannis.albert78@gmail.com</a></span>
+    <span>🔗 <a href="https://www.linkedin.com" target="_blank">LinkedIn</a></span>
+    <span>📄 <a href="assets/cv-yannis-albert.pdf">Télécharger le CV</a></span>
+  </div>
+</div>
+
+<!-- WHAT -->
+<section class="container">
+  <h3>Ce que vous trouverez dans ce portfolio</h3>
+  <p>
+    Des projets data appliqués orientés aide à la décision, visualisation
+    et transformation digitale, en contexte industriel et Smart City.
+  </p>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="container">
+  <h3>À propos de moi</h3>
+  <p>
+    Ingénieur spécialisé en systèmes numériques, avec une expérience en pilotage
+    de projets data‑driven et transformation digitale. J’évolue à l’interface
+    entre métiers, systèmes d’information et outils data.
+  </p>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="container">
+  <h3>Compétences</h3>
+  <div class="grid grid-3">
+    <div class="card">
+      <strong>Transversales</strong>
+      <p>Pilotage de projets · Analyse métier · Aide à la décision</p>
+    </div>
+    <div class="card">
+      <strong>Développement & Data</strong>
+      <p>Python · SQL · DAX · Power BI</p>
+    </div>
+    <div class="card">
+      <strong>Outils</strong>
+      <p>Power BI · Git · Open Data · IoT</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="container">
+  <h3>Projets</h3>
+  <div class="grid grid-3">
+    <div class="card">
+      <strong>ParisData – Mobilité & trafic urbain</strong>
+      <p>Simulation Power BI de la fermeture du périphérique parisien.</p>
+      <span class="tag">Power BI</span>
+      <span class="tag">Smart City</span>
+      <span class="tag">Simulation</span>
+      <p style="margin-top:10px;">
+        <a href="parisdata.html">Voir le projet →</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Yannis Albert</strong> — Ingénieur systèmes numériques – Data & IA<br>
+  06 67 10 71 17 · yannis.albert78@gmail.com · LinkedIn
+</footer>
+
+</body>
+</html>
