@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Yannis Albert – Ingénieur Data & IA</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio de Yannis Albert – Ingénieur systèmes numériques, pilotage de projets Data & IA, Product Owner Data." />
 
-  <!-- Google Font (CORRECTEMENT CHARGÉE) -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
 
   <style>
     :root{
-      --bg:#000000;
+      --bg:#000;
       --fg:#eaeaea;
       --muted:#a8b3c2;
-      --brand:#4b8cff;
+      --brand:#3b82f6;
+      --brand2:#60a5fa;
       --card:#111418;
       --line:#1b2230;
     }
@@ -24,10 +25,10 @@
 
     body{
       margin:0;
-      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:var(--bg);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:radial-gradient(1400px 700px at 50% -10%, #0b1220 0%, #000 60%);
       color:var(--fg);
-      line-height:1.6;
+      line-height:1.55;
     }
 
     a{color:var(--brand); text-decoration:none}
@@ -37,11 +38,11 @@
     nav{
       position:sticky;
       top:0;
-      background:#000;
-      border-bottom:1px solid var(--line);
       z-index:10;
+      background:rgba(0,0,0,.85);
+      backdrop-filter: blur(6px);
+      border-bottom:1px solid var(--line);
     }
-
     nav .inner{
       max-width:1100px;
       margin:auto;
@@ -50,76 +51,120 @@
       justify-content:space-between;
       align-items:center;
     }
-
+    nav strong{font-weight:800}
     nav a{
       margin-left:18px;
       color:var(--muted);
       font-weight:600;
     }
-
     nav a:hover{color:var(--fg)}
 
     /* LAYOUT */
     .container{
       max-width:1100px;
       margin:auto;
-      padding:48px 20px;
+      padding:56px 20px;
     }
 
     section{margin-bottom:56px}
 
     /* HERO */
     .hero h1{
-      font-size:48px;
+      font-size:clamp(34px,5vw,52px);
       margin:0;
       font-weight:800;
+      letter-spacing:-.02em;
     }
-
     .hero h2{
       margin:10px 0 16px;
       font-size:18px;
-      font-weight:600;
       color:var(--brand);
+      font-weight:600;
     }
-
     .contacts{
       display:flex;
       flex-wrap:wrap;
-      gap:16px;
+      gap:14px;
       font-size:14px;
       color:var(--muted);
     }
+    .contacts a{color:var(--muted)}
+    .contacts a:hover{color:var(--fg)}
+    .cv-btn{
+      padding:6px 14px;
+      border-radius:999px;
+      border:1px solid var(--brand);
+      color:var(--brand);
+      font-weight:600;
+    }
 
-    /* TITRES */
+    /* TITLES */
     h3{
       font-size:24px;
       margin-bottom:12px;
     }
+    p{color:var(--muted); max-width:900px}
 
-    p{color:var(--muted)}
-
-    /* GRID */
-    .grid{
-      display:grid;
-      gap:20px;
+    /* SEPARATOR */
+    .sep{
+      height:2px;
+      border:0;
+      margin:32px 0 40px;
+      background:linear-gradient(90deg, var(--brand), var(--brand2), var(--brand));
+      border-radius:2px;
     }
 
-    .grid-3{
-      grid-template-columns:repeat(3,1fr);
-    }
+    /* CARDS & GRID */
+    .grid{display:grid; gap:20px}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    @media(max-width:900px){.grid-3{grid-template-columns:1fr}}
 
-    @media(max-width:900px){
-      .grid-3{grid-template-columns:1fr}
-    }
-
-    /* CARDS */
     .card{
       background:var(--card);
       border:1px solid var(--line);
-      border-radius:14px;
-      padding:20px;
+      border-radius:16px;
+      padding:22px;
     }
 
+    /* SKILLS */
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+    @media(max-width:900px){.skills-grid{grid-template-columns:1fr}}
+
+    .skill{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin:10px 0;
+      font-size:14px;
+    }
+    .skill span{min-width:210px}
+
+    .bar{
+      --val:75%;
+      position:relative;
+      flex:1;
+      height:10px;
+      background:#0d1320;
+      border:1px solid var(--line);
+      border-radius:999px;
+      overflow:hidden;
+    }
+    .bar::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      width:var(--val);
+      background:linear-gradient(90deg,var(--brand),var(--brand2));
+      box-shadow:0 0 12px rgba(59,130,246,.35) inset;
+      border-radius:999px;
+      transition:width .9s ease;
+    }
+
+    /* TAGS */
     .tag{
       display:inline-block;
       font-size:12px;
@@ -134,17 +179,27 @@
     /* FOOTER */
     footer{
       border-top:1px solid var(--line);
-      padding:32px 20px;
+      padding:40px 20px;
       text-align:center;
       color:var(--muted);
       font-size:14px;
+    }
+
+    /* ANIMATIONS */
+    .reveal{
+      opacity:0;
+      transform:translateY(30px);
+      transition:opacity .8s ease, transform .8s ease;
+    }
+    .reveal.visible{
+      opacity:1;
+      transform:none;
     }
   </style>
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
 <nav>
   <div class="inner">
     <strong>Yannis Albert</strong>
@@ -159,78 +214,88 @@
 </nav>
 
 <!-- HERO -->
-<div class="container hero">
+<section class="container hero reveal">
   <h1>Yannis Albert</h1>
-  <h2>Ingénieur systèmes numériques – Data & IA appliquées</h2>
-
+  <h2>Ingénieur systèmes numériques – Product Owner Data & IA appliquées</h2>
   <div class="contacts">
-    <span>📞 06 67 10 71 17</span>
+    <span>📞 06 67 10 71 17</span>
     <span>✉️ <a href="mailto:yannis.albert78@gmail.com">yannis.albert78@gmail.com</a></span>
     <span>🔗 <a href="https://www.linkedin.com" target="_blank">LinkedIn</a></span>
-    <span>📄 <a href="assets/cv-yannis-albert.pdf">Télécharger le CV</a></span>
+    <a class="cv-btn" href="assets/cv-yannis-albert.pdf">Télécharger le CV</a>
   </div>
-</div>
-
-<!-- WHAT -->
-<section class="container">
-  <h3>Ce que vous trouverez dans ce portfolio</h3>
-  <p>
-    Des projets data appliqués orientés aide à la décision, visualisation
-    et transformation digitale, en contexte industriel et Smart City.
-  </p>
 </section>
+
+<hr class="sep">
 
 <!-- ABOUT -->
-<section id="about" class="container">
+<section id="about" class="container reveal">
   <h3>À propos de moi</h3>
   <p>
-    Ingénieur spécialisé en systèmes numériques, avec une expérience en pilotage
-    de projets data‑driven et transformation digitale. J’évolue à l’interface
-    entre métiers, systèmes d’information et outils data.
+    Ingénieur spécialisé en systèmes numériques, j’interviens chez <b>Renault Group</b>
+    en tant que <b>pilote de projets data avec un rôle de Product Owner</b>.
+    Je conduis des projets à <b>forte valeur ajoutée métier</b>, de la définition
+    des besoins utilisateurs à la mise en production de solutions décisionnelles.
+  </p>
+  <p>
+    Mon rôle couvre la <b>priorisation du backlog</b>, la coordination des équipes
+    <b>métiers / IT / data</b>, la <b>conception d’interfaces UX/UI</b> orientées adoption,
+    ainsi que la mise en place de <b>standards data et KPIs</b>.
+    L’objectif : produire des outils réellement utilisés pour le pilotage opérationnel.
   </p>
 </section>
 
+<hr class="sep">
+
 <!-- SKILLS -->
-<section id="skills" class="container">
+<section id="skills" class="container reveal">
   <h3>Compétences</h3>
-  <div class="grid grid-3">
+
+  <div class="skills-grid">
     <div class="card">
-      <strong>Transversales</strong>
-      <p>Pilotage de projets · Analyse métier · Aide à la décision</p>
+      <h4>Transversales</h4>
+      <div class="skill"><span>Pilotage de projet / PO Data</span><div class="bar" style="--val:90%"></div></div>
+      <div class="skill"><span>Gouvernance des données</span><div class="bar" style="--val:85%"></div></div>
+      <div class="skill"><span>Interface métiers / IT</span><div class="bar" style="--val:85%"></div></div>
+      <div class="skill"><span>Amélioration continue (ISO 9001)</span><div class="bar" style="--val:75%"></div></div>
     </div>
+
     <div class="card">
-      <strong>Développement & Data</strong>
-      <p>Python · SQL · DAX · Power BI</p>
+      <h4>Développement & Data</h4>
+      <div class="skill"><span>Power BI / Data viz</span><div class="bar" style="--val:90%"></div></div>
+      <div class="skill"><span>DAX</span><div class="bar" style="--val:85%"></div></div>
+      <div class="skill"><span>SQL</span><div class="bar" style="--val:75%"></div></div>
+      <div class="skill"><span>Python (Pandas / ML)</span><div class="bar" style="--val:70%"></div></div>
     </div>
+
     <div class="card">
-      <strong>Outils</strong>
-      <p>Power BI · Git · Open Data · IoT</p>
+      <h4>Outils & SI</h4>
+      <div class="skill"><span>MS Project</span><div class="bar" style="--val:75%"></div></div>
+      <div class="skill"><span>Git</span><div class="bar" style="--val:70%"></div></div>
+      <div class="skill"><span>IoT / Systèmes embarqués</span><div class="bar" style="--val:65%"></div></div>
+      <div class="skill"><span>Open Data & SI industriels</span><div class="bar" style="--val:75%"></div></div>
     </div>
   </div>
 </section>
+
+<hr class="sep">
 
 <!-- PROJECTS -->
-<section id="projects" class="container">
+<section id="projects" class="container reveal">
   <h3>Projets</h3>
+
   <div class="grid grid-3">
     <div class="card">
-      <strong>ParisData – Mobilité & trafic urbain</strong>
-      <p>Simulation Power BI de la fermeture du périphérique parisien.</p>
+      <h4>ParisData – Mobilité & trafic urbain</h4>
+      <p>
+        Dashboard Power BI simulant la fermeture du périphérique parisien,
+        avec scénarios paramétrables et analyse décisionnelle Smart City.
+      </p>
       <span class="tag">Power BI</span>
-      <span class="tag">Smart City</span>
+      <span class="tag">Product Owner Data</span>
       <span class="tag">Simulation</span>
       <p style="margin-top:10px;">
-        <a href="parisdata.html">Voir le projet →</a>
+        <a href="parisdata.html">→ Voir le projet</a>
       </p>
     </div>
-  </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <strong>Yannis Albert</strong> — Ingénieur systèmes numériques – Data & IA<br>
-  06 67 10 71 17 · yannis.albert78@gmail.com · LinkedIn
-</footer>
-
-</body>
-</html>
+    <div class="card">
