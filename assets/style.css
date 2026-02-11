@@ -245,3 +245,52 @@ body {
     .exp-header { flex-direction: column; }
     .exp-date { align-self: flex-start; margin-top: 10px; }
 }
+/* --- TIMELINE DESIGN --- */
+.experience-wrapper {
+    position: relative;
+    padding-left: 40px; /* Espace pour la ligne */
+}
+
+/* La ligne verticale */
+.timeline-line {
+    position: absolute;
+    left: 7px;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+    opacity: 0.3;
+}
+
+/* Le point sur la ligne */
+.timeline-dot {
+    position: absolute;
+    left: -40px; /* Aligné sur la ligne */
+    top: 40px;
+    width: 16px;
+    height: 16px;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    z-index: 5;
+    transition: 0.3s;
+}
+
+/* Animation quand on survole la carte */
+.exp-card:hover .timeline-dot {
+    background: var(--accent);
+    border-color: var(--accent2);
+    box-shadow: 0 0 15px var(--accent);
+    transform: scale(1.3);
+}
+
+.exp-card:hover {
+    border-left-color: var(--accent); /* Ta bordure existante */
+}
+
+/* Ajustement pour mobile */
+@media (max-width: 768px) {
+    .experience-wrapper { padding-left: 30px; }
+    .timeline-line { left: 4px; }
+    .timeline-dot { left: -32px; width: 12px; height: 12px; }
+}
