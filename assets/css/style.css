@@ -102,4 +102,37 @@ transition:.35s cubic-bezier(.22,1,.36,1);
 }
 
 .tool:hover{
-transform:translateY(
+transform:translateY(-6px) scale(1.05);
+border-color:rgba(42,123,255,.6);
+box-shadow:
+0 10px 40px rgba(42,123,255,.25),
+inset 0 0 20px rgba(42,123,255,.08);
+}
+
+/* Reveal animation */
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:all .9s cubic-bezier(.22,1,.36,1);
+}
+
+.reveal.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* HERO animation */
+.hero-text h1 span{
+display:inline-block;
+opacity:0;
+transform:translateY(20px);
+animation:heroAnim .8s forwards;
+animation-delay:.3s;
+}
+
+@keyframes heroAnim{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
