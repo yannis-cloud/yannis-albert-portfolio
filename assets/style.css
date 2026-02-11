@@ -1,280 +1,196 @@
-:root{
---bg:#05070d;
---card:#0c111b;
---accent:#2A7BFF;
---accent2:#00D4FF;
---text:#e6edf3;
+/* ==========================================================================
+   ELDORA DESIGN SYSTEM - YANNIS ALBERT 2026
+   ========================================================================== */
+
+:root {
+    --bg: #03050a;
+    --card: rgba(12, 17, 27, 0.6);
+    --accent: #2A7BFF;
+    --accent2: #00D4FF;
+    --text: #e6edf3;
+    --text-muted: #8892b0;
+    --border: rgba(255, 255, 255, 0.08);
+    --glass: backdrop-filter: blur(20px) saturate(180%);
 }
 
-*{box-sizing:border-box}
-body{
-margin:0;
-font-family:Inter,system-ui;
-color:var(--text);
-background:var(--bg);
-overflow-x:hidden;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-/* ===== PROGRESS BAR ===== */
-.progress{
-position:fixed;
-top:0;
-left:0;
-height:3px;
-width:0%;
-background:linear-gradient(90deg,var(--accent),var(--accent2));
-z-index:999;
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    overflow-x: hidden;
+    line-height: 1.6;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(42, 123, 255, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.05) 0%, transparent 40%);
 }
 
-/* ===== MESH BACKGROUND ===== */
-.mesh{
-position:fixed;
-inset:-30%;
-background:
-radial-gradient(circle at 20% 20%, rgba(42,123,255,.25), transparent 50%),
-radial-gradient(circle at 80% 40%, rgba(0,212,255,.15), transparent 50%);
-filter:blur(120px);
-animation:meshMove 12s ease-in-out infinite alternate;
-z-index:-1;
+/* --- CINEMATIC NOISE --- */
+.noise {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: .05;
+    pointer-events: none;
+    z-index: 9999;
 }
 
-@keyframes meshMove{
-from{transform:translateY(-60px)}
-to{transform:translateY(60px)}
+/* --- MESH & CURSOR GLOW --- */
+.cursor {
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(42, 123, 255, 0.1), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    will-change: transform;
 }
 
-.container{max-width:1100px;margin:auto;padding:40px 20px}
-
-.header{
-position:sticky;
-top:0;
-background:rgba(5,7,13,.6);
-backdrop-filter:blur(16px);
-border-bottom:1px solid rgba(255,255,255,.05);
-z-index:10;
+/* --- SCROLL INERTIA WRAPPER --- */
+#smooth-wrapper {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    overflow: hidden;
 }
 
-.nav{display:flex;justify-content:space-between;align-items:center}
-
-.menu a{
-margin-left:20px;
-color:#9fb0c3;
-text-decoration:none;
-padding:8px 12px;
-border-radius:8px;
-transition:.3s;
-}
-.menu a.active{
-background:rgba(42,123,255,.15);
-color:white;
-box-shadow:0 0 20px rgba(42,123,255,.4);
+#smooth-content {
+    will-change: transform;
+    padding-bottom: 100px;
 }
 
-.hero{padding-top:140px;text-align:left}
-
-.hero-title{
-font-size:60px;
-line-height:1.05;
-letter-spacing:-1px;
-animation:titleEnter 1s ease forwards;
+/* --- LAYOUT --- */
+.container {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 30px;
 }
 
-@keyframes titleEnter{
-from{opacity:0;transform:translateY(50px)}
-to{opacity:1;transform:translateY(0)}
+/* --- HEADER & ANIMATED LOGO --- */
+.header {
+    position: fixed;
+    top: 0; width: 100%;
+    padding: 25px 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border);
+    background: rgba(3, 5, 10, 0.7);
+    --glass;
 }
 
-.gradient{
-background:linear-gradient(90deg,var(--accent),var(--accent2));
--webkit-background-clip:text;
-color:transparent;
+.nav { display: flex; justify-content: space-between; align-items: center; }
+
+.logo-box { perspective: 1000px; cursor: pointer; }
+
+.logo {
+    font-weight: 800; font-size: 26px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; color: transparent;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    letter-spacing: -1px;
 }
 
-.section{margin-top:120px}
-
-.card{
-background:var(--card);
-border:1px solid rgba(255,255,255,.05);
-border-radius:18px;
-padding:20px;
-position:relative;
-overflow:hidden;
+/* --- HERO SECTION --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/* ===== SPOTLIGHT EFFECT ===== */
-.card::before{
-content:"";
-position:absolute;
-inset:0;
-background:radial-gradient(circle at var(--x) var(--y), rgba(42,123,255,.2), transparent 40%);
-opacity:0;
-transition:.3s;
-}
-.card:hover::before{opacity:1}
-
-.about-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
+.tag {
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 15px;
 }
 
-.timeline{
-display:grid;
-gap:20px;
-max-width:700px;
+.hero-title {
+    font-size: clamp(45px, 9vw, 90px);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -3px;
+    margin-bottom: 25px;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
+/* --- CARDS & ELDORA STYLE --- */
+.section { padding: 120px 0; }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
 }
 
-/* IMAGE PROJECT FIX */
-.img-wrap{
-height:180px;
-overflow:hidden;
-border-radius:12px;
-margin-bottom:10px;
-}
-.img-wrap img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-/* TOOLS */
-.tools{
-display:flex;
-flex-wrap:wrap;
-gap:14px;
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: border-color 0.4s ease;
+    --glass;
 }
 
-.tool{
-padding:14px 18px;
-border-radius:12px;
-border:1px solid rgba(255,255,255,.08);
-background:rgba(255,255,255,.02);
-transition:.35s cubic-bezier(.22,1,.36,1);
+.card:hover {
+    border-color: rgba(42, 123, 255, 0.5);
 }
 
-.tool:hover{
-transform:translateY(-6px) scale(1.08);
-border-color:rgba(42,123,255,.6);
-box-shadow:0 10px 40px rgba(42,123,255,.25);
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 700;
 }
 
-/* ===== REVEAL ===== */
-.reveal{
-opacity:0;
-transform:translateY(40px);
-transition:all .8s cubic-bezier(.22,1,.36,1);
-}
-.reveal.show{
-opacity:1;
-transform:translateY(0);
-}
-/* ============================= */
-/* GOD MODE CURSOR */
-/* ============================= */
-
-.cursor{
-position:fixed;
-width:280px;
-height:280px;
-border-radius:50%;
-pointer-events:none;
-background:radial-gradient(circle,
-rgba(42,123,255,.25),
-transparent 60%);
-filter:blur(60px);
-z-index:0;
-transform:translate(-50%,-50%);
+/* --- TAGS & SKILLS --- */
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
 }
 
-/* ============================= */
-/* TYPEWRITER HERO */
-/* ============================= */
-
-.typewriter::after{
-content:"|";
-margin-left:6px;
-animation:blink 1s infinite;
+.skill-tags span {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: 0.3s;
 }
 
-@keyframes blink{
-0%,100%{opacity:0}
-50%{opacity:1}
+.card:hover .skill-tags span {
+    border-color: rgba(42, 123, 255, 0.2);
+    color: var(--text);
 }
 
-/* ============================= */
-/* PARALLAX */
-/* ============================= */
-
-.hero{
-position:relative;
-z-index:2;
-transform:translateZ(0);
+/* --- ANIMATIONS --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ============================= */
-/* TOOL ICONS SVG STYLE */
-/* ============================= */
-
-.tool svg{
-width:22px;
-height:22px;
-margin-right:8px;
-fill:var(--accent);
-transition:.35s;
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.tool{
-display:flex;
-align-items:center;
-gap:8px;
+.typewriter::after {
+    content: "_";
+    animation: blink 0.8s infinite;
+    color: var(--accent);
 }
 
-.tool:hover svg{
-transform:scale(1.2) rotate(6deg);
-filter:drop-shadow(0 0 10px var(--accent));
-}
-
-/* ============================= */
-/* SCROLL GLOW */
-/* ============================= */
-
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-right:0;
-height:200px;
-background:linear-gradient(
-to bottom,
-rgba(42,123,255,.15),
-transparent
-);
-pointer-events:none;
-opacity:.3;
-transition:.3s;
-z-index:1;
-}
-
-/* ============================= */
-/* PREMIUM MICRO ANIMATIONS */
-/* ============================= */
-
-.card{
-transition:
-transform .4s cubic-bezier(.22,1,.36,1),
-box-shadow .4s;
-}
-
-.card:hover{
-transform:translateY(-12px) scale(1.02);
-box-shadow:
-0 20px 60px rgba(0,0,0,.6),
-0 0 50px rgba(42,123,255,.18);
-}
+@keyframes blink { 50% { opacity: 0; } }
