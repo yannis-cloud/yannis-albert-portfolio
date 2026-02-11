@@ -6,7 +6,185 @@
     <title>Yannis Albert — Portfolio Ingénieur</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap">
-    <link rel="stylesheet" href="assets/style.css">
+    
+    <style>
+        :root {
+            --bg: #03050a;
+            --card: rgba(12, 17, 27, 0.7);
+            --accent: #2A7BFF;
+            --accent2: #00D4FF;
+            --text: #e6edf3;
+            --text-muted: #8892b0;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- EFFET NOISE & MESH --- */
+        .noise {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: .06;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .mesh {
+            position: fixed;
+            inset: -30%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(42,123,255,0.15), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0,212,255,0.1), transparent 50%);
+            filter: blur(100px);
+            z-index: -1;
+        }
+
+        .cursor {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(42,123,255,0.08), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+        }
+
+        /* --- HEADER --- */
+        .header {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 20px 0;
+            background: rgba(3, 5, 10, 0.5);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+        }
+
+        .nav { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        .logo-box { perspective: 1000px; cursor: pointer; }
+        .logo {
+            font-weight: 800; font-size: 24px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text; color: transparent;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .logo-box:hover .logo { transform: rotateY(360deg) scale(1.1); }
+
+        .menu a {
+            margin-left: 25px; color: #8892b0;
+            text-decoration: none; font-size: 14px;
+            transition: 0.3s;
+        }
+        .menu a:hover { color: var(--accent); }
+
+        /* --- HERO AVEC PHOTO --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: space-between; gap: 50px; }
+        
+        .hero-text { flex: 1; }
+        .tag { color: var(--accent); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 13px; margin-bottom: 10px; }
+        .hero-title { font-size: clamp(40px, 6vw, 70px); line-height: 1.1; font-weight: 800; margin-bottom: 20px; }
+        .sub { font-size: 18px; color: #8892b0; max-width: 550px; }
+
+        /* PHOTO HALO EFFECT */
+        .photo-wrapper {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .photo-main {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background-image: url('assets/photo.jpg'); /* Assure-toi que le nom est correct */
+            background-size: cover;
+            background-position: center;
+            border: 2px solid var(--border);
+            z-index: 2;
+        }
+        .photo-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: conic-gradient(from 0deg, transparent, var(--accent), var(--accent2), transparent);
+            border-radius: 50%;
+            animation: rotateGlow 4s linear infinite;
+            filter: blur(15px);
+            opacity: 0.5;
+            z-index: 1;
+        }
+        @keyframes rotateGlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* --- CARDS & PROJETS --- */
+        .section { padding: 100px 0; }
+        h2 { font-size: 32px; margin-bottom: 40px; font-weight: 800; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s;
+            transform-style: preserve-3d;
+        }
+        .card:hover { border-color: rgba(42, 123, 255, 0.4); }
+
+        .project-img {
+            height: 180px; width: 100%;
+            border-radius: 12px; margin-bottom: 20px;
+        }
+        .card h3 { font-size: 22px; margin-bottom: 10px; }
+        .project-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; min-height: 60px; }
+
+        /* FOOTER CARD & BOUTON GITHUB */
+        .card-footer { display: flex; justify-content: space-between; align-items: center; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-tags span {
+            background: rgba(255,255,255,0.05);
+            padding: 5px 10px; border-radius: 8px;
+            font-size: 11px; border: 1px solid var(--border);
+        }
+        .btn-github {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 8px 15px; border-radius: 10px;
+            color: var(--text); text-decoration: none; font-size: 12px;
+            transition: 0.3s;
+        }
+        .btn-github:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
+
+        /* --- ANIMATIONS --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal.show { opacity: 1; transform: translateY(0); }
+        .typewriter::after { content: "|"; animation: blink 1s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* --- MOBILE --- */
+        @media (max-width: 900px) {
+            .hero { flex-direction: column-reverse; justify-content: center; text-align: center; height: auto; padding-top: 150px; }
+            .photo-wrapper { width: 220px; height: 220px; }
+            .photo-main { width: 190px; height: 190px; }
+        }
+    </style>
 </head>
 <body>
 
@@ -15,7 +193,7 @@
     <div class="cursor"></div>
 
     <header class="header">
-        <div class="container nav">
+        <div class="nav">
             <div class="logo-box"><div class="logo">YA</div></div>
             <nav class="menu">
                 <a href="#about">Bio</a>
@@ -28,20 +206,35 @@
 
     <main id="smooth-content">
         <section class="hero container">
-            <div class="hero-flex">
-                <div class="hero-text">
-                    <p class="tag reveal">Ingénieur Systèmes Numériques</p>
-                    <h1 class="hero-title reveal">
-                        <span class="typewriter" id="typewriter"></span>
-                    </h1>
-                    <p class="sub reveal">
-                        Expertise en <b>Metaverse Industriel</b>, Data Architecture et IA appliquée au sein du Groupe Renault. Je pilote la transformation digitale par la donnée.
-                    </p>
+            <div class="hero-text">
+                <p class="tag reveal">Ingénieur Systèmes Numériques</p>
+                <h1 class="hero-title reveal">
+                    <span class="typewriter" id="typewriter"></span>
+                </h1>
+                <p class="sub reveal">
+                    Expertise en <b>Metaverse Industriel</b>, Data Architecture et IA appliquée au sein du Groupe Renault. Je pilote la transformation digitale par la donnée.
+                </p>
+            </div>
+            
+            <div class="photo-wrapper reveal tilt">
+                <div class="photo-glow"></div>
+                <div class="photo-main"></div>
+            </div>
+        </section>
+
+        <section id="about" class="container section">
+            <div class="grid">
+                <div class="card reveal tilt">
+                    <div class="card-content">
+                        <h2>Mon Profil</h2>
+                        <p>Ingénieur spécialisé en systèmes numériques, j'évolue à l'interface entre enjeux métiers et systèmes d'information industriels.</p>
+                    </div>
                 </div>
-                
-                <div class="photo-wrapper reveal tilt">
-                    <div class="photo-halo"></div>
-                    <div class="photo-main" style="background-image: url('assets/photo.jpg');"></div>
+                <div class="card reveal tilt">
+                    <div class="card-content">
+                        <h3>Focus Actuel</h3>
+                        <p>Optimisation de la performance industrielle via la transformation digitale data-driven et l'IA.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -54,9 +247,9 @@
                     <div class="card-content">
                         <div class="project-img" style="background:linear-gradient(45deg, #1e3a8a, #2563eb)"></div>
                         <h3>PariData — Smart City</h3>
-                        <p class="project-desc">Analyse prédictive via l'Open Data. Mise en place d'une architecture de données pour modéliser les flux urbains et optimiser la prise de décision en temps réel.</p>
+                        <p class="project-desc">Modélisation prédictive via l'Open Data. Mise en place d'une architecture de données pour optimiser les flux urbains.</p>
                         <div class="card-footer">
-                            <div class="skill-tags"><span>Python</span><span>Big Data</span></div>
+                            <div class="skill-tags"><span>Python</span><span>Analytics</span></div>
                             <a href="#" class="btn-github">GitHub</a>
                         </div>
                     </div>
@@ -66,7 +259,7 @@
                     <div class="card-content">
                         <div class="project-img" style="background:linear-gradient(45deg, #064e3b, #059669)"></div>
                         <h3>IoT Behavior Auth</h3>
-                        <p class="project-desc">Système d'authentification biométrique utilisant le Machine Learning et des capteurs IoT (M5Stack). Analyse des mouvements pour sécuriser les accès industriels.</p>
+                        <p class="project-desc">Système d'authentification biométrique par Machine Learning utilisant des capteurs IoT (M5Stack).</p>
                         <div class="card-footer">
                             <div class="skill-tags"><span>IoT</span><span>IA</span></div>
                             <a href="#" class="btn-github">GitHub</a>
@@ -78,8 +271,22 @@
         </section>
 
         <section id="experience" class="container section">
-             </section>
+            <h2 class="reveal">Parcours</h2>
+            <div class="card reveal tilt" style="margin-bottom: 20px;">
+                <div class="card-content">
+                    <div style="display:flex; justify-content:space-between;">
+                        <h3>Renault Group — Pilote Projet Digital</h3>
+                        <span>2024 — Présent</span>
+                    </div>
+                    <p style="color:var(--accent); margin-bottom: 10px;">Metaverse Industriel / OT</p>
+                    <p class="project-desc">Pilotage de projets data-driven et automatisation de dashboards Power BI.</p>
+                </div>
+            </div>
+        </section>
 
+        <footer class="container" style="padding: 50px 0; text-align: center; color: #444;">
+            <p>Yannis Albert — yannis.albert78@gmail.com</p>
+        </footer>
     </main>
 
     <script src="assets/js/main.js"></script>
