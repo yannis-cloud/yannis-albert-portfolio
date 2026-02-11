@@ -174,3 +174,107 @@ transition:all .8s cubic-bezier(.22,1,.36,1);
 opacity:1;
 transform:translateY(0);
 }
+/* ============================= */
+/* GOD MODE CURSOR */
+/* ============================= */
+
+.cursor{
+position:fixed;
+width:280px;
+height:280px;
+border-radius:50%;
+pointer-events:none;
+background:radial-gradient(circle,
+rgba(42,123,255,.25),
+transparent 60%);
+filter:blur(60px);
+z-index:0;
+transform:translate(-50%,-50%);
+}
+
+/* ============================= */
+/* TYPEWRITER HERO */
+/* ============================= */
+
+.typewriter::after{
+content:"|";
+margin-left:6px;
+animation:blink 1s infinite;
+}
+
+@keyframes blink{
+0%,100%{opacity:0}
+50%{opacity:1}
+}
+
+/* ============================= */
+/* PARALLAX */
+/* ============================= */
+
+.hero{
+position:relative;
+z-index:2;
+transform:translateZ(0);
+}
+
+/* ============================= */
+/* TOOL ICONS SVG STYLE */
+/* ============================= */
+
+.tool svg{
+width:22px;
+height:22px;
+margin-right:8px;
+fill:var(--accent);
+transition:.35s;
+}
+
+.tool{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.tool:hover svg{
+transform:scale(1.2) rotate(6deg);
+filter:drop-shadow(0 0 10px var(--accent));
+}
+
+/* ============================= */
+/* SCROLL GLOW */
+/* ============================= */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+right:0;
+height:200px;
+background:linear-gradient(
+to bottom,
+rgba(42,123,255,.15),
+transparent
+);
+pointer-events:none;
+opacity:.3;
+transition:.3s;
+z-index:1;
+}
+
+/* ============================= */
+/* PREMIUM MICRO ANIMATIONS */
+/* ============================= */
+
+.card{
+transition:
+transform .4s cubic-bezier(.22,1,.36,1),
+box-shadow .4s;
+}
+
+.card:hover{
+transform:translateY(-12px) scale(1.02);
+box-shadow:
+0 20px 60px rgba(0,0,0,.6),
+0 0 50px rgba(42,123,255,.18);
+}
