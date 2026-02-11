@@ -1,95 +1,114 @@
-/* ============================= */
-/* CURSOR GLOW */
-/* ============================= */
-const cursor=document.querySelector(".cursor");
+/* ==========================================================================
+   ELDORA INTERACTIVE ENGINE - YANNIS ALBERT
+   ========================================================================== */
 
-document.addEventListener("mousemove",e=>{
-cursor.style.left=e.clientX+"px";
-cursor.style.top=e.clientY+"px";
-});
+document.addEventListener('DOMContentLoaded', () => {
 
-/* ============================= */
-/* TYPEWRITER HERO */
-/* ============================= */
-const text="Hi, I'm Yannis Albert — Cloud & Data Engineer";
-const target=document.querySelector(".typewriter");
+    // 1. GESTION DU CURSEUR CINÉMATIQUE
+    const cursor = document.querySelector('.cursor');
+    document.addEventListener('mousemove', (e) => {
+        // Animation fluide du halo suivant la souris
+        cursor.animate({
+            left: `${e.clientX}px`,
+            top: `${e.clientY}px`
+        }, { duration: 500, fill: "forwards" });
+    });
 
-let i=0;
-function type(){
-if(i<text.length){
-target.textContent+=text.charAt(i);
-i++;
-setTimeout(type,45);
-}
-}
-type();
+    // 2. LOGO YA ANIMATION (Perspective réelle)
+    const logoBox = document.querySelector('.logo-box');
+    const logo = document.querySelector('.logo');
+    
+    logoBox.addEventListener('mouseenter', () => {
+        logo.style.transform = "rotateY(360deg) scale(1.15)";
+    });
+    
+    logoBox.addEventListener('mouseleave', () => {
+        logo.style.transform = "rotateY(0deg) scale(1)";
+    });
 
-/* ============================= */
-/* REVEAL */
-/* ============================= */
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("show");
-}
-});
-},{threshold:.15});
+    // 3. EFFET TYPEWRITER (Profil spécifique Renault/Data)
+    const typewriterElement = document.getElementById("typewriter");
+    const phrases = ["Cloud & Data Engineer.", "Metaverse Specialist.", "AI Solutions Architect."];
+    let phraseIndex = 0;
+    let charIndex = 0;
 
-document.querySelectorAll(".reveal").forEach(el=>{
-observer.observe(el);
-});
+    function type() {
+        if (charIndex < phrases[phraseIndex].length) {
+            typewriterElement.textContent += phrases[phraseIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, 100);
+        } else {
+            // Pause avant d'effacer ou de changer (optionnel)
+            // Pour l'instant on reste sur la première phrase comme demandé
+        }
+    }
+    type();
 
-/* ============================= */
-/* NAVBAR HIGHLIGHT */
-/* ============================= */
-const sections=document.querySelectorAll("section");
-const navLinks=document.querySelectorAll(".menu a");
+    // 4. 3D TILT CARDS (Perspective Eldora)
+    const cards = document.querySelectorAll('.tilt');
+    
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left; // position x dans l'élément
+            const y = e.clientY - rect.top;  // position y dans l'élément
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Calcul de la rotation (max 10 degrés)
+            const rotateX = (centerY - y) / 15;
+            const rotateY = (x - centerX) / 15;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        });
+    });
 
-window.addEventListener("scroll",()=>{
-let current="";
-sections.forEach(section=>{
-const sectionTop=section.offsetTop-150;
-if(scrollY>=sectionTop){
-current=section.getAttribute("id");
-}
-});
+    // 5. INERTIE DE SCROLL (Smooth Scroll Engine)
+    let currentScroll = 0;
+    let targetScroll = 0;
+    const ease = 0.075; // Facteur de fluidité (plus petit = plus lent)
+    const content = document.getElementById('smooth-content');
 
-navLinks.forEach(a=>{
-a.classList.remove("active");
-if(a.getAttribute("href")==="#"+current){
-a.classList.add("active");
-}
-});
-});
+    function updateScroll() {
+        targetScroll = window.scrollY;
+        currentScroll += (targetScroll - currentScroll) * ease;
+        
+        if (content) {
+            content.style.transform = `translateY(${-currentScroll}px)`;
+        }
+        
+        // Ajustement de la hauteur du body pour permettre le scroll
+        document.body.style.height = `${content.getBoundingClientRect().height}px`;
+        
+        requestAnimationFrame(updateScroll);
+    }
 
-/* ============================= */
-/* PROGRESS BAR */
-/* ============================= */
-const progress=document.querySelector(".progress");
+    // Activer l'inertie seulement sur les écrans larges (Desktop)
+    if (window.innerWidth > 1024) {
+        document.getElementById('smooth-wrapper').style.display = 'block';
+        updateScroll();
+    } else {
+        // Mode normal pour mobile
+        document.getElementById('smooth-wrapper').style.position = 'relative';
+    }
 
-window.addEventListener("scroll",()=>{
-const totalHeight=document.body.scrollHeight-window.innerHeight;
-const progressHeight=(window.pageYOffset/totalHeight)*100;
-progress.style.width=progressHeight+"%";
-});
+    // 6. REVEAL ON SCROLL (Observer)
+    const revealCallback = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    };
 
-/* ============================= */
-/* SPOTLIGHT CARDS */
-/* ============================= */
-document.querySelectorAll(".spotlight").forEach(card=>{
-card.addEventListener("mousemove",e=>{
-const rect=card.getBoundingClientRect();
-card.style.setProperty("--x", e.clientX-rect.left+"px");
-card.style.setProperty("--y", e.clientY-rect.top+"px");
-});
-});
+    const revealObserver = new IntersectionObserver(revealCallback, {
+        threshold: 0.15
+    });
 
-/* ============================= */
-/* REAL PARALLAX SCROLL */
-/* ============================= */
-const mesh=document.querySelector(".mesh");
-
-window.addEventListener("scroll",()=>{
-const offset=window.scrollY*0.3;
-mesh.style.transform=`translateY(${offset}px)`;
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 });
