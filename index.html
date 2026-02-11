@@ -1,307 +1,90 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Yannis Albert — Portfolio</title>
-  <meta name="description" content="Ingénieur systèmes numériques — Projets Data & IA appliqués (Industrie). Portfolio, expériences, projets, contact." />
-  <link rel="stylesheet" href="assets/css/style.css" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Yannis Albert — Portfolio</title>
+<link rel="stylesheet" href="assets/style.css"/>
 </head>
 
 <body>
-  <!-- Background decor -->
-  <div class="bg-glow" aria-hidden="true"></div>
 
-  <!-- Header / Nav -->
-  <header class="header">
-    <a class="brand" href="#home" aria-label="Retour en haut">
-      <span class="brand-dot"></span>
-      <span>Yannis Albert</span>
-    </a>
+<header class="header">
+  <div class="container nav">
+    <div class="logo">YA</div>
 
-    <nav class="nav" aria-label="Navigation principale">
-      <a href="#home">Home</a>
+    <nav class="menu">
       <a href="#about">About</a>
-      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Tools</a>
       <a href="#contact">Contact</a>
-      <a class="btn btn--ghost" href="assets/Yannis-Albert-CV.pdf" target="_blank" rel="noreferrer">CV</a>
     </nav>
-
-    <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </header>
-
-  <!-- Mobile menu -->
-  <div class="mobile-nav" hidden>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#experience">Expérience</a>
-    <a href="#work">Work</a>
-    <a href="#skills">Skills</a>
-    <a href="#education">Formation</a>
-    <a href="#contact">Contact</a>
-    <a href="assets/Yannis-Albert-CV.pdf" target="_blank" rel="noreferrer">Ouvrir le CV</a>
   </div>
+</header>
 
-  <main class="container" id="home">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero__left">
-        <p class="kicker">Ingénieur systèmes numériques</p>
-        <h1>
-          Projets <span class="accent">Data</span> & <span class="accent">IA</span> appliqués à l’industrie.
-        </h1>
-        <p class="lead">
-          Alternant en transformation digitale data-driven : cadrage métier, gouvernance data,
-          dashboards (Power BI) et amélioration continue des processus.
-        </p>
+<main>
 
-        <div class="cta">
-          <a class="btn" href="#work">Voir mes projets</a>
-          <a class="btn btn--ghost" href="#contact">Me contacter</a>
-        </div>
+<section class="hero container">
+  <div class="hero-text reveal">
+    <p class="tag">Cloud & Data Engineer</p>
+    <h1>Hi, I'm <span class="gradient">Yannis Albert</span></h1>
+    <p class="sub">
+      Building scalable cloud & data solutions with modern tools.
+    </p>
+  </div>
+</section>
 
-        <div class="chips" aria-label="Domaines">
-          <span class="chip">Pilotage projet</span>
-          <span class="chip">Data management</span>
-          <span class="chip">Power BI</span>
-          <span class="chip">Industrie 4.0</span>
-        </div>
-      </div>
+<section id="about" class="container section">
+  <div class="reveal">
+    <h2>About me</h2>
+    <p>
+      Passionate about cloud, data engineering and automation.
+      I build modern scalable infrastructures.
+    </p>
+  </div>
+</section>
 
-      <div class="hero__right">
-        <!-- Remplace par ta photo -->
-        <div class="avatar">
-          <img src="assets/img/profile.jpg" alt="Photo de Yannis Albert" />
-        </div>
+<section id="projects" class="container section">
+<h2 class="reveal">Projects</h2>
 
-        <div class="mini-cards">
-          <div class="card">
-            <p class="muted">Actuellement</p>
-            <p><strong>Pilote Projet Digital</strong></p>
-            <p class="muted">Renault Group — OT & Maintenance</p>
-          </div>
-          <div class="card">
-            <p class="muted">Localisation</p>
-            <p><strong>Île-de-France</strong></p>
-            <p class="muted">Permis B</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<div class="grid">
 
-    <!-- ABOUT -->
-    <section class="section" id="about">
-      <div class="section__head">
-        <h2>About</h2>
-        <p class="muted">Ce que je fais et comment je travaille.</p>
-      </div>
+  <article class="card project reveal">
+    <img src="assets/parisdata-dashboard.png"/>
+    <h3>Paris Data Dashboard</h3>
+    <p>Dashboard data visualisation.</p>
+  </article>
 
-      <div class="grid-2">
-        <div class="card">
-          <h3>À propos</h3>
-          <p>
-            Ingénieur orienté systèmes numériques et data, habitué à évoluer à l’interface
-            entre enjeux métiers, outils IT et production. Mon objectif : transformer des données
-            brutes en indicateurs fiables et actionnables.
-          </p>
-        </div>
+  <article class="card project reveal">
+    <img src="assets/parisdata-dashboard.png"/>
+    <h3>Cloud Automation</h3>
+    <p>Infra as Code project.</p>
+  </article>
 
-        <div class="card">
-          <h3>En bref</h3>
-          <ul class="list">
-            <li><strong>Data-driven</strong> : KPIs, référentiels, règles de calcul, fiabilisation</li>
-            <li><strong>Delivery</strong> : dashboards Power BI, automatisation, réduction du manuel</li>
-            <li><strong>Industrie</strong> : coordination conception / méthodes / production</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+</div>
+</section>
 
-    <!-- EXPERIENCE -->
-    <section class="section" id="experience">
-      <div class="section__head">
-        <h2>Expérience</h2>
-        <p class="muted">Timeline (sélection).</p>
-      </div>
+<section id="skills" class="container section">
+<h2 class="reveal">Tools</h2>
 
-      <div class="timeline">
-        <article class="timeline__item card">
-          <div class="timeline__top">
-            <h3>Pilote Projet Digital — Renault Group</h3>
-            <span class="tag">Sept. 2024 → Aujourd’hui</span>
-          </div>
-          <p class="muted">Direction Metaverse Industriel / Operational Technology & Maintenance (Guyancourt)</p>
-          <ul class="list">
-            <li>Pilotage de projets digitaux data-driven en environnement industriel complexe</li>
-            <li>Structuration / gouvernance des données, amélioration de la qualité des indicateurs</li>
-            <li>Dashboards décisionnels Power BI + standards data (KPIs, règles, référentiels)</li>
-          </ul>
-        </article>
+<div class="tools">
 
-        <article class="timeline__item card">
-          <div class="timeline__top">
-            <h3>Ingénieur Bureau d’Études — Soudotique</h3>
-            <span class="tag">Sept. 2023 → Août 2024</span>
-          </div>
-          <p class="muted">PME industrielle (Bazainville)</p>
-          <ul class="list">
-            <li>Conception industrielle : faisabilité → intégration production</li>
-            <li>Amélioration continue, digitalisation de la doc technique</li>
-            <li>Support production et structuration de standards internes (ISO 9001)</li>
-          </ul>
-        </article>
-      </div>
-    </section>
+<div class="tool reveal">Azure</div>
+<div class="tool reveal">Python</div>
+<div class="tool reveal">Docker</div>
+<div class="tool reveal">Terraform</div>
+<div class="tool reveal">SQL</div>
 
-    <!-- WORK -->
-    <section class="section" id="work">
-      <div class="section__head">
-        <h2>Featured Work</h2>
-        <p class="muted">Quelques projets sélectionnés.</p>
-      </div>
+</div>
+</section>
 
-      <div class="cards-3">
-        <article class="card project">
-          <div class="thumb" aria-hidden="true"></div>
-          <h3>PariData — Open Data & Smart City</h3>
-          <p class="muted">
-            Projet data & IA : collecte, nettoyage, modèle prédictif et dashboard interactif.
-          </p>
-          <div class="badges">
-            <span class="badge">Power BI</span><span class="badge">Data</span><span class="badge">Prédiction</span>
-          </div>
-          <div class="project__links">
-            <a class="link" href="projects/paridata.html">Voir le détail</a>
-          </div>
-        </article>
+<section id="contact" class="container section reveal">
+<h2>Contact</h2>
+<p>contact@email.com</p>
+</section>
 
-        <article class="card project">
-          <div class="thumb" aria-hidden="true"></div>
-          <h3>Authentification comportementale — IoT & IA</h3>
-          <p class="muted">
-            Capteurs embarqués, features, reconnaissance de patterns, approche Edge AI.
-          </p>
-          <div class="badges">
-            <span class="badge">Python</span><span class="badge">IoT</span><span class="badge">Edge AI</span>
-          </div>
-          <div class="project__links">
-            <a class="link" href="https://github.com/yannis-cloud/Behavioral-Authentication-on-M5Stack-Tab5" target="_blank" rel="noreferrer">
-              GitHub
-            </a>
-          </div>
-        </article>
+</main>
 
-        <article class="card project">
-          <div class="thumb" aria-hidden="true"></div>
-          <h3>Dashboards industriels (Power BI)</h3>
-          <p class="muted">
-            Standards KPI, fiabilisation des sources, automatisation et pilotage performance.
-          </p>
-          <div class="badges">
-            <span class="badge">DAX</span><span class="badge">Gouvernance</span><span class="badge">Data Viz</span>
-          </div>
-          <div class="project__links">
-            <a class="link" href="#contact">Me demander des exemples</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="section" id="skills">
-      <div class="section__head">
-        <h2>Tools I’m using</h2>
-        <p class="muted">Stack & compétences.</p>
-      </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <h3>Data</h3>
-          <div class="pillbox">
-            <span class="pill">Power BI</span><span class="pill">Tableau</span><span class="pill">DAX</span>
-            <span class="pill">SQL</span><span class="pill">Python</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Dev</h3>
-          <div class="pillbox">
-            <span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">Node.js</span>
-            <span class="pill">C</span><span class="pill">Arduino</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Industrie</h3>
-          <div class="pillbox">
-            <span class="pill">MS Project</span><span class="pill">Pack Office</span>
-            <span class="pill">SolidWorks</span><span class="pill">3DEXPERIENCE</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section class="section" id="education">
-      <div class="section__head">
-        <h2>Formation</h2>
-        <p class="muted">Parcours académique.</p>
-      </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <h3>École d’ingénieur — Systèmes Numériques pour l’Industrie</h3>
-          <p class="muted">ISTY (Paris-Saclay) & CNAM — 2023 → 2026</p>
-          <p>Industrie 4.0, IoT, systèmes embarqués, big data, ML, cybersécurité, lean.</p>
-        </div>
-
-        <div class="card">
-          <h3>Licence Physique MSD</h3>
-          <p class="muted">Université Paris-Saclay — 2019 → 2023</p>
-          <p>Mécanique / signaux / données, optimisation, Python & data engineering.</p>
-        </div>
-
-        <div class="card">
-          <h3>DUT GEII</h3>
-          <p class="muted">IUT de Vélizy — 2018 → 2019</p>
-          <p>Génie électrique & informatique industrielle.</p>
-        </div>
-
-        <div class="card">
-          <h3>Langues</h3>
-          <p><strong>Anglais</strong> : B2 (Emerald Cultural Institute, Dublin)</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <div class="section__head">
-        <h2>Contact</h2>
-        <p class="muted">Une question, une proposition, un projet ?</p>
-      </div>
-
-      <div class="card contact">
-        <div>
-          <p class="muted">Email</p>
-          <p class="big"><a class="link" href="mailto:yannis.albert78@gmail.com">yannis.albert78@gmail.com</a></p>
-          <p class="muted">Téléphone : 06 67 10 71 17</p>
-        </div>
-        <div class="contact__links">
-          <a class="btn" href="mailto:yannis.albert78@gmail.com">Envoyer un email</a>
-          <a class="btn btn--ghost" href="https://github.com/yannis-cloud" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="btn btn--ghost" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
-        </div>
-      </div>
-
-      <footer class="footer">
-        <p class="muted">© <span id="year"></span> — Yannis Albert</p>
-      </footer>
-    </section>
-  </main>
-
-  <script src="assets/js/main.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
