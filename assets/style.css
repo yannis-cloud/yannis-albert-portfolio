@@ -4,13 +4,12 @@
 
 :root {
     --bg: #03050a;
-    --card: rgba(12, 17, 27, 0.6);
+    --card: rgba(12, 17, 27, 0.7);
     --accent: #2A7BFF;
     --accent2: #00D4FF;
     --text: #e6edf3;
     --text-muted: #8892b0;
     --border: rgba(255, 255, 255, 0.08);
-    --glass: backdrop-filter: blur(20px) saturate(180%);
 }
 
 * {
@@ -19,18 +18,19 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     color: var(--text);
     background: var(--bg);
     overflow-x: hidden;
     line-height: 1.6;
-    background-image: 
-        radial-gradient(circle at 10% 20%, rgba(42, 123, 255, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.05) 0%, transparent 40%);
 }
 
-/* --- CINEMATIC NOISE --- */
+/* --- CINEMATIC EFFECTS --- */
 .noise {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -40,7 +40,16 @@ body {
     z-index: 9999;
 }
 
-/* --- MESH & CURSOR GLOW --- */
+.mesh {
+    position: fixed;
+    inset: -30%;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(42,123,255,0.15), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0,212,255,0.1), transparent 50%);
+    filter: blur(100px);
+    z-index: -1;
+}
+
 .cursor {
     position: fixed;
     width: 350px;
@@ -53,126 +62,77 @@ body {
     will-change: transform;
 }
 
-/* --- SCROLL INERTIA WRAPPER --- */
-#smooth-wrapper {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    overflow: hidden;
-}
-
-#smooth-content {
-    will-change: transform;
-    padding-bottom: 100px;
-}
-
-/* --- LAYOUT --- */
-.container {
-    max-width: 1150px;
-    margin: 0 auto;
-    padding: 0 30px;
-}
-
-/* --- HEADER & ANIMATED LOGO --- */
-.header {
-    position: fixed;
-    top: 0; width: 100%;
-    padding: 25px 0;
-    z-index: 100;
-    border-bottom: 1px solid var(--border);
-    background: rgba(3, 5, 10, 0.7);
-    --glass;
-}
-
-.nav { display: flex; justify-content: space-between; align-items: center; }
-
-.logo-box { perspective: 1000px; cursor: pointer; }
-
-.logo {
-    font-weight: 800; font-size: 26px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text; color: transparent;
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    letter-spacing: -1px;
-}
-
-/* --- HERO SECTION --- */
-.hero {
-    height: 100vh;
+/* --- PHOTO & HALO ROTATIF --- */
+.photo-wrapper {
+    position: relative;
+    width: 300px;
+    height: 300px;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
-.tag {
-    color: var(--accent);
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-size: 12px;
-    margin-bottom: 15px;
+.photo-main {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background-image: url('photo.jpg'); /* Vérifie bien le chemin */
+    background-size: cover;
+    background-position: center;
+    border: 2px solid var(--border);
+    z-index: 2;
+    position: relative;
 }
 
-.hero-title {
-    font-size: clamp(45px, 9vw, 90px);
-    line-height: 1.05;
-    font-weight: 800;
-    letter-spacing: -3px;
-    margin-bottom: 25px;
+.photo-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(from 0deg, transparent, var(--accent), var(--accent2), transparent);
+    border-radius: 50%;
+    animation: rotateGlow 4s linear infinite;
+    filter: blur(15px);
+    opacity: 0.5;
+    z-index: 1;
 }
 
-/* --- CARDS & ELDORA STYLE --- */
-.section { padding: 120px 0; }
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+@keyframes rotateGlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
+/* --- CARDS STYLE --- */
 .card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 28px;
-    padding: 40px;
+    padding: 35px;
     position: relative;
     overflow: hidden;
     transform-style: preserve-3d;
     transition: border-color 0.4s ease;
-    --glass;
+    backdrop-filter: blur(20px);
 }
 
 .card:hover {
     border-color: rgba(42, 123, 255, 0.5);
 }
 
-.card h3 {
-    font-size: 22px;
-    margin-bottom: 15px;
-    font-weight: 700;
-}
-
-/* --- TAGS & SKILLS --- */
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 20px;
+    gap: 10px;
+    margin-top: 15px;
 }
 
 .skill-tags span {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border);
-    padding: 6px 14px;
+    padding: 5px 12px;
     border-radius: 10px;
-    font-size: 12px;
-    font-weight: 500;
+    font-size: 11px;
     color: var(--text-muted);
-    transition: 0.3s;
-}
-
-.card:hover .skill-tags span {
-    border-color: rgba(42, 123, 255, 0.2);
-    color: var(--text);
 }
 
 /* --- ANIMATIONS --- */
@@ -194,80 +154,9 @@ body {
 }
 
 @keyframes blink { 50% { opacity: 0; } }
-/* --- LAYOUT HERO FLEX POUR LA PHOTO --- */
-.hero-flex {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 50px;
-    padding-top: 100px;
-}
 
-/* PHOTO DE PROFIL HALO */
-.photo-wrapper {
-    position: relative;
-    width: 320px;
-    height: 320px;
-    flex-shrink: 0;
-}
-
-.photo-main {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-size: cover;
-    background-position: center;
-    border: 2px solid var(--border);
-    position: relative;
-    z-index: 2;
-}
-
-.photo-halo {
-    position: absolute;
-    inset: -15px;
-    background: radial-gradient(circle, var(--accent), transparent 70%);
-    border-radius: 50%;
-    opacity: 0.15;
-    animation: pulse-glow 4s infinite ease-in-out;
-}
-
-@keyframes pulse-glow {
-    0%, 100% { transform: scale(1); opacity: 0.15; }
-    50% { transform: scale(1.1); opacity: 0.25; }
-}
-
-/* FOOTER DES CARDS PROJETS */
-.project-desc {
-    font-size: 14px;
-    color: #8892b0;
-    margin: 15px 0;
-    min-height: 60px;
-}
-
-.card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.btn-github {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border);
-    padding: 8px 16px;
-    border-radius: 12px;
-    color: var(--text);
-    text-decoration: none;
-    font-size: 13px;
-    transition: 0.3s;
-}
-
-.btn-github:hover {
-    background: var(--accent);
-    border-color: var(--accent);
-    transform: translateY(-2px);
-}
-
+/* --- RESPONSIVE --- */
 @media (max-width: 900px) {
-    .hero-flex { flex-direction: column-reverse; text-align: center; }
+    .photo-wrapper { width: 220px; height: 220px; margin-bottom: 30px; }
+    .photo-main { width: 190px; height: 190px; }
 }
