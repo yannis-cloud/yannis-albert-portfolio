@@ -14,7 +14,6 @@
             --accent: #2A7BFF;
             --accent2: #00D4FF;
             --text: #e6edf3;
-            --text-muted: #8892b0;
             --glass: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.08);
         }
@@ -29,7 +28,7 @@
             line-height: 1.6;
         }
 
-        /* --- EFFET NOISE & MESH --- */
+        /* --- EFFET NOISE CINEMATIC --- */
         .noise {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -39,6 +38,7 @@
             z-index: 9999;
         }
 
+        /* --- MESH & CURSOR --- */
         .mesh {
             position: fixed;
             inset: -30%;
@@ -61,7 +61,11 @@
             transition: transform 0.1s ease-out;
         }
 
-        /* --- HEADER --- */
+        /* --- LAYOUT --- */
+        #smooth-content { will-change: transform; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        /* --- HEADER & LOGO YA --- */
         .header {
             position: fixed;
             top: 0; width: 100%;
@@ -72,7 +76,7 @@
             z-index: 100;
         }
 
-        .nav { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .nav { display: flex; justify-content: space-between; align-items: center; }
         
         .logo-box { perspective: 1000px; cursor: pointer; }
         .logo {
@@ -90,51 +94,17 @@
         }
         .menu a:hover { color: var(--accent); }
 
-        /* --- HERO AVEC PHOTO --- */
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .hero { height: 100vh; display: flex; align-items: center; justify-content: space-between; gap: 50px; }
-        
-        .hero-text { flex: 1; }
+        /* --- HERO --- */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; }
         .tag { color: var(--accent); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 13px; margin-bottom: 10px; }
-        .hero-title { font-size: clamp(40px, 6vw, 70px); line-height: 1.1; font-weight: 800; margin-bottom: 20px; }
-        .sub { font-size: 18px; color: #8892b0; max-width: 550px; }
+        .hero-title { font-size: clamp(40px, 8vw, 80px); line-height: 1.1; font-weight: 800; margin-bottom: 20px; }
+        .sub { font-size: 18px; color: #8892b0; max-width: 600px; }
 
-        /* PHOTO HALO EFFECT */
-        .photo-wrapper {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .photo-main {
-            width: 260px;
-            height: 260px;
-            border-radius: 50%;
-            background-image: url('assets/photo.jpg'); /* Assure-toi que le nom est correct */
-            background-size: cover;
-            background-position: center;
-            border: 2px solid var(--border);
-            z-index: 2;
-        }
-        .photo-glow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: conic-gradient(from 0deg, transparent, var(--accent), var(--accent2), transparent);
-            border-radius: 50%;
-            animation: rotateGlow 4s linear infinite;
-            filter: blur(15px);
-            opacity: 0.5;
-            z-index: 1;
-        }
-        @keyframes rotateGlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-        /* --- CARDS & PROJETS --- */
+        /* --- CARDS & ELDORA STYLE --- */
         .section { padding: 100px 0; }
         h2 { font-size: 32px; margin-bottom: 40px; font-weight: 800; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         
         .card {
             background: var(--card);
@@ -148,42 +118,30 @@
         }
         .card:hover { border-color: rgba(42, 123, 255, 0.4); }
 
-        .project-img {
-            height: 180px; width: 100%;
-            border-radius: 12px; margin-bottom: 20px;
-        }
-        .card h3 { font-size: 22px; margin-bottom: 10px; }
-        .project-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; min-height: 60px; }
+        .card-content { transform: translateZ(30px); }
 
-        /* FOOTER CARD & BOUTON GITHUB */
-        .card-footer { display: flex; justify-content: space-between; align-items: center; }
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        /* --- SKILLS --- */
+        .skill-group h3 { color: var(--accent); margin-bottom: 15px; font-size: 18px; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
         .skill-tags span {
             background: rgba(255,255,255,0.05);
-            padding: 5px 10px; border-radius: 8px;
-            font-size: 11px; border: 1px solid var(--border);
+            padding: 6px 12px; border-radius: 8px;
+            font-size: 12px; border: 1px solid var(--border);
         }
-        .btn-github {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            padding: 8px 15px; border-radius: 10px;
-            color: var(--text); text-decoration: none; font-size: 12px;
-            transition: 0.3s;
+
+        /* --- PROJECTS --- */
+        .project-img {
+            height: 200px; width: 100%; background: #111;
+            border-radius: 12px; margin-bottom: 20px;
+            object-fit: cover;
         }
-        .btn-github:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
 
         /* --- ANIMATIONS --- */
         .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
         .reveal.show { opacity: 1; transform: translateY(0); }
+
         .typewriter::after { content: "|"; animation: blink 1s infinite; }
         @keyframes blink { 50% { opacity: 0; } }
-
-        /* --- MOBILE --- */
-        @media (max-width: 900px) {
-            .hero { flex-direction: column-reverse; justify-content: center; text-align: center; height: auto; padding-top: 150px; }
-            .photo-wrapper { width: 220px; height: 220px; }
-            .photo-main { width: 190px; height: 190px; }
-        }
     </style>
 </head>
 <body>
@@ -193,33 +151,26 @@
     <div class="cursor"></div>
 
     <header class="header">
-        <div class="nav">
+        <div class="container nav">
             <div class="logo-box"><div class="logo">YA</div></div>
             <nav class="menu">
                 <a href="#about">Bio</a>
-                <a href="#experience">Parcours</a>
+                <a href="#experience">Work</a>
                 <a href="#projects">Projets</a>
-                <a href="#skills">Outils</a>
+                <a href="#skills">Tools</a>
             </nav>
         </div>
     </header>
 
     <main id="smooth-content">
         <section class="hero container">
-            <div class="hero-text">
-                <p class="tag reveal">Ingénieur Systèmes Numériques</p>
-                <h1 class="hero-title reveal">
-                    <span class="typewriter" id="typewriter"></span>
-                </h1>
-                <p class="sub reveal">
-                    Expertise en <b>Metaverse Industriel</b>, Data Architecture et IA appliquée au sein du Groupe Renault. Je pilote la transformation digitale par la donnée.
-                </p>
-            </div>
-            
-            <div class="photo-wrapper reveal tilt">
-                <div class="photo-glow"></div>
-                <div class="photo-main"></div>
-            </div>
+            <p class="tag reveal">Ingénieur Systèmes Numériques</p>
+            <h1 class="hero-title reveal">
+                <span class="typewriter" id="typewriter"></span>
+            </h1>
+            <p class="sub reveal">
+                Expertise en <b>Metaverse Industriel</b>, Data Architecture et IA appliquée au sein du Groupe Renault[cite: 13, 17].
+            </p>
         </section>
 
         <section id="about" class="container section">
@@ -227,14 +178,79 @@
                 <div class="card reveal tilt">
                     <div class="card-content">
                         <h2>Mon Profil</h2>
-                        <p>Ingénieur spécialisé en systèmes numériques, j'évolue à l'interface entre enjeux métiers et systèmes d'information industriels.</p>
+                        <p>Ingénieur spécialisé en systèmes numériques, j'évolue à l'interface entre enjeux métiers et systèmes d'information industriels[cite: 3, 4].</p>
                     </div>
                 </div>
                 <div class="card reveal tilt">
                     <div class="card-content">
                         <h3>Focus Actuel</h3>
-                        <p>Optimisation de la performance industrielle via la transformation digitale data-driven et l'IA.</p>
+                        <p>Optimisation de la performance industrielle via la transformation digitale data-driven[cite: 14, 56].</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="container section">
+            <h2 class="reveal">Expertise & Compétences</h2>
+            <div class="grid">
+                <div class="card reveal tilt">
+                    <div class="skill-group">
+                        <h3>Data & IA</h3>
+                        <div class="skill-tags">
+                            <span>Power BI (DAX)</span><span>Python</span><span>SQL</span><span>Gouvernance Data</span><span>Machine Learning</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card reveal tilt">
+                    <div class="skill-group">
+                        <h3>Digital Industry</h3>
+                        <div class="skill-tags">
+                            <span>Metaverse Industriel</span><span>IoT</span><span>Lean Management</span><span>ISO 9001</span><span>Digital Twin</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card reveal tilt">
+                    <div class="skill-group">
+                        <h3>Dev & Systems</h3>
+                        <div class="skill-tags">
+                            <span>Node.js</span><span>C</span><span>Azure</span><span>Solidworks</span><span>Docker</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="container section">
+            <h2 class="reveal">Parcours Industriel</h2>
+            <div class="card reveal tilt" style="margin-bottom: 20px;">
+                <div class="card-content">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div>
+                            <h3>Renault Group — Pilote Projet Digital</h3>
+                            <p style="color:var(--accent)">Metaverse Industriel / OT & Maintenance</p>
+                        </div>
+                        <span>2024 — Présent</span>
+                    </div>
+                    <ul style="margin-top:15px; padding-left:20px; color:#8892b0; font-size:14px;">
+                        <li>Pilotage de projets data-driven en environnement complexe[cite: 14].</li>
+                        <li>Automatisation de dashboards décisionnels sous Power BI[cite: 15].</li>
+                        <li>Identification de cas d'usage IA pour l'aide à la décision[cite: 17].</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card reveal tilt">
+                <div class="card-content">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div>
+                            <h3>Soudotique — Ingénieur Bureau d'Études</h3>
+                            <p style="color:var(--accent)">PME Industrielle</p>
+                        </div>
+                        <span>2023 — 2024</span>
+                    </div>
+                    <ul style="margin-top:15px; padding-left:20px; color:#8892b0; font-size:14px;">
+                        <li>Digitalisation des outils et de la documentation technique[cite: 21].</li>
+                        <li>Interface entre conception, méthodes et production[cite: 22].</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -242,100 +258,93 @@
         <section id="projects" class="container section">
             <h2 class="reveal">Projets Sélectionnés</h2>
             <div class="grid">
-                
                 <article class="card reveal tilt">
                     <div class="card-content">
                         <div class="project-img" style="background:linear-gradient(45deg, #1e3a8a, #2563eb)"></div>
-                        <h3>PariData — Smart City</h3>
-                        <p class="project-desc">Modélisation prédictive via l'Open Data. Mise en place d'une architecture de données pour optimiser les flux urbains.</p>
-                        <div class="card-footer">
-                            <div class="skill-tags"><span>Python</span><span>Analytics</span></div>
-                            <a href="#" class="btn-github">GitHub</a>
-                        </div>
+                        <h3>PariData (Smart City)</h3>
+                        <p style="font-size:14px; color:#8892b0; margin-bottom:15px;">Exploitation de l'Open Data pour la modélisation prédictive en contexte Industrie 4.0[cite: 24, 25].</p>
+                        <div class="skill-tags"><span>Analytics</span><span>Python</span></div>
                     </div>
                 </article>
-
                 <article class="card reveal tilt">
                     <div class="card-content">
                         <div class="project-img" style="background:linear-gradient(45deg, #064e3b, #059669)"></div>
                         <h3>IoT Behavior Auth</h3>
-                        <p class="project-desc">Système d'authentification biométrique par Machine Learning utilisant des capteurs IoT (M5Stack).</p>
-                        <div class="card-footer">
-                            <div class="skill-tags"><span>IoT</span><span>IA</span></div>
-                            <a href="#" class="btn-github">GitHub</a>
-                        </div>
+                        <p style="font-size:14px; color:#8892b0; margin-bottom:15px;">Système d'authentification par IA à partir de capteurs IoT embarqués (M5Stack)[cite: 29, 31].</p>
+                        <div class="skill-tags"><span>IoT</span><span>IA</span><span>Security</span></div>
                     </div>
                 </article>
-
             </div>
         </section>
 
-      <section id="experience" class="container section">
-    <h2 class="reveal">Parcours Industriel</h2>
-    
-    <div class="experience-wrapper">
-        <div class="timeline-line"></div>
-
-        <div class="experience-stream">
-            <article class="card reveal tilt exp-card">
-                <div class="timeline-dot"></div> <div class="exp-badge">Poste Actuel</div>
-                <div class="card-content">
-                    <div class="exp-header">
-                        <div>
-                            <h3>Pilote Projet Digital — Renault Group</h3>
-                            <p class="exp-location">Metaverse Industriel | Guyancourt / Flins</p>
-                        </div>
-                        <span class="exp-date">2024 — Présent</span>
-                    </div>
-                    
-                    <div class="exp-body">
-                        <ul class="exp-list">
-                            <li><b>Metaverse Industriel :</b> Pilotage de cas d'usage pour l'optimisation de la performance.</li>
-                            <li><b>Architecture Data :</b> Automatisation de dashboards décisionnels Power BI (DAX).</li>
-                            <li><b>Intelligence Artificielle :</b> Spécification de besoins IA pour la maintenance préventive.</li>
-                        </ul>
-                    </div>
-                </div>
-            </article>
-
-            <article class="card reveal tilt exp-card">
-                <div class="timeline-dot"></div>
-                <div class="card-content">
-                    <div class="exp-header">
-                        <div>
-                            <h3>Ingénieur Bureau d'Études — Soudotique</h3>
-                            <p class="exp-location">PME de machines spéciales</p>
-                        </div>
-                        <span class="exp-date">2023 — 2024</span>
-                    </div>
-                    
-                    <div class="exp-body">
-                        <ul class="exp-list">
-                            <li><b>Digitalisation :</b> Mise en place d'outils collaboratifs et gestion documentaire.</li>
-                            <li><b>Conception Mécanique :</b> Modélisation et interface avec la production.</li>
-                        </ul>
-                    </div>
-                </div>
-            </article>
-        </div>
-    </div>
-</section>
-                
-                <div class="skill-tags">
-                    <span>SolidWorks</span><span>ERP</span><span>Project Management</span><span>Méthodes</span>
-                </div>
-            </div>
-        </article>
-    </div>
-</section>
-
         <footer class="container" style="padding: 50px 0; text-align: center; color: #444;">
-            <p>Yannis Albert — yannis.albert78@gmail.com</p>
+            <p>Yannis Albert — yannis.albert78@gmail.com [cite: 8]</p>
         </footer>
     </main>
 
-    <script src="assets/js/main.js"></script>
+    <script>
+        /* --- CURSOR FOLLOW --- */
+        const cursor = document.querySelector('.cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        /* --- TYPEWRITER --- */
+        const txt = "Data, Cloud & Industrial AI.";
+        let i = 0;
+        function type() {
+            if (i < txt.length) {
+                document.getElementById("typewriter").innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(type, 100);
+            }
+        }
+        type();
+
+        /* --- 3D TILT EFFECT --- */
+        document.querySelectorAll('.tilt').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            });
+        });
+
+        /* --- REVEAL ON SCROLL --- */
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('show');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        /* --- SIMPLE INERTIA SCROLL --- */
+        let current = 0;
+        let target = 0;
+        const ease = 0.08;
+        function smooth() {
+            target = window.scrollY;
+            current += (target - current) * ease;
+            document.getElementById('smooth-content').style.transform = `translateY(${-current}px)`;
+            // On ajuste la hauteur du body pour simuler le scroll réel
+            document.body.style.height = document.getElementById('smooth-content').scrollHeight + 'px';
+            requestAnimationFrame(smooth);
+        }
+        // Désactivé sur mobile pour la performance
+        if (window.innerWidth > 1024) {
+            document.getElementById('smooth-content').style.position = 'fixed';
+            document.getElementById('smooth-content').style.width = '100%';
+            smooth();
+        }
+    </script>
 </body>
 </html>
-
-
