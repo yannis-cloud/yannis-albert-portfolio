@@ -4,6 +4,7 @@ const mobileNav = document.querySelector(".mobile-nav");
 if (burger && mobileNav) {
   burger.addEventListener("click", () => {
     const isOpen = mobileNav.hasAttribute("hidden") === false;
+
     if (isOpen) {
       mobileNav.setAttribute("hidden", "");
       burger.setAttribute("aria-expanded", "false");
@@ -24,7 +25,8 @@ if (burger && mobileNav) {
 const y = document.getElementById("year");
 if (y) y.textContent = new Date().getFullYear();
 
-// ===== Scroll reveal (IntersectionObserver) =====
+
+// ===== Scroll reveal animations =====
 const revealEls = document.querySelectorAll(".reveal");
 
 if (revealEls.length) {
@@ -33,7 +35,7 @@ if (revealEls.length) {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target); // animation une seule fois
+          observer.unobserve(entry.target);
         }
       });
     },
