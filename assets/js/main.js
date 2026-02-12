@@ -74,23 +74,22 @@ document.querySelectorAll('a, button, .card, .tool').forEach(el => {
 });
 
 /* ============================= */
-/* TYPEWRITER HERO */
+/* PROGRESSIVE TEXT TYPING EFFECT */
 /* ============================= */
 
-const text = "Hi, I'm Yannis Albert — Cloud & Data Engineer";
-const target = document.querySelector(".typewriter");
+// Text appears progressively with CSS animation
+// The typewriter effect is handled by CSS @keyframes
+// No JavaScript needed for the main typing effect
 
-let i = 0;
+// But we can add sound effect or additional interactions here if needed
+const typewriterLine = document.querySelector('.typewriter-line');
 
-function type() {
-  if (i < text.length) {
-    target.textContent += text.charAt(i);
-    i++;
-    setTimeout(type, 45);
-  }
+if (typewriterLine) {
+  // Add completion event
+  setTimeout(() => {
+    typewriterLine.style.borderRight = 'none';
+  }, 3000);
 }
-
-type();
 
 /* ============================= */
 /* REVEAL ON SCROLL */
@@ -256,7 +255,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 /* ============================= */
-/* STATS COUNTER ANIMATION */
+/* ENHANCED STATS COUNTER ANIMATION */
 /* ============================= */
 
 const statsObserver = new IntersectionObserver(entries => {
@@ -265,25 +264,35 @@ const statsObserver = new IntersectionObserver(entries => {
       const numbers = entry.target.querySelectorAll('.stat-number');
       
       numbers.forEach(num => {
-        const target = parseInt(num.textContent);
+        const target = parseInt(num.getAttribute('data-target'));
         let current = 0;
         const increment = target / 60;
+        const duration = 2000;
+        const stepTime = duration / 60;
         
         const counter = setInterval(() => {
           current += increment;
           if (current >= target) {
-            num.textContent = target + "+";
+            if (target === 100) {
+              num.textContent = target + "%";
+            } else {
+              num.textContent = target + "+";
+            }
             clearInterval(counter);
           } else {
-            num.textContent = Math.floor(current) + "+";
+            if (target === 100) {
+              num.textContent = Math.floor(current) + "%";
+            } else {
+              num.textContent = Math.floor(current) + "+";
+            }
           }
-        }, 30);
+        }, stepTime);
       });
       
       statsObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.5 });
+}, { threshold: 0.3 });
 
 const heroStats = document.querySelector('.hero-stats');
 if (heroStats) {
