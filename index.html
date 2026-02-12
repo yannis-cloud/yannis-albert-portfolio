@@ -3,348 +3,680 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yannis Albert — Portfolio Ingénieur</title>
+    <title>Yannis Albert — Ingénieur Systèmes Numériques | Data & IA</title>
+    <meta name="description" content="Portfolio de Yannis Albert, Ingénieur spécialisé en Data, Cloud et IA industrielle chez Renault Group">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap">
-    
-    <style>
-        :root {
-            --bg: #03050a;
-            --card: rgba(12, 17, 27, 0.7);
-            --accent: #2A7BFF;
-            --accent2: #00D4FF;
-            --text: #e6edf3;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.08);
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            color: var(--text);
-            background: var(--bg);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* --- EFFET NOISE CINEMATIC --- */
-        .noise {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://grainy-gradients.vercel.app/noise.svg');
-            opacity: .06;
-            pointer-events: none;
-            z-index: 9999;
-        }
-
-        /* --- MESH & CURSOR --- */
-        .mesh {
-            position: fixed;
-            inset: -30%;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(42,123,255,0.15), transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0,212,255,0.1), transparent 50%);
-            filter: blur(100px);
-            z-index: -1;
-        }
-
-        .cursor {
-            position: fixed;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(42,123,255,0.08), transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 0;
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s ease-out;
-        }
-
-        /* --- LAYOUT --- */
-        #smooth-content { will-change: transform; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        
-        /* --- HEADER & LOGO YA --- */
-        .header {
-            position: fixed;
-            top: 0; width: 100%;
-            padding: 20px 0;
-            background: rgba(3, 5, 10, 0.5);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            z-index: 100;
-        }
-
-        .nav { display: flex; justify-content: space-between; align-items: center; }
-        
-        .logo-box { perspective: 1000px; cursor: pointer; }
-        .logo {
-            font-weight: 800; font-size: 24px;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text; color: transparent;
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .logo-box:hover .logo { transform: rotateY(360deg) scale(1.1); }
-
-        .menu a {
-            margin-left: 25px; color: #8892b0;
-            text-decoration: none; font-size: 14px;
-            transition: 0.3s;
-        }
-        .menu a:hover { color: var(--accent); }
-
-        /* --- HERO --- */
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; }
-        .tag { color: var(--accent); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 13px; margin-bottom: 10px; }
-        .hero-title { font-size: clamp(40px, 8vw, 80px); line-height: 1.1; font-weight: 800; margin-bottom: 20px; }
-        .sub { font-size: 18px; color: #8892b0; max-width: 600px; }
-
-        /* --- CARDS & ELDORA STYLE --- */
-        .section { padding: 100px 0; }
-        h2 { font-size: 32px; margin-bottom: 40px; font-weight: 800; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        
-        .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 30px;
-            position: relative;
-            overflow: hidden;
-            transition: border-color 0.3s;
-            transform-style: preserve-3d;
-        }
-        .card:hover { border-color: rgba(42, 123, 255, 0.4); }
-
-        .card-content { transform: translateZ(30px); }
-
-        /* --- SKILLS --- */
-        .skill-group h3 { color: var(--accent); margin-bottom: 15px; font-size: 18px; }
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
-        .skill-tags span {
-            background: rgba(255,255,255,0.05);
-            padding: 6px 12px; border-radius: 8px;
-            font-size: 12px; border: 1px solid var(--border);
-        }
-
-        /* --- PROJECTS --- */
-        .project-img {
-            height: 200px; width: 100%; background: #111;
-            border-radius: 12px; margin-bottom: 20px;
-            object-fit: cover;
-        }
-
-        /* --- ANIMATIONS --- */
-        .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
-        .reveal.show { opacity: 1; transform: translateY(0); }
-
-        .typewriter::after { content: "|"; animation: blink 1s infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
-    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- EFFECTS LAYERS -->
     <div class="noise"></div>
     <div class="mesh"></div>
     <div class="cursor"></div>
+    <div class="grain-overlay"></div>
 
+    <!-- HEADER -->
     <header class="header">
         <div class="container nav">
-            <div class="logo-box"><div class="logo">YA</div></div>
+            <div class="logo-box">
+                <div class="logo">YA</div>
+            </div>
             <nav class="menu">
-                <a href="#about">Bio</a>
-                <a href="#experience">Work</a>
-                <a href="#projects">Projets</a>
-                <a href="#skills">Tools</a>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact" class="cta-btn">Contact</a>
             </nav>
+            <button class="menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
-    <main id="smooth-content">
-        <section class="hero container">
-            <p class="tag reveal">Ingénieur Systèmes Numériques</p>
-            <h1 class="hero-title reveal">
-                <span class="typewriter" id="typewriter"></span>
-            </h1>
-            <p class="sub reveal">
-                Expertise en <b>Metaverse Industriel</b>, Data Architecture et IA appliquée au sein du Groupe Renault[cite: 13, 17].
-            </p>
-        </section>
-
-        <section id="about" class="container section">
-            <div class="grid">
-                <div class="card reveal tilt">
-                    <div class="card-content">
-                        <h2>Mon Profil</h2>
-                        <p>Ingénieur spécialisé en systèmes numériques, j'évolue à l'interface entre enjeux métiers et systèmes d'information industriels[cite: 3, 4].</p>
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="hero-left">
+                    <div class="floating-badge reveal">
+                        <span class="status-dot"></span>
+                        Disponible pour de nouveaux projets
+                    </div>
+                    <p class="tag reveal" style="animation-delay: 0.1s">Ingénieur Systèmes Numériques</p>
+                    <h1 class="hero-title reveal" style="animation-delay: 0.2s">
+                        Transforming Industry<br>
+                        Through <span class="gradient-text typewriter" id="typewriter"></span>
+                    </h1>
+                    <p class="hero-subtitle reveal" style="animation-delay: 0.3s">
+                        Ingénieur spécialisé en <strong>systèmes numériques</strong>, avec une expertise approfondie en <strong>Data & IA appliquée</strong> au sein du Groupe Renault. J'évolue à l'interface entre enjeux métiers, outils IT et systèmes d'information, avec une passion pour la <strong>transformation digitale data-driven</strong> dans l'industrie 4.0.
+                    </p>
+                    <div class="hero-cta reveal" style="animation-delay: 0.4s">
+                        <a href="#projects" class="btn-primary">
+                            Découvrir mes projets
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="#contact" class="btn-secondary">
+                            Me contacter
+                        </a>
+                    </div>
+                    <div class="hero-stats reveal" style="animation-delay: 0.5s">
+                        <div class="stat-item">
+                            <div class="stat-number">4+</div>
+                            <div class="stat-label">Années d'expérience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Projets réalisés</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Grands groupes</div>
+                        </div>
                     </div>
                 </div>
-                <div class="card reveal tilt">
-                    <div class="card-content">
-                        <h3>Focus Actuel</h3>
-                        <p>Optimisation de la performance industrielle via la transformation digitale data-driven[cite: 14, 56].</p>
+                <div class="hero-right reveal" style="animation-delay: 0.3s">
+                    <div class="photo-wrapper tilt">
+                        <div class="photo-glow"></div>
+                        <div class="photo-main" style="background-image: url('https://via.placeholder.com/320')"></div>
+                        <div class="photo-rings">
+                            <div class="ring ring-1"></div>
+                            <div class="ring ring-2"></div>
+                            <div class="ring ring-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <span>Scroll</span>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Qui suis-je</span>
+                    <h2 class="section-title">À propos de moi</h2>
+                </div>
+                <div class="about-content reveal">
+                    <p class="about-intro">
+                        Ingénieur passionné par l'<strong>innovation industrielle</strong> et la <strong>transformation numérique</strong>, 
+                        je dispose d'une solide expérience en pilotage de projets digitaux et data au sein de grands groupes industriels. 
+                        Formé à l'<strong>Université Paris-Saclay</strong> et au <strong>CNAM</strong>, j'ai développé une expertise technique 
+                        pointue combinant systèmes embarqués, IoT, big data et intelligence artificielle.
+                    </p>
+                    <p class="about-text">
+                        Habitué à évoluer à l'interface entre <strong>enjeux métiers</strong>, <strong>outils IT</strong> et 
+                        <strong>systèmes d'information</strong>, je cherche constamment à approfondir mes compétences en 
+                        gestion applicative, architecture des SI et transformation digitale, dans un environnement structuré et exigeant.
+                    </p>
+                </div>
+                <div class="about-grid">
+                    <div class="card reveal tilt" style="animation-delay: 0.1s">
+                        <div class="card-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            </svg>
+                        </div>
+                        <h3>Vision Industrielle</h3>
+                        <p>Expertise en Industrie 4.0 : Metaverse Industriel, Digital Twin, IoT et transformation digitale des processus métiers complexes.</p>
+                    </div>
+                    <div class="card reveal tilt" style="animation-delay: 0.2s">
+                        <div class="card-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v6M12 18v4M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M18 12h4M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24"/>
+                            </svg>
+                        </div>
+                        <h3>Data-Driven</h3>
+                        <p>Pilotage de projets data complexes, gouvernance des données, automatisation de dashboards décisionnels et implémentation de solutions IA.</p>
+                    </div>
+                    <div class="card reveal tilt" style="animation-delay: 0.3s">
+                        <div class="card-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h3>Leadership & Coordination</h3>
+                        <p>Gestion de projet, coordination d'équipes pluridisciplinaires et interface stratégique entre IT, métiers et direction.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="container section">
-            <h2 class="reveal">Expertise & Compétences</h2>
-            <div class="grid">
-                <div class="card reveal tilt">
-                    <div class="skill-group">
-                        <h3>Data & IA</h3>
+        <!-- EXPERIENCE SECTION -->
+        <section id="experience" class="section" style="background: rgba(0,0,0,0.2);">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Parcours</span>
+                    <h2 class="section-title">Expérience Professionnelle</h2>
+                </div>
+                <div class="experience-wrapper">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="exp-card card reveal tilt" style="animation-delay: 0.1s">
+                        <div class="timeline-dot"></div>
+                        <span class="exp-badge">Actuel</span>
+                        <div class="exp-header">
+                            <div>
+                                <h3>Pilote Projet Digital</h3>
+                                <p class="exp-location">Renault Group — Direction Metaverse Industriel / OT & Maintenance</p>
+                            </div>
+                            <span class="exp-date">Sept 2024 — Aujourd'hui</span>
+                        </div>
+                        <p class="exp-summary">
+                            Pilotage de projets stratégiques de transformation digitale dans un environnement industriel complexe, 
+                            avec un focus sur la data, l'IA et l'optimisation des processus métiers.
+                        </p>
+                        <ul class="exp-list">
+                            <li>Pilotage de projets digitaux data-driven de l'analyse des besoins métiers au déploiement de solutions décisionnelles</li>
+                            <li>Structuration, gouvernance et fiabilisation des données pour améliorer la qualité des indicateurs et la prise de décision</li>
+                            <li>Conception et automatisation de dashboards décisionnels (Power BI) pour le pilotage de la performance</li>
+                            <li>Mise en place de standards data (KPIs, règles de calcul, référentiels) pour réduire les traitements manuels</li>
+                            <li>Contribution à la préparation du socle data et identification de cas d'usage IA (analyse avancée, aide à la décision)</li>
+                        </ul>
                         <div class="skill-tags">
-                            <span>Power BI (DAX)</span><span>Python</span><span>SQL</span><span>Gouvernance Data</span><span>Machine Learning</span>
+                            <span>Power BI</span>
+                            <span>DAX</span>
+                            <span>Python</span>
+                            <span>SQL</span>
+                            <span>Data Governance</span>
+                            <span>Azure</span>
+                            <span>AI/ML</span>
                         </div>
                     </div>
-                </div>
-                <div class="card reveal tilt">
-                    <div class="skill-group">
-                        <h3>Digital Industry</h3>
+
+                    <div class="exp-card card reveal tilt" style="animation-delay: 0.2s">
+                        <div class="timeline-dot"></div>
+                        <div class="exp-header">
+                            <div>
+                                <h3>Ingénieur Bureau d'Études</h3>
+                                <p class="exp-location">Soudotique — PME Industrielle, Bazainville</p>
+                            </div>
+                            <span class="exp-date">Sept 2023 — Août 2024</span>
+                        </div>
+                        <p class="exp-summary">
+                            Contribution à la conception industrielle, digitalisation des processus et optimisation de la coordination entre 
+                            conception, méthodes et production.
+                        </p>
+                        <ul class="exp-list">
+                            <li>Participation à des projets de conception industrielle, de l'étude de faisabilité à l'intégration en production</li>
+                            <li>Démarches d'amélioration continue et digitalisation des outils et de la documentation technique</li>
+                            <li>Contribution aux méthodes et à l'industrialisation avec structuration des standards internes (ISO 9001)</li>
+                            <li>Support à la production : accompagnement des équipes terrain et mise à disposition de supports numériques</li>
+                            <li>Interface stratégique entre conception, méthodes et production pour l'optimisation des processus</li>
+                        </ul>
                         <div class="skill-tags">
-                            <span>Metaverse Industriel</span><span>IoT</span><span>Lean Management</span><span>ISO 9001</span><span>Digital Twin</span>
+                            <span>Solidworks</span>
+                            <span>3Dexpérience</span>
+                            <span>ISO 9001</span>
+                            <span>Lean Management</span>
+                            <span>Process Optimization</span>
                         </div>
                     </div>
+
+                    <div class="exp-card card reveal tilt" style="animation-delay: 0.3s">
+                        <div class="timeline-dot"></div>
+                        <div class="exp-header">
+                            <div>
+                                <h3>Formation & Parcours Académique</h3>
+                                <p class="exp-location">Université Paris-Saclay & CNAM</p>
+                            </div>
+                            <span class="exp-date">2018 — 2026</span>
+                        </div>
+                        <ul class="exp-list">
+                            <li><strong>École d'Ingénieur — Systèmes Numériques pour l'Industrie</strong> (ISTY & CNAM) - Formation Industrie 4.0</li>
+                            <li><strong>Licence Physique MSD</strong> (Mécanique, Signaux, Données) - UFR des Sciences Paris-Saclay</li>
+                            <li><strong>DUT GEII</strong> (Génie Électrique et Informatique Industrielle) - IUT de Vélizy</li>
+                            <li><strong>Certifications</strong> : Power BI, Azure, Machine Learning, Lean Six Sigma</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="card reveal tilt">
-                    <div class="skill-group">
-                        <h3>Dev & Systems</h3>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Expertise</span>
+                    <h2 class="section-title">Compétences & Technologies</h2>
+                </div>
+                <div class="skills-grid">
+                    <!-- DATA & IA -->
+                    <div class="skill-category card reveal tilt" style="animation-delay: 0.1s">
+                        <div class="skill-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            </svg>
+                        </div>
+                        <h3>Data & Intelligence Artificielle</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span class="skill-name">Power BI (DAX)</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Python</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">SQL & Databases</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Machine Learning</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="skill-tags">
-                            <span>Node.js</span><span>C</span><span>Azure</span><span>Solidworks</span><span>Docker</span>
+                            <span>Pandas</span><span>NumPy</span><span>Scikit-learn</span><span>TensorFlow</span><span>Tableau</span><span>Data Governance</span>
+                        </div>
+                    </div>
+
+                    <!-- DÉVELOPPEMENT -->
+                    <div class="skill-category card reveal tilt" style="animation-delay: 0.2s">
+                        <div class="skill-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="16 18 22 12 16 6"/>
+                                <polyline points="8 6 2 12 8 18"/>
+                            </svg>
+                        </div>
+                        <h3>Développement & Cloud</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span class="skill-name">Node.js & JavaScript</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">C/C++ & Arduino</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Azure Cloud</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">HTML/CSS</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-tags">
+                            <span>Git</span><span>Docker</span><span>REST API</span><span>Azure IoT</span><span>CI/CD</span>
+                        </div>
+                    </div>
+
+                    <!-- INDUSTRIE 4.0 -->
+                    <div class="skill-category card reveal tilt" style="animation-delay: 0.3s">
+                        <div class="skill-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                            </svg>
+                        </div>
+                        <h3>Industrie 4.0 & Digital</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span class="skill-name">Metaverse Industriel</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">IoT & Systèmes Embarqués</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Digital Twin</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Lean & ISO 9001</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-tags">
+                            <span>OT Security</span><span>Big Data</span><span>Cybersécurité</span><span>Process Optimization</span>
+                        </div>
+                    </div>
+
+                    <!-- COMPÉTENCES TRANSVERSALES -->
+                    <div class="skill-category card reveal tilt" style="animation-delay: 0.4s">
+                        <div class="skill-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h3>Compétences Transversales</h3>
+                        <div class="skill-list-items">
+                            <div class="transverse-skill">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Gestion de projet & coordination d'équipes pluridisciplinaires</span>
+                            </div>
+                            <div class="transverse-skill">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Analyse et résolution de problèmes techniques complexes</span>
+                            </div>
+                            <div class="transverse-skill">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Data management & gouvernance des données</span>
+                            </div>
+                            <div class="transverse-skill">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Transformation digitale data-driven</span>
+                            </div>
+                            <div class="transverse-skill">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Interface métiers-IT & conduite du changement</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RÉSEAUX & SÉCURITÉ -->
+                    <div class="skill-category card reveal tilt" style="animation-delay: 0.5s">
+                        <div class="skill-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                        </div>
+                        <h3>Réseaux & Cybersécurité</h3>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span class="skill-name">Wireshark & Network Analysis</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">OT Security</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">IoT Security</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 78%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-tags">
+                            <span>TCP/IP</span><span>Protocols</span><span>Firewall</span><span>VPN</span><span>Network Monitoring</span>
+                        </div>
+                    </div>
+
+                    <!-- OUTILS & LOGICIELS -->
+                    <div class="skill-category card reveal tilt" style="animation-delay: 0.6s">
+                        <div class="skill-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </div>
+                        <h3>Outils & Logiciels</h3>
+                        <div class="skill-list-items">
+                            <div class="transverse-skill">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Pack Office, MS Project</span>
+                            </div>
+                            <div class="transverse-skill">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Solidworks, 3Dexpérience</span>
+                            </div>
+                            <div class="transverse-skill">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Power BI, Tableau (Dashboarding)</span>
+                            </div>
+                            <div class="transverse-skill">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span>Git, GitHub, CI/CD Pipelines</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="container section">
-            <h2 class="reveal">Parcours Industriel</h2>
-            <div class="card reveal tilt" style="margin-bottom: 20px;">
-                <div class="card-content">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div>
-                            <h3>Renault Group — Pilote Projet Digital</h3>
-                            <p style="color:var(--accent)">Metaverse Industriel / OT & Maintenance</p>
-                        </div>
-                        <span>2024 — Présent</span>
-                    </div>
-                    <ul style="margin-top:15px; padding-left:20px; color:#8892b0; font-size:14px;">
-                        <li>Pilotage de projets data-driven en environnement complexe[cite: 14].</li>
-                        <li>Automatisation de dashboards décisionnels sous Power BI[cite: 15].</li>
-                        <li>Identification de cas d'usage IA pour l'aide à la décision[cite: 17].</li>
-                    </ul>
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="section" style="background: rgba(0,0,0,0.2);">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Portfolio</span>
+                    <h2 class="section-title">Projets Sélectionnés</h2>
                 </div>
-            </div>
-            <div class="card reveal tilt">
-                <div class="card-content">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <div>
-                            <h3>Soudotique — Ingénieur Bureau d'Études</h3>
-                            <p style="color:var(--accent)">PME Industrielle</p>
+                <div class="projects-grid">
+                    <article class="project-card reveal tilt" style="animation-delay: 0.1s">
+                        <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+                            <div class="project-overlay">
+                                <a href="https://github.com/yannis-cloud" target="_blank" class="project-link">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                        <polyline points="15 3 21 3 21 9"/>
+                                        <line x1="10" y1="14" x2="21" y2="3"/>
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
-                        <span>2023 — 2024</span>
-                    </div>
-                    <ul style="margin-top:15px; padding-left:20px; color:#8892b0; font-size:14px;">
-                        <li>Digitalisation des outils et de la documentation technique[cite: 21].</li>
-                        <li>Interface entre conception, méthodes et production[cite: 22].</li>
-                    </ul>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3>PariData — Smart City Analytics</h3>
+                                <span class="project-type">Data Science</span>
+                            </div>
+                            <p>Projet Smart City et Industrie 4.0 combinant open data, analytics et modélisation prédictive. Collecte, nettoyage et croisement de jeux de données open source (data.gouv.fr) pour développer un modèle prédictif avec dashboard interactif de visualisation des KPIs.</p>
+                            <div class="skill-tags">
+                                <span>Python</span>
+                                <span>Pandas</span>
+                                <span>Scikit-learn</span>
+                                <span>Power BI</span>
+                                <span>Data Analytics</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal tilt" style="animation-delay: 0.2s">
+                        <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)">
+                            <div class="project-overlay">
+                                <a href="https://github.com/yannis-cloud/BehavioralAuthentication-on-M5Stack-Tab5" target="_blank" class="project-link">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                        <polyline points="15 3 21 3 21 9"/>
+                                        <line x1="10" y1="14" x2="21" y2="3"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3>IoT Behavioral Authentication</h3>
+                                <span class="project-type">IoT & AI</span>
+                            </div>
+                            <p>Projet de recherche appliquée combinant IoT, data analytics et intelligence artificielle à partir de capteurs embarqués (M5Stack). Approche orientée sécurité avec intégration complète hardware-logiciel-data pour l'authentification comportementale.</p>
+                            <div class="skill-tags">
+                                <span>IoT</span>
+                                <span>Machine Learning</span>
+                                <span>C/C++</span>
+                                <span>M5Stack</span>
+                                <span>Cybersecurity</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal tilt" style="animation-delay: 0.3s">
+                        <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)">
+                            <div class="project-overlay">
+                                <a href="#" class="project-link">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                        <polyline points="15 3 21 3 21 9"/>
+                                        <line x1="10" y1="14" x2="21" y2="3"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3>Metaverse Industriel — Renault</h3>
+                                <span class="project-type">Digital Twin</span>
+                            </div>
+                            <p>Pilotage de projets de transformation digitale dans le Metaverse Industriel avec développement de jumeaux numériques, intégration de données OT temps réel et automatisation de dashboards décisionnels pour l'optimisation de la maintenance.</p>
+                            <div class="skill-tags">
+                                <span>Digital Twin</span>
+                                <span>Azure IoT</span>
+                                <span>Power BI</span>
+                                <span>Real-time Data</span>
+                                <span>OT</span>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="container section">
-            <h2 class="reveal">Projets Sélectionnés</h2>
-            <div class="grid">
-                <article class="card reveal tilt">
-                    <div class="card-content">
-                        <div class="project-img" style="background:linear-gradient(45deg, #1e3a8a, #2563eb)"></div>
-                        <h3>PariData (Smart City)</h3>
-                        <p style="font-size:14px; color:#8892b0; margin-bottom:15px;">Exploitation de l'Open Data pour la modélisation prédictive en contexte Industrie 4.0[cite: 24, 25].</p>
-                        <div class="skill-tags"><span>Analytics</span><span>Python</span></div>
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="contact-wrapper reveal">
+                    <div class="contact-content">
+                        <span class="section-tag">Contact</span>
+                        <h2 class="section-title">Travaillons ensemble</h2>
+                        <p class="contact-text">
+                            Je suis toujours ouvert à discuter de nouveaux projets, d'opportunités professionnelles ou simplement échanger 
+                            sur les technologies, la data et l'innovation industrielle. N'hésitez pas à me contacter !
+                        </p>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                                <div>
+                                    <span class="contact-label">Email</span>
+                                    <a href="mailto:yannis.albert78@gmail.com">yannis.albert78@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                                <div>
+                                    <span class="contact-label">Téléphone</span>
+                                    <a href="tel:+33667107117">06.67.10.71.17</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                </svg>
+                                <div>
+                                    <span class="contact-label">GitHub</span>
+                                    <a href="https://github.com/yannis-cloud" target="_blank">@yannis-cloud</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-cta">
+                            <a href="mailto:yannis.albert78@gmail.com" class="btn-primary">
+                                Envoyer un message
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="22" y1="2" x2="11" y2="13"/>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
-                </article>
-                <article class="card reveal tilt">
-                    <div class="card-content">
-                        <div class="project-img" style="background:linear-gradient(45deg, #064e3b, #059669)"></div>
-                        <h3>IoT Behavior Auth</h3>
-                        <p style="font-size:14px; color:#8892b0; margin-bottom:15px;">Système d'authentification par IA à partir de capteurs IoT embarqués (M5Stack)[cite: 29, 31].</p>
-                        <div class="skill-tags"><span>IoT</span><span>IA</span><span>Security</span></div>
-                    </div>
-                </article>
+                </div>
             </div>
         </section>
 
-        <footer class="container" style="padding: 50px 0; text-align: center; color: #444;">
-            <p>Yannis Albert — yannis.albert78@gmail.com [cite: 8]</p>
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-left">
+                        <div class="logo">YA</div>
+                        <p>Ingénieur Systèmes Numériques<br>spécialisé en Data & Industrial AI</p>
+                        <p style="margin-top: 12px; font-size: 13px;">📍 Île-de-France | 🇬🇧 Anglais B2</p>
+                    </div>
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>Navigation</h4>
+                            <a href="#about">About</a>
+                            <a href="#experience">Experience</a>
+                            <a href="#skills">Skills</a>
+                            <a href="#projects">Projects</a>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Contact</h4>
+                            <a href="mailto:yannis.albert78@gmail.com">Email</a>
+                            <a href="tel:+33667107117">Téléphone</a>
+                            <a href="https://github.com/yannis-cloud" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 Yannis Albert. All rights reserved.</p>
+                    <p>Designed with passion for innovation ⚡</p>
+                </div>
+            </div>
         </footer>
     </main>
 
-    <script>
-        /* --- CURSOR FOLLOW --- */
-        const cursor = document.querySelector('.cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        /* --- TYPEWRITER --- */
-        const txt = "Data, Cloud & Industrial AI.";
-        let i = 0;
-        function type() {
-            if (i < txt.length) {
-                document.getElementById("typewriter").innerHTML += txt.charAt(i);
-                i++;
-                setTimeout(type, 100);
-            }
-        }
-        type();
-
-        /* --- 3D TILT EFFECT --- */
-        document.querySelectorAll('.tilt').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-            });
-        });
-
-        /* --- REVEAL ON SCROLL --- */
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('show');
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        /* --- SIMPLE INERTIA SCROLL --- */
-        let current = 0;
-        let target = 0;
-        const ease = 0.08;
-        function smooth() {
-            target = window.scrollY;
-            current += (target - current) * ease;
-            document.getElementById('smooth-content').style.transform = `translateY(${-current}px)`;
-            // On ajuste la hauteur du body pour simuler le scroll réel
-            document.body.style.height = document.getElementById('smooth-content').scrollHeight + 'px';
-            requestAnimationFrame(smooth);
-        }
-        // Désactivé sur mobile pour la performance
-        if (window.innerWidth > 1024) {
-            document.getElementById('smooth-content').style.position = 'fixed';
-            document.getElementById('smooth-content').style.width = '100%';
-            smooth();
-        }
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
