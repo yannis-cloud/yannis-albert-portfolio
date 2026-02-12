@@ -26,13 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
         cursorX += dx * 0.1;
         cursorY += dy * 0.1;
         
-        cursor.style.left = cursorX + 'px';
-        cursor.style.top = cursorY + 'px';
+        if (cursor) {
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+        }
         
         requestAnimationFrame(animateCursor);
     }
     
-    if (window.innerWidth > 1024) {
+    // On n'active le curseur que sur les écrans larges pour éviter les lags mobiles
+    if (window.innerWidth > 1024 && cursor) {
         animateCursor();
     }
     
@@ -60,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         if (!isDeleting && charIndex === currentWord.length) {
-            typingSpeed = 2000;
+            typingSpeed = 2000; // Pause à la fin du mot
             isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
@@ -116,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // =======================================================================
-    // 4. INTERSECTION OBSERVER POUR LES RÉVÉLATIONS
+    // 4. INTERSECTION OBSERVER POUR LES RÉVÉLATIONS & SKILLS
     // =======================================================================
     const observerOptions = {
         threshold: 0.15,
@@ -128,14 +131,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('show');
                 
-                // Animation des barres de compétences
+                // Animation spécifique des barres de compétences au scroll
                 if (entry.target.classList.contains('skill-category')) {
                     const progressBars = entry.target.querySelectorAll('.skill-progress');
                     progressBars.forEach(bar => {
-                        const width = bar.style.width;
+                        const targetWidth = bar.getAttribute('data-width') || bar.style.width;
+                        // On force un reset puis on anime
                         bar.style.width = '0%';
                         setTimeout(() => {
-                            bar.style.width = width;
+                            bar.style.width = targetWidth;
                         }, 100);
                     });
                 }
@@ -176,18 +180,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. HEADER DYNAMIQUE AU SCROLL
     // =======================================================================
     const header = document.querySelector('.header');
-    let lastScroll = 0;
     
     window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > 100) {
+        if (window.pageYOffset > 100) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
-        
-        lastScroll = currentScroll;
     });
     
     // =======================================================================
@@ -213,14 +212,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
+        // Fermer le menu au clic sur un lien
         menu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.remove('active');
                 menuToggle.classList.remove('active');
                 const spans = menuToggle.querySelectorAll('span');
-                spans[0].style.transform = '';
+                spans.forEach(s => s.style.transform = '');
                 spans[1].style.opacity = '1';
-                spans[2].style.transform = '';
             });
         });
     }
@@ -229,46 +228,48 @@ document.addEventListener('DOMContentLoaded', () => {
     // 8. ANIMATION DES STATISTIQUES
     // =======================================================================
     const stats = document.querySelectorAll('.stat-number');
-    let hasAnimated = false;
+    let hasAnimatedStats = false;
     
     const statsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting && !hasAnimated) {
-                hasAnimated = true;
+            if (entry.isIntersecting && !hasAnimatedStats) {
+                hasAnimatedStats = true;
                 animateStats();
             }
         });
     }, { threshold: 0.5 });
     
     if (stats.length > 0) {
-        statsObserver.observe(stats[0].parentElement.parentElement);
+        statsObserver.observe(stats[0].closest('section'));
     }
     
     function animateStats() {
         stats.forEach(stat => {
-            const target = parseInt(stat.textContent);
+            const rawValue = stat.textContent;
+            const target = parseInt(rawValue.replace(/\D/g, '')); // On extrait le nombre
+            const suffix = rawValue.replace(/[0-9]/g, ''); // On récupère le + ou %
             const duration = 2000;
-            const increment = target / (duration / 16);
+            const frameRate = 16;
+            const totalFrames = duration / frameRate;
+            const increment = target / totalFrames;
             let current = 0;
             
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= target) {
-                    stat.textContent = target + (stat.textContent.includes('+') ? '+' : '') + 
-                                      (stat.textContent.includes('%') ? '%' : '');
+                    stat.textContent = target + suffix;
                     clearInterval(timer);
                 } else {
-                    stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : '') +
-                                      (stat.textContent.includes('%') ? '%' : '');
+                    stat.textContent = Math.floor(current) + suffix;
                 }
-            }, 16);
+            }, frameRate);
         });
     }
     
     // =======================================================================
     // 9. CONSOLE EASTER EGG
     // =======================================================================
-    console.log('%c👨‍💻 Yannis Albert - Portfolio', 'color: #2A7BFF; font-size: 20px; font-weight: bold;');
-    console.log('%cIntéressé par mon code ? Contactez-moi ! 📧 yannis.albert78@gmail.com', 'color: #00D4FF; font-size: 14px;');
+    console.log('%c👨‍💻 Yannis Albert - Portfolio Engine Loaded', 'color: #2A7BFF; font-size: 16px; font-weight: bold;');
+    console.log('%cContact : yannis.albert78@gmail.com', 'color: #00D4FF;');
     
 });
