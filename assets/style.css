@@ -314,9 +314,7 @@ background:linear-gradient(90deg,var(--accent),var(--accent2));
 background-clip:text;
 display:inline-block;
 position:relative;
-white-space:nowrap;
-margin-bottom: 10.5rem; 
-
+white-space:nowrap; 
 }
 
 .typewriter-line::before{
